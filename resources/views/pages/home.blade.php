@@ -352,6 +352,7 @@
             background-color: black;
             color: white;
             padding: 20px;
+            margin-top: auto;
             bottom: 0;
             left: 0;
             width: 250px;
@@ -374,7 +375,7 @@
                     <div style="display: flex; margin-bottom: 30px; gap: 15px">
                         <i class="fa-brands fa-facebook-f fa-lg" style="color: #ffffff; margin-right: 10px"></i>
                         <i class="fa-brands fa-twitter fa-lg" style="color: #ffffff; margin-right: 10px"></i>
-                        <i class="fa-b<span>Menu</span>rands fa-instagram fa-lg"
+                        <i class="fa-brands fa-instagram fa-lg"
                             style="color: #ffffff; margin-right: 10px"></i>
                     </div>
                 </div>
@@ -1454,9 +1455,12 @@
 
     <script>
         function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.style.display =
-                sidebar.style.display === "block" ? "none" : "block";
+            const sidebar = document.getElementById('sidebar');
+  if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+    sidebar.style.display = 'flex'; 
+  } else {
+    sidebar.style.display = 'none'; 
+  }
         }
 
         window.addEventListener("scroll", () => {
