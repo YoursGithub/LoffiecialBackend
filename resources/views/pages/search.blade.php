@@ -16,8 +16,37 @@
     margin: 0;
     padding: 0;
 }
+
+.swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .swiper-slide img {
+                width: 300px;
+                height: auto;
+                margin: 0 auto;
+            }
+
+            .swiper-slide {
+                display: flex;
+                justify-content: center;
+                /* Center the slide content */
+            }
+        }
+
+@media (max-width: 768px) {
+    .main-container {
+      flex-direction: column !important;
+    }
+    .main-container > div {
+      width: 100% !important;
+    }
+  }
 .container {
-      max-width: 1200px;
+      max-width: 1700px;
       margin: 0 auto;
       padding: 0 15px;
     }
@@ -26,6 +55,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
+      
     }
 
     .article-card {
@@ -261,14 +291,12 @@ style="
     <section style="text-align: center; margin-top: 100px;">
       <div style="margin-bottom: 30px; position: relative; max-width: 600px; margin: 0 auto; padding: 0 20px;">
 
-        <!-- Input Field -->
         <input 
             type="text" 
             placeholder="Search..." 
             style="width: 100%; padding: 35px; font-size: 18px; border: 1px solid #e6e6e6; border-radius: 5px; outline: none; box-sizing: border-box;"
             class="input-field">
 
-        <!-- Search Icon -->
         <i class="fa-solid fa-magnifying-glass" 
            style="position: absolute; right: 35px; top: 50%; transform: translateY(-50%); font-size: 20px; color: #888;"></i>
     </div>
@@ -320,180 +348,230 @@ style="
 
     <section style="margin-top: 50px; display: flex; flex-wrap: wrap">
       <div style="flex: 1; min-width: 300px; position: relative">
-        <img
-          src="/images/image_20.jpeg"
-          alt="Image 1"
-          style="position: relative;
+          <img src="/images/image_20.jpeg" alt="Image 1"
+              style="position: relative;
+        width: 100%;
+        height : 60vh;
+        min-width: 410px;
+         object-fit: cover" />
+          <div
+              style="
+          position: absolute;
+          margin-top: -200px;
+          left: 0;
+          color: white;
+          padding: 20px;
           width: 100%;
-          min-width: 410px;
-           object-fit: cover"
-        />
-        <div
-          style="
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            color: white;
-            padding: 20px;
-            width: 100%;
-          "
-        >
-          <p style="margin: 0; font-size: 14px; text-transform: uppercase">
-            Food
-          </p>
-          <h2 style="margin: 10px 0; font-size: 24px">
-            Les gourmandises à s’offrir cet automne
-          </h2>
-          <p style="margin: 0; font-size: 12px">
-            14.11.2024 by Pauline Borgogno
-          </p>
-        </div>
+        ">
+              <p style="margin: 0; font-size: 28px; text-transform: uppercase">
+                  Food
+              </p>
+              <h2 style="margin: 10px 0; margin-right: 300px; font-size: 39px">
+                  Les gourmandises à s’offrir cet automne
+              </h2>
+              <p style="margin: 0; font-size: 18px">
+                  14.11.2024 by Pauline Borgogno
+              </p>
+          </div>
       </div>
 
       <div style="flex: 1; min-width: 300px; position: relative">
-        <img
-          src="/images/image_32.jpeg"
-          alt="Image 2"
-          style="position: relative;
+          <img src="/images/image_32.jpeg" alt="Image 2"
+              style="position: relative;
+        width: 100%;
+        height : 60vh;
+        min-width: 410px;
+        object-fit: cover" />
+          <div
+              style="
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          color: white;
+          padding: 20px;
           width: 100%;
-          min-width: 410px;
-          object-fit: cover"
-        />
-        <div
-          style="
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            color: white;
-            padding: 20px;
-            width: 100%;
-          "
-        >
-          <p style="margin: 0; font-size: 14px; text-transform: uppercase">
-            Food
-          </p>
-          <h2 style="margin: 10px 0; font-size: 24px">
-            Les calendriers de l’Avent gourmands les plus désirables de 2024
-          </h2>
-          <p style="margin: 0; font-size: 12px">
-            19.11.2024 by Pauline Borgogno
-          </p>
-        </div>
+        ">
+              <p style="margin: 0; font-size: 28px; text-transform: uppercase">
+                  Food
+              </p>
+              <h2 style="margin: 10px 0; font-size: 39px; margin-right: 300px;">
+                  Les calendriers de l’Avent gourmands les plus désirables de 2024
+              </h2>
+              <p style="margin: 0; font-size: 12px">
+                  19.11.2024 by Pauline Borgogno
+              </p>
+          </div>
       </div>
-    </section>
+  </section>
 
     <section class="bottle" style="margin-top: 100px;">
-      <div
-        class="section"
-        style="
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-between;
-          gap: 23px;
-          padding: 20px;
-          max-width: 1200px;
-          margin: auto;
-        "
-      >
-        <div
-          style="
-            flex: 1 1 calc(33.33% - 20px);
-            margin: 0;
-            background-color: #fff;
-            overflow: hidden;
-          "
-        >
-          <img
-            src="/images/image_23.jpeg"
-            alt="Winter getaway"
-            style="width: 100%; height: 250px"
-          />
-          <div style="padding: 15px">
-            <div
-              style="
-                color: #666;
-                font-size: 14px;
-                text-transform: uppercase;
-                margin-bottom: 10px;
-              "
-            >
-              Voyage
+      <div class="section"
+                style="
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              gap: 23px;
+              padding: 20px;
+              max-width: 1700px;
+              margin: 0 auto;
+            ">
+                <div
+                    style="
+                flex: 1 1 calc(33.33% - 20px);
+                margin: 0;
+                
+                overflow: hidden;
+              ">
+                    <img src="/images/image_23.jpeg" alt="Winter getaway" style="width: 100%; height: 250px" />
+                    <div style="padding: 15px">
+                        <div
+                            style="
+                    color: black;
+                    font-size: 19px;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                    border-bottom: 1px solid currentColor; display: inline-block;
+                  ">
+                            Voyage
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            Évasion hivernale : l’excellence des séjours au ski avec Airelles
+                        </div>
+                        <div style="font-size: 14px; ">
+                            31.12.2024 by Pauline Borgogno
+                        </div>
+                    </div>
+                </div>
+    
+                <div
+                    style="
+                flex: 1 1 calc(33.33% - 20px);
+                margin: 0;
+                
+                overflow: hidden;
+              ">
+                    <img src="/images/image_24.jpeg" alt="Mocha Mousse" style="width: 100%; height: 250px" />
+                    <div style="padding: 15px">
+                        <div style="font-size: 19px; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;">
+                            Femmes
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            Mocha Mousse : la couleur Pantone 2025 nous envoûte cette saison
+                        </div>
+                        <div style="font-size: 14px; ">
+                            31.12.2024 by Pauline Borgogno
+                        </div>
+                    </div>
+                </div>
+    
+                <div
+                    style="
+                flex: 1 1 calc(33.33% - 20px);
+                margin: 0;
+                
+                overflow: hidden;
+              ">
+                    <img src="/images/image_25.jpeg" alt="Books" style="width: 100%; height: 250px" />
+                    <div style="padding: 15px">
+                        <div
+                            style="
+                    border-bottom: 1px solid currentColor; display: inline-block;
+                    font-size: 19px;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                  ">
+                            Pop Culture
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            3 ouvrages mode à dévorer pour commencer l’année avec style
+                        </div>
+                        <div style="font-size: 14px; ">
+                            31.12.2024 by Pauline Borgogno
+                        </div>
+                    </div>
+                </div>
+    
+                <div
+                    style="
+                flex: 1 1 calc(33.33% - 20px);
+                margin: 0;
+                
+                overflow: hidden;
+              ">
+                    <img src="/images/image_28.jpeg" alt="Books" style="width: 100%; height: 250px" />
+                    <div style="padding: 15px">
+                        <div
+                            style="
+                    border-bottom: 1px solid currentColor; display: inline-block;
+                    font-size: 19px;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                  ">
+                            Pop Culture
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            3 ouvrages mode à dévorer pour commencer l’année avec style
+                        </div>
+                        <div style="font-size: 14px; ">
+                            31.12.2024 by Pauline Borgogno
+                        </div>
+                    </div>
+                </div>
+    
+                <div
+                    style="
+                flex: 1 1 calc(33.33% - 20px);
+                margin: 0;
+                
+                overflow: hidden;
+              ">
+                    <img src="/images/image_29.jpeg" alt="Books" style="width: 100%; height: 250px" />
+                    <div style="padding: 15px">
+                        <div
+                            style="
+                    border-bottom: 1px solid currentColor; display: inline-block;
+                    font-size: 19px;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                  ">
+                            Pop Culture
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            3 ouvrages mode à dévorer pour commencer l’année avec style
+                        </div>
+                        <div style="font-size: 14px; ">
+                            31.12.2024 by Pauline Borgogno
+                        </div>
+                    </div>
+                </div>
+    
+                <div
+                    style="
+                flex: 1 1 calc(33.33% - 20px);
+                margin: 0;
+                
+                overflow: hidden;
+              ">
+                    <img src="/images/image_26.jpeg" alt="Books" style="width: 100%; height: 250px" />
+                    <div style="padding: 15px">
+                        <div
+                            style="
+                    border-bottom: 1px solid currentColor; display: inline-block;
+                    font-size: 19px;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                  ">
+                            Pop Culture
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            3 ouvrages mode à dévorer pour commencer l’année avec style
+                        </div>
+                        <div style="font-size: 14px; ">
+                            31.12.2024 by Pauline Borgogno
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div style="font-size: 18px; font-weight: bold; margin: 0 0 10px">
-              Évasion hivernale : l’excellence des séjours au ski avec Airelles
-            </div>
-            <div style="font-size: 14px; color: #999">
-              31.12.2024 by Pauline Borgogno
-            </div>
-          </div>
-        </div>
-
-        <div
-          style="
-            flex: 1 1 calc(33.33% - 20px);
-            margin: 0;
-            background-color: #fff;
-            overflow: hidden;
-          "
-        >
-          <img
-            src="/images/image_24.jpeg"
-            alt="Mocha Mousse"
-            style="width: 100%; height: 250px"
-          />
-          <div style="padding: 15px">
-            <div
-              style="
-                color: #666;
-                font-size: 14px;
-                text-transform: uppercase;
-                margin-bottom: 10px;
-              "
-            >
-              Femmes
-            </div>
-            <div style="font-size: 18px; font-weight: bold; margin: 0 0 10px">
-              Mocha Mousse : la couleur Pantone 2025 nous envoûte cette saison
-            </div>
-            <div style="font-size: 14px; color: #999">
-              31.12.2024 by Pauline Borgogno
-            </div>
-          </div>
-        </div>
-
-        <div
-          style="
-            flex: 1 1 calc(33.33% - 20px);
-            margin: 0;
-            background-color: #fff;
-            overflow: hidden;
-          "
-        >
-          <img
-            src="/images/image_25.jpeg"
-            alt="Books"
-            style="width: 100%; height: 250px"
-          />
-          <div style="padding: 15px">
-            <div
-              style="
-                color: #666;
-                font-size: 14px;
-                text-transform: uppercase;
-                margin-bottom: 10px;
-              "
-            >
-              Pop Culture
-            </div>
-            <div style="font-size: 18px; font-weight: bold; margin: 0 0 10px">
-              3 ouvrages mode à dévorer pour commencer l’année avec style
-            </div>
-            <div style="font-size: 14px; color: #999">
-              31.12.2024 by Pauline Borgogno
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
 
@@ -562,117 +640,173 @@ style="
 
 
     <section class="bottle" style="margin-top: 100px;">
-      <div
-        class="section"
-        style="
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-between;
-          gap: 23px;
-          padding: 20px;
-          max-width: 1200px;
-          margin: auto;
-        "
-      >
-        <div
-          style="
-            flex: 1 1 calc(33.33% - 20px);
-            margin: 0;
-            background-color: #fff;
-            overflow: hidden;
-          "
-        >
-          <img
-            src="/images/image_23.jpeg"
-            alt="Winter getaway"
-            style="width: 100%; height: 250px"
-          />
-          <div style="padding: 15px">
-            <div
-              style="
-                color: #666;
-                font-size: 14px;
-                text-transform: uppercase;
-                margin-bottom: 10px;
-              "
-            >
-              Voyage
+      <div class="section"
+                style="
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              gap: 23px;
+              padding: 20px;
+              max-width: 1700px;
+              margin: 0 auto;
+            ">
+                <div
+                    style="
+                flex: 1 1 calc(33.33% - 20px);
+                margin: 0;
+                
+                overflow: hidden;
+              ">
+                    <img src="/images/image_23.jpeg" alt="Winter getaway" style="width: 100%; height: 250px" />
+                    <div style="padding: 15px">
+                        <div
+                            style="
+                    color: black;
+                    font-size: 19px;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                    border-bottom: 1px solid currentColor; display: inline-block;
+                  ">
+                            Voyage
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            Évasion hivernale : l’excellence des séjours au ski avec Airelles
+                        </div>
+                        <div style="font-size: 14px; ">
+                            31.12.2024 by Pauline Borgogno
+                        </div>
+                    </div>
+                </div>
+    
+                <div
+                    style="
+                flex: 1 1 calc(33.33% - 20px);
+                margin: 0;
+                
+                overflow: hidden;
+              ">
+                    <img src="/images/image_24.jpeg" alt="Mocha Mousse" style="width: 100%; height: 250px" />
+                    <div style="padding: 15px">
+                        <div style="font-size: 19px; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;">
+                            Femmes
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            Mocha Mousse : la couleur Pantone 2025 nous envoûte cette saison
+                        </div>
+                        <div style="font-size: 14px; ">
+                            31.12.2024 by Pauline Borgogno
+                        </div>
+                    </div>
+                </div>
+    
+                <div
+                    style="
+                flex: 1 1 calc(33.33% - 20px);
+                margin: 0;
+                
+                overflow: hidden;
+              ">
+                    <img src="/images/image_25.jpeg" alt="Books" style="width: 100%; height: 250px" />
+                    <div style="padding: 15px">
+                        <div
+                            style="
+                    border-bottom: 1px solid currentColor; display: inline-block;
+                    font-size: 19px;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                  ">
+                            Pop Culture
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            3 ouvrages mode à dévorer pour commencer l’année avec style
+                        </div>
+                        <div style="font-size: 14px; ">
+                            31.12.2024 by Pauline Borgogno
+                        </div>
+                    </div>
+                </div>
+    
+                <div
+                    style="
+                flex: 1 1 calc(33.33% - 20px);
+                margin: 0;
+                
+                overflow: hidden;
+              ">
+                    <img src="/images/image_28.jpeg" alt="Books" style="width: 100%; height: 250px" />
+                    <div style="padding: 15px">
+                        <div
+                            style="
+                    border-bottom: 1px solid currentColor; display: inline-block;
+                    font-size: 19px;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                  ">
+                            Pop Culture
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            3 ouvrages mode à dévorer pour commencer l’année avec style
+                        </div>
+                        <div style="font-size: 14px; ">
+                            31.12.2024 by Pauline Borgogno
+                        </div>
+                    </div>
+                </div>
+    
+                <div
+                    style="
+                flex: 1 1 calc(33.33% - 20px);
+                margin: 0;
+                
+                overflow: hidden;
+              ">
+                    <img src="/images/image_29.jpeg" alt="Books" style="width: 100%; height: 250px" />
+                    <div style="padding: 15px">
+                        <div
+                            style="
+                    border-bottom: 1px solid currentColor; display: inline-block;
+                    font-size: 19px;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                  ">
+                            Pop Culture
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            3 ouvrages mode à dévorer pour commencer l’année avec style
+                        </div>
+                        <div style="font-size: 14px; ">
+                            31.12.2024 by Pauline Borgogno
+                        </div>
+                    </div>
+                </div>
+    
+                <div
+                    style="
+                flex: 1 1 calc(33.33% - 20px);
+                margin: 0;
+                
+                overflow: hidden;
+              ">
+                    <img src="/images/image_26.jpeg" alt="Books" style="width: 100%; height: 250px" />
+                    <div style="padding: 15px">
+                        <div
+                            style="
+                    border-bottom: 1px solid currentColor; display: inline-block;
+                    font-size: 19px;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                  ">
+                            Pop Culture
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            3 ouvrages mode à dévorer pour commencer l’année avec style
+                        </div>
+                        <div style="font-size: 14px; ">
+                            31.12.2024 by Pauline Borgogno
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div style="font-size: 18px; font-weight: bold; margin: 0 0 10px">
-              Évasion hivernale : l’excellence des séjours au ski avec Airelles
-            </div>
-            <div style="font-size: 14px; color: #999">
-              31.12.2024 by Pauline Borgogno
-            </div>
-          </div>
-        </div>
-
-        <div
-          style="
-            flex: 1 1 calc(33.33% - 20px);
-            margin: 0;
-            background-color: #fff;
-            overflow: hidden;
-          "
-        >
-          <img
-            src="/images/image_24.jpeg"
-            alt="Mocha Mousse"
-            style="width: 100%; height: 250px"
-          />
-          <div style="padding: 15px">
-            <div
-              style="
-                color: #666;
-                font-size: 14px;
-                text-transform: uppercase;
-                margin-bottom: 10px;
-              "
-            >
-              Femmes
-            </div>
-            <div style="font-size: 18px; font-weight: bold; margin: 0 0 10px">
-              Mocha Mousse : la couleur Pantone 2025 nous envoûte cette saison
-            </div>
-            <div style="font-size: 14px; color: #999">
-              31.12.2024 by Pauline Borgogno
-            </div>
-          </div>
-        </div>
-
-        <div
-          style="
-            flex: 1 1 calc(33.33% - 20px);
-            margin: 0;
-            background-color: #fff;
-            overflow: hidden;
-          "
-        >
-          <img
-            src="/images/image_25.jpeg"
-            alt="Books"
-            style="width: 100%; height: 250px"
-          />
-          <div style="padding: 15px">
-            <div
-              style="
-                color: #666;
-                font-size: 14px;
-                text-transform: uppercase;
-                margin-bottom: 10px;
-              "
-            >
-              Pop Culture
-            </div>
-            <div style="font-size: 18px; font-weight: bold; margin: 0 0 10px">
-              3 ouvrages mode à dévorer pour commencer l’année avec style
-            </div>
-            <div style="font-size: 14px; color: #999">
-              31.12.2024 by Pauline Borgogno
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     @include('pages.layouts.footer')
@@ -696,25 +830,19 @@ style="
           }
         });
   
-        var swiper = new Swiper(".mySwiper", {
-          slidesPerView: 3,
-          spaceBetween: 50,
-          loop: true,
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-          breakpoints: {
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 100,
-            },
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-          },
-        });
+        const swiper = new Swiper('.swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+      }
+    }
+  });
       </script>
 </body>
 </html>
