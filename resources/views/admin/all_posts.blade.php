@@ -595,8 +595,8 @@
                                                 <th>Trending</th>
                                                 <th>Title</th>
                                                 <th>Thumbnail</th>
-                                                {{-- <th>First Post of Home Page</th>
-                                                <th>Second  Post of Home Page</th> --}}
+                                                 <th>First Post of Home Page</th>
+                                             {{--   <th>Second  Post of Home Page</th> --}}
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -609,14 +609,14 @@
                                                 <td> {{ $post->trending ? "Yes" : "No" }} </td>
                                                 <td> {{ Str::limit($post->title, 15, '...') }}</td>
                                                 <td> <img src=" {{ $post->thumbnail }} " alt="Not Found" width="100px" ></td>
-                                                {{-- <td><a href="{{ route('first_post',['id'=>$post->id]) }}"  
+                                                 <td><a href="{{ route('first_post',['id'=>$post->id]) }}"  
                                                     style="
                                                     background: rgb(106, 223, 90) ;
                                                     text-decoration:none;
                                                     padding: 10px;
                                                     padding-left: 20px;
                                                     padding-right: 20px;">Make first post</a></td>
-                                                  <td><a href="{{ route('second_post',['id'=>$post->id]) }}"  
+                                                {{--  <td><a href="{{ route('second_post',['id'=>$post->id]) }}"  
                                                     style="
                                                     background: rgb(90, 99, 223) ;
                                                     text-decoration:none;

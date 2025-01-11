@@ -11,7 +11,7 @@ class PageController extends Controller
 {
     public function home(Request $request) 
     {
-                    return view('pages.index');
+                    return view('pages.home');
      
     }
     public function search(Request $request ,$search)

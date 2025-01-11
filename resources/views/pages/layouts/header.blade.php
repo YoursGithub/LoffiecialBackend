@@ -8,8 +8,7 @@
 
 
     <li style="margin-bottom: 15px;"><a href="{{ $url }}"
-            style="color: black; text-decoration: none; text-transform: uppercase;
-                        ">{{ $title }}</a>
+            style="color: black; text-decoration: none; text-transform: uppercase;">{{ $title }}</a>
 
     </li>
 @endforeach

@@ -26,15 +26,15 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::view('/', 'pages.home');
+// Route::view('/', 'pages.home');
 Route::view('/blog', 'pages.blog');
-Route::view('/cat', 'pages.categories');
+Route::view('/cat', 'pages.category');
 Route::view('/search', 'pages.search');
 
 
 
 
-// Route::get('/',[PageController::class, 'home'])->name('home'); 
+Route::get('/',[PageController::class, 'home'])->name('home'); 
 
 Route::get('/category/{category}',[PageController::class, 'category'])->name('category'); 
  

@@ -29,22 +29,22 @@ class AppServiceProvider extends ServiceProvider
         view()->share('allAuthor', Author::all());
 
 
-        // view()->share('firstPost',FirstPost::with('post')->find(1)?->post ) ;
+        view()->share('firstPost', FirstPost::with('post')->find(1)?->post);
 
         // view()->share('secondPost',FirstPost::with('post')->find(2)?->post ) ;
 
 
-        // view()->share('recentPosts', Posts::with('category')->latest()
-        //                                                     ->limit(15)
-        //                                                     ->get());
+        view()->share('recentPosts', Posts::with('category')->latest()->limit(15)->get());
+
+        view()->share('trendingPosts',  Posts::where('trending', 1)->get());
 
 
-        // view()->share('glamPosts', Posts::with('category')->whereHas('category', function ($query) {
-        //                                                     $query->where('category', 'glam zone');
-        //                                                 })
-        //                                                 ->latest()
-        //                                                 ->limit(4)
-        //                                                 ->get());
+        view()->share('LPosts', Posts::with('category')->whereHas('category', function ($query) {
+                                                            $query->where('category', "l'essentials");
+                                                        })
+                                                        ->latest()
+                                                        ->limit(2)
+                                                        ->get());
 
         // view()->share('luxuryPosts', Posts::with('category')->whereHas('category', function ($query) {
         //                                                     $query->where('category', 'luxury');
@@ -52,36 +52,36 @@ class AppServiceProvider extends ServiceProvider
         //                                                 ->latest()
         //                                                 ->limit(5)
         //                                                 ->get());
-                                                    
-        // view()->share('lifestylePosts', Posts::with('category')->whereHas('category', function ($query) {
-        //                                                     $query->where('category', 'lifestyle');
-        //                                                 })
-        //                                                 ->latest()
-        //                                                 ->limit(5)
-        //                                                 ->get());
 
-        // view()->share('fashionPosts', Posts::with('category')->whereHas('category', function ($query) {
-        //                                                     $query->where('category', 'fashion');
-        //                                                 })
-        //                                                 ->latest()
-        //                                                 ->limit(4)
-        //                                                 ->get());
+        view()->share('lifestylePosts', Posts::with('category')->whereHas('category', function ($query) {
+                                                            $query->where('category', 'lifestyle');
+                                                        })
+                                                        ->latest()
+                                                        ->limit(1)
+                                                        ->get());
 
-        // view()->share('entertainmentPosts', Posts::with('category')->whereHas('category', function ($query) {
-        //                                                     $query->where('category', 'entertainment');
-        //                                                 })
-        //                                                 ->latest()
-        //                                                 ->limit(3)
-        //                                                 ->get());
+        view()->share('fashionPosts', Posts::with('category')->whereHas('category', function ($query) {
+                                                            $query->where('category', 'fashion');
+                                                        })
+                                                        ->latest()
+                                                        ->limit(4)
+                                                        ->get());
 
-                                                        
+        view()->share('entertainmentPosts', Posts::with('category')->whereHas('category', function ($query) {
+                                                            $query->where('category', 'entertainment');
+                                                        })
+                                                        ->latest()
+                                                        ->limit(3)
+                                                        ->get());
 
-        // view()->share('ridesPosts', Posts::with('category')->whereHas('category', function ($query) {
-        //                                                     $query->where('category', 'rides');
-        //                                                 })
-        //                                                 ->latest()
-        //                                                 ->limit(4)
-        //                                                 ->get());
+
+
+        view()->share('musicPosts', Posts::with('category')->whereHas('category', function ($query) {
+                                                            $query->where('category', 'music');
+                                                        })
+                                                        ->latest()
+                                                        ->limit(3)
+                                                        ->get());
 
 
     }
