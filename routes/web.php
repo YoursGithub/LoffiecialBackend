@@ -27,9 +27,9 @@ use Illuminate\Support\Facades\Route;
 
 
 // Route::view('/', 'pages.home');
-Route::view('/blog', 'pages.blog');
-Route::view('/cat', 'pages.category');
-Route::view('/search', 'pages.search');
+// Route::view('/blog', 'pages.blog');
+// Route::view('/cat', 'pages.category');
+// Route::view('/search', 'pages.search');
 
 
 
@@ -39,6 +39,11 @@ Route::get('/',[PageController::class, 'home'])->name('home');
 Route::get('/category/{category}',[PageController::class, 'category'])->name('category'); 
  
 Route::get('/blog/{slug}', [PageController::class, 'blog'])->name('blog');
+
+Route::get('/search', [PageController::class, 'search'])->name('search');
+
+
+
 
 
 

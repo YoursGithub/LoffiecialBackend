@@ -303,27 +303,42 @@ style="
       
 
     <div style="margin-top: 40px; ">
-        <u style="font-size: 16px; color: #333; margin: 0; text-transform: uppercase; letter-spacing: 1px;">RÉSULTATS DE LA RECHERCHE POUR</u>
-        <h2 style="font-size: 48px; margin: 10px 0; font-weight: normal;">"post"</h2>
-        <p style="font-size: 28px; color: #333; margin: 0;">trouvé 2,593 résultats</p>
+        <u style="font-size: 16px; color: #333; margin: 0; text-transform: uppercase; letter-spacing: 1px;">RESULTS OF THE SEARCH FOR</u>
+        <h2 style="font-size: 48px; margin: 10px 0; font-weight: normal;">"{{ $search }}"</h2>
+        <p style="font-size: 28px; color: #333; margin: 0;">found {{ $number }} results</p>
     </div>
 
     
     </section>
 
     <section style="font-family: 'Sen', sans-serif; margin-top: 70px;">
+
+      @isset($posts[0])
+
+      @php
+                  $post = $posts[0] ;
+                  $url = route('blog', ['slug' => $post->slug]);
+                  $title = Str::title($post->title) ;
+                  $image = $post->thumbnail ;
+                  $date = $post->created_at->format('d.m.y') ;
+                  $author = $post->author?->name ;
+                  $cat = $post->category->category ;
+                  $catUrl = route('category', ['category' => $cat]);
+                  $authDate = "$date by $author" ;
+      @endphp
+
       <div
-        style="
-          position: relative;
-    width: 100%;
-    min-width: 410px;
-          background: url('/images/bag.jpg') no-repeat center center/cover;
-          color: white;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        "
-      >
+            style="
+              position: relative;
+        width: 100%;
+        min-width: 410px;
+              background: url('{{ $image }}') no-repeat center center/cover;
+              color: white;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            "
+        >
         <div style="text-align: center; margin-top: 200px; padding: 20px">
           <p
             style="
@@ -333,22 +348,38 @@ style="
               letter-spacing: 1px;
             "
           >
-            POP CULTURE
-          </p>
+          {{ $cat }}
+        </p>
           <h1 style="font-size: 3rem; margin: 10px 0">
-            Pourquoi a-t-on hâte de découvrir "Nosferatu" ?
-          </h1>
+            {{ $title }}
+            </h1>
           <p style="font-size: 1rem; margin: 0">
-            18.12.2024 by Pauline Borgogno
+            {{ $authDate }}
           </p>
         </div>
       </div>
+
+      @endisset
     </section>
 
-
     <section style="margin-top: 50px; display: flex; flex-wrap: wrap">
+        
+
+      @foreach ( $posts->slice(1,2) as $post )
+
+      @php
+          $url = route('blog', ['slug' => $post->slug]);
+          $title = Str::title($post->title) ;
+          $image = $post->thumbnail ;
+          $date = $post->created_at->format('d.m.y') ;
+          $author = $post->author?->name ;
+          $cat = $post->category->category ;
+          $catUrl = route('category', ['category' => $cat]);
+          $authDate = "$date by $author" ;
+      @endphp
+
       <div style="flex: 1; min-width: 300px; position: relative">
-          <img src="/images/image_20.jpeg" alt="Image 1"
+          <img src="{{ $image }}" alt="Image 1"
               style="position: relative;
         width: 100%;
         height : 60vh;
@@ -364,274 +395,109 @@ style="
           width: 100%;
         ">
               <p style="margin: 0; font-size: 28px; text-transform: uppercase">
-                  Food
+                  {{ $cat }}
               </p>
               <h2 style="margin: 10px 0; margin-right: 300px; font-size: 39px">
-                  Les gourmandises à s’offrir cet automne
+                  {{ $title }}
               </h2>
               <p style="margin: 0; font-size: 18px">
-                  14.11.2024 by Pauline Borgogno
+                  {{ $authDate }}
               </p>
           </div>
       </div>
 
-      <div style="flex: 1; min-width: 300px; position: relative">
-          <img src="/images/image_32.jpeg" alt="Image 2"
-              style="position: relative;
-        width: 100%;
-        height : 60vh;
-        min-width: 410px;
-        object-fit: cover" />
-          <div
-              style="
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          color: white;
-          padding: 20px;
-          width: 100%;
-        ">
-              <p style="margin: 0; font-size: 28px; text-transform: uppercase">
-                  Food
-              </p>
-              <h2 style="margin: 10px 0; font-size: 39px; margin-right: 300px;">
-                  Les calendriers de l’Avent gourmands les plus désirables de 2024
-              </h2>
-              <p style="margin: 0; font-size: 12px">
-                  19.11.2024 by Pauline Borgogno
-              </p>
-          </div>
-      </div>
+      @endforeach
+
   </section>
 
-    <section class="bottle" style="margin-top: 100px;">
-      <div class="section"
-                style="
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: space-between;
-              gap: 23px;
-              padding: 20px;
-              max-width: 1700px;
-              margin: 0 auto;
-            ">
-                <div
+  <section class="bottle" style="margin-top: 50px;">
+    <div class="section"
+        style="
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 23px;
+      padding: 20px;
+      max-width: 1700px;
+      margin: 0 auto;
+    ">
+    @foreach ( $posts->slice(3,6) as $post )
+
+     @php
+         $url = route('blog', ['slug' => $post->slug]);
+         $title = Str::title($post->title) ;
+         $image = $post->thumbnail ;
+         $date = $post->created_at->format('d.m.y') ;
+         $author = $post->author?->name ;
+         $cat = $post->category->category ;
+         $catUrl = route('category', ['category' => $cat]);
+         $authDate = "$date by $author" ;
+     @endphp
+        <div
                     style="
                 flex: 1 1 calc(33.33% - 20px);
                 margin: 0;
-                
+                background-color: #fff;
                 overflow: hidden;
-              ">
-                    <img src="/images/image_23.jpeg" alt="Winter getaway" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
+            ">
+            <img src="{{ $image }}" alt="Winter getaway" style="width: 100%; height: 250px" />
+            <div style="padding: 15px">
+                <div
+                    style="
                     color: black;
                     font-size: 19px;
                     text-transform: uppercase;
                     margin-bottom: 10px;
                     border-bottom: 1px solid currentColor; display: inline-block;
-                  ">
-                            Voyage
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            Évasion hivernale : l’excellence des séjours au ski avec Airelles
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
+                ">
+                    {{ $cat }}
                 </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_24.jpeg" alt="Mocha Mousse" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div style="font-size: 19px; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;">
-                            Femmes
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            Mocha Mousse : la couleur Pantone 2025 nous envoûte cette saison
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
+                <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                    {{ $title }}
                 </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_25.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                  ">
-                            Pop Culture
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            3 ouvrages mode à dévorer pour commencer l’année avec style
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_28.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                  ">
-                            Pop Culture
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            3 ouvrages mode à dévorer pour commencer l’année avec style
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_29.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                  ">
-                            Pop Culture
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            3 ouvrages mode à dévorer pour commencer l’année avec style
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_26.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                  ">
-                            Pop Culture
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            3 ouvrages mode à dévorer pour commencer l’année avec style
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
+                <div style="font-size: 14px; ">
+                    {{ $authDate }}
                 </div>
             </div>
-    </section>
+        </div>
+
+    @endforeach
+
+      
+    </div>
+</section>
 
 
 
     <section style="margin-top: 40px;">
       <div class="container">
         <div class="article-grid">
+
+          @foreach ( $posts->slice(9,9) as $post )
+
+          @php
+              $url = route('blog', ['slug' => $post->slug]);
+              $title = Str::title($post->title) ;
+              $image = $post->thumbnail ;
+              $date = $post->created_at->format('d.m.y') ;
+              $author = $post->author?->name ;
+              $cat = $post->category->category ;
+              $catUrl = route('category', ['category' => $cat]);
+              $authDate = "$date by $author" ;
+          @endphp
+
           <article class="article-card">
-            <img src="/images/image_35.jpeg" alt="Article Image" class="article-image">
+            <img src="{{ $image }}" alt="Article Image" class="article-image">
             <div class="article-content">
-              <div class="article-category">BEAUTÉ</div>
-              <h2 class="article-title">Comment se débarrasser des nausées?</h2>
-              <div class="article-meta">04.01.2024 by L'OFFICIEL</div>
+              <div class="article-category">{{ $cat }}</div>
+              <h2 class="article-title">{{ $title }}</h2>
+              <div class="article-meta">{{ $authDate }}</div>
             </div>
           </article>
+
+          @endforeach
   
-          <article class="article-card">
-            <img src="/images/image_39.jpeg" alt="Article Image" class="article-image">
-            <div class="article-content">
-              <div class="article-category">BEAUTÉ</div>
-              <h2 class="article-title">Peeling post Fashion Week</h2>
-              <div class="article-meta">06.10.2023 by Pauline Borgogno</div>
-            </div>
-          </article>
-  
-          <article class="article-card">
-            <img src="/images/image_41.jpeg" alt="Article Image" class="article-image">
-            <div class="article-content">
-              <div class="article-category">PEOPLE</div>
-              <h2 class="article-title">Kylie Jenner post-partum</h2>
-              <div class="article-meta">18.03.2022 by Pauline Borgogno</div>
-            </div>
-          </article>
-
-          <article class="article-card">
-            <img src="/images/image_52.jpeg" alt="Article Image" class="article-image">
-            <div class="article-content">
-              <div class="article-category">PEOPLE</div>
-              <h2 class="article-title">Kylie Jenner post-partum</h2>
-              <div class="article-meta">18.03.2022 by Pauline Borgogno</div>
-            </div>
-          </article>
-
-          <article class="article-card">
-            <img src="/images/image_66.jpeg" alt="Article Image" class="article-image">
-            <div class="article-content">
-              <div class="article-category">PEOPLE</div>
-              <h2 class="article-title">Kylie Jenner post-partum</h2>
-              <div class="article-meta">18.03.2022 by Pauline Borgogno</div>
-            </div>
-          </article>
-
-          <article class="article-card">
-            <img src="/images/image_89.jpeg" alt="Article Image" class="article-image">
-            <div class="article-content">
-              <div class="article-category">PEOPLE</div>
-              <h2 class="article-title">Kylie Jenner post-partum</h2>
-              <div class="article-meta">18.03.2022 by Pauline Borgogno</div>
-            </div>
-          </article>
+         
         </div>
       </div>
     </section>
@@ -650,14 +516,28 @@ style="
               max-width: 1700px;
               margin: 0 auto;
             ">
+
+        @foreach ( $posts->slice(18) as $post )
+
+        @php
+            $url = route('blog', ['slug' => $post->slug]);
+            $title = Str::title($post->title) ;
+            $image = $post->thumbnail ;
+            $date = $post->created_at->format('d.m.y') ;
+            $author = $post->author?->name ;
+            $cat = $post->category->category ;
+            $catUrl = route('category', ['category' => $cat]);
+            $authDate = "$date by $author" ;
+        @endphp
+
                 <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_23.jpeg" alt="Winter getaway" style="width: 100%; height: 250px" />
+                        style="
+                    flex: 1 1 calc(33.33% - 20px);
+                    margin: 0;
+                    
+                    overflow: hidden;
+                  ">
+                    <img src="{{ $image }}" alt="Winter getaway" style="width: 100%; height: 250px" />
                     <div style="padding: 15px">
                         <div
                             style="
@@ -667,145 +547,20 @@ style="
                     margin-bottom: 10px;
                     border-bottom: 1px solid currentColor; display: inline-block;
                   ">
-                            Voyage
+                            {{ $cat }}
                         </div>
                         <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            Évasion hivernale : l’excellence des séjours au ski avec Airelles
+                          {{ $title }}
                         </div>
                         <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
+                          {{ $authDate }}
                         </div>
                     </div>
                 </div>
+
+        @endforeach
     
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_24.jpeg" alt="Mocha Mousse" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div style="font-size: 19px; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;">
-                            Femmes
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            Mocha Mousse : la couleur Pantone 2025 nous envoûte cette saison
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_25.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                  ">
-                            Pop Culture
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            3 ouvrages mode à dévorer pour commencer l’année avec style
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_28.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                  ">
-                            Pop Culture
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            3 ouvrages mode à dévorer pour commencer l’année avec style
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_29.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                  ">
-                            Pop Culture
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            3 ouvrages mode à dévorer pour commencer l’année avec style
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_26.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                  ">
-                            Pop Culture
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            3 ouvrages mode à dévorer pour commencer l’année avec style
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
+               
             </div>
     </section>
 
