@@ -19,18 +19,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        // $cat = ['UAE' , 'CEO' ,  'Luxury' , 'Start Up' ,'Innovation'] ;
+        $catIDs = Category::pluck('id')->toArray() ;
 
-        //  foreach ($cat as $key ) {
-        //      Category::create([
-        //         'category' => $key ,
-        //         'headline' => 1 
-        //     ]) ;
-        //  } 
-
-
-        
-        $title = "  " ;
 
         $blog = file_get_contents(__DIR__."/blog.txt");
 
@@ -41,12 +31,18 @@ class DatabaseSeeder extends Seeder
         // ]);
         
 
-        for ( $i = 0 ; $i < 20 ; $i++)
+        for ( $i = 0 ; $i < 50 ; $i++)
         {
-            $random =  rand(1000 , 9999) ;
+            $random =  rand(10000 , 999999) ;
             $title = "title for post - " . $random ;
+
+            $randomCat = array_rand($catIDs);
+            $category = $catIDs[$randomCat];
+    
+
+
             Posts::create([
-                'category_id' => rand(1,8),
+                'category_id' => $category,
                 'author_id' => 1 ,
                 'trending' => 0 , 
                 'title' => $title ,

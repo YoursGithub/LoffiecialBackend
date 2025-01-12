@@ -47,6 +47,9 @@ class PageController extends Controller
 
         $posts = Posts::where('category_id',$catExist->id)->latest()->paginate(11);
 
+
+        dd($posts->count());
+
         return view('pages.category' , compact('category'  , 'posts'));
         
     }
