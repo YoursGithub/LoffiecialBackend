@@ -35,7 +35,11 @@ class PageController extends Controller
 
         $categoryName = $post->category->category ; 
 
-        return view('pages.blog',compact('post' ,  'categoryName'));
+        $relatedPosts= Posts::where('category_id' , $post->category_id )->where('id' , '!=' , $post->id )->limit(6)->latest()->get()  ;
+
+        $randomPosts = Posts::with(['category'])->inRandomOrder()->limit(6)->get();
+
+        return view('pages.blog',compact('post' ,  'categoryName' ,'relatedPosts' ,'randomPosts'));
     }
     
     public function category($category)
@@ -46,9 +50,6 @@ class PageController extends Controller
         $catExist = Category::where('category' , $category)->firstOrFail() ;
 
         $posts = Posts::where('category_id',$catExist->id)->latest()->paginate(11);
-
-
-        dd($posts->count());
 
         return view('pages.category' , compact('category'  , 'posts'));
         

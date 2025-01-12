@@ -460,6 +460,16 @@
 
         
         <div class="bottle" style="text-align: center; padding: 20px; position: relative;">
+            @php
+             $url = route('blog', ['slug' => $post->slug]);
+             $title = Str::title($post->title) ;
+             $image = $post->thumbnail ;
+             $date = $post->created_at->format('d.m.y') ;
+             $author = $post->author?->name ;
+             $cat = $post->category->category ;
+             $catUrl = route('category', ['category' => $cat]);
+             $authDate = "$date by $author" ;
+         @endphp
             <div style="margin: 0 auto; max-width: 800px;">
                 <div style="
                     color: black;
@@ -468,19 +478,21 @@
                     margin-bottom: 10px;
                     border-bottom: 1px solid currentColor; 
                     display: inline-block;">
-                    Voyage
+                    {{ $cat }}
                 </div>
-                <h2 style="font-size: 37px; font-weight: 600; line-height: 1.4;">Dua Lipa et Callum Turner se seraient secrètement fiancés</h2>
+                <h2 style="font-size: 37px; font-weight: 600; line-height: 1.4;">{{ $title }}</h2>
             </div>
-            <p  style="margin: 0 auto; max-width: 600px; font-size: 22px; line-height: 1.6; color: #555;">La chanteuse et l'acteur semblent avoir officialisé leurs fiançailles pendant les fêtes. Entre amour discret et projets futurs, le couple enchante leurs fans avec cette grande annonce.</p>
-            <p style="margin-top: 20px; font-size: 14px; color: #888;">30.12.2024 by Pauline Borgogno</p>
+            <p  style="margin: 0 auto; max-width: 600px; font-size: 22px; line-height: 1.6; color: #555;">
+                {{ $post->description }}
+            </p>
+            <p style="margin-top: 20px; font-size: 14px; color: #888;">{{ $authDate }}</p>
 
             <div style="display: flex; justify-content: center; align-items: center; padding: 20px;">
-                <img src="/images/dua.jpeg" alt="" style="width: 100%; max-width: 900px; height: 630px;">
+                <img src="{{ $image }}" alt="" style="width: 100%; max-width: 900px; height: 630px;">
             </div>
         
             <div id="main-description" class="bottle" style="margin: 0 auto; max-width: 800px; padding: 20px;">
-                <h4 style="font-weight: 100; font-size: 22px; line-height: 1.6;">Dua Lipa, connue pour ses nombreux succès musicaux, a récemment terminé la première partie de sa tournée dans les stades et est rentrée au Royaume-Uni pour les fêtes de fin d'année. Callum Turner, quant à lui, est reconnu pour ses rôles dans des films tels que <i>Queen and Country</i> et la série <i>Les Animaux fantastiques</i>, où il incarne Theseus Scamander. Le couple, qui a maintenu une certaine discrétion sur leur relation, semble plus épanoui que jamais. Des photos récentes les montrent heureux et amoureux, renforçant l'enthousiasme de leurs fans pour cette nouvelle étape de leur vie commune.</h4>
+                {!! $post->blog !!}
             </div>
 
             <div id="social-bar" class="social-bar" style="
@@ -524,162 +536,49 @@
               max-width: 1700px;
               margin: 0 auto;
             ">
+
+            @foreach ( $relatedPosts->slice(0,6) as $post )
+
+            @php
+                $url = route('blog', ['slug' => $post->slug]);
+                $title = Str::title($post->title) ;
+                $image = $post->thumbnail ;
+                $date = $post->created_at->format('d.m.y') ;
+                $author = $post->author?->name ;
+                $catUrl = route('category', ['category' => $cat]);
+                $authDate = "$date by $author" ;
+            @endphp
                 <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_23.jpeg" alt="Winter getaway" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    color: black;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                  ">
-                            Voyage
+                        style="
+                    flex: 1 1 calc(33.33% - 20px);
+                    margin: 0;
+                    
+                    overflow: hidden;
+                    ">
+                        <img src="{{ $image }}" alt="Winter getaway" style="width: 100%; height: 250px" />
+                        <div style="padding: 15px">
+                            <div
+                                style="
+                        color: black;
+                        font-size: 19px;
+                        text-transform: uppercase;
+                        margin-bottom: 10px;
+                        border-bottom: 1px solid currentColor; display: inline-block;
+                    ">
+                            {{ $categoryName }}
                         </div>
                         <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            Évasion hivernale : l’excellence des séjours au ski avec Airelles
+                            {{ $title }}
                         </div>
                         <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
+                            {{ $authDate }}
                         </div>
                     </div>
                 </div>
+            @endforeach
+         
     
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_24.jpeg" alt="Mocha Mousse" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div style="font-size: 19px; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;">
-                            Femmes
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            Mocha Mousse : la couleur Pantone 2025 nous envoûte cette saison
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_25.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                  ">
-                            Pop Culture
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            3 ouvrages mode à dévorer pour commencer l’année avec style
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_28.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                  ">
-                            Pop Culture
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            3 ouvrages mode à dévorer pour commencer l’année avec style
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_29.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                  ">
-                            Pop Culture
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            3 ouvrages mode à dévorer pour commencer l’année avec style
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
-    
-                <div
-                    style="
-                flex: 1 1 calc(33.33% - 20px);
-                margin: 0;
-                
-                overflow: hidden;
-              ">
-                    <img src="/images/image_26.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                  ">
-                            Pop Culture
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            3 ouvrages mode à dévorer pour commencer l’année avec style
-                        </div>
-                        <div style="font-size: 14px; ">
-                            31.12.2024 by Pauline Borgogno
-                        </div>
-                    </div>
-                </div>
+            
             </div>
         </section>
 
@@ -692,10 +591,11 @@
       /* height: 120vh; */
       ">
 
+
         <div style="background-color: black; ">
             <div style="height: 10px;"></div>
             <div style="margin: 50px;">
-                <h4 style="font-size: 28px; color: white; text-align: center;">Recommandé pour vous</h4>
+                <h4 style="font-size: 28px; color: white; text-align: center;">Recommended for you</h4>
             </div>
             <section class="bottle" style="margin-top: 50px;">
                 <div class="section"
@@ -709,162 +609,52 @@
                   max-width: 1700px;
                   margin: 0 auto;
                 ">
+
+                @foreach ( $randomPosts as $post )
+
+                @php
+                    $url = route('blog', ['slug' => $post->slug]);
+                    $title = Str::title($post->title) ;
+                    $image = $post->thumbnail ;
+                    $date = $post->created_at->format('d.m.y') ;
+                    $author = $post->author?->name ;
+                    $cat = $post->category->category ;
+
+                    $catUrl = route('category', ['category' => $cat]);
+                    $authDate = "$date by $author" ;
+                @endphp
+
                     <div
                         style="
-                    flex: 1 1 calc(33.33% - 20px);
-                    margin: 0;
-                    
-                    overflow: hidden;
-                  ">
-                        <img src="/images/image_23.jpeg" alt="Winter getaway" style="width: 100%; height: 250px" />
-                        <div style="padding: 15px">
-                            <div
-                                style="
-                        color: white;
-                        font-size: 19px;
-                        text-transform: uppercase;
-                        margin-bottom: 10px;
-                        border-bottom: 1px solid currentColor; display: inline-block;
-                      ">
-                                Voyage
+                        flex: 1 1 calc(33.33% - 20px);
+                        margin: 0;
+                        
+                        overflow: hidden;
+                        ">
+                            <img src="{{ $image }}" alt="Winter getaway" style="width: 100%; height: 250px" />
+                            <div style="padding: 15px">
+                                <div
+                                    style="
+                            color: white;
+                            font-size: 19px;
+                            text-transform: uppercase;
+                            margin-bottom: 10px;
+                            border-bottom: 1px solid currentColor; display: inline-block;
+                        ">
+                                {{ $cat }}
                             </div>
                             <div style="font-size: 24px; font-weight :400; margin: 0 0 10px">
-                                Évasion hivernale : l’excellence des séjours au ski avec Airelles
+                                {{ $title }}
                             </div>
                             <div style="font-size: 14px; ">
-                                31.12.2024 by Pauline Borgogno
+                                {{ $authDate }}
                             </div>
                         </div>
                     </div>
+
+                @endforeach
         
-                    <div
-                        style="
-                    flex: 1 1 calc(33.33% - 20px);
-                    margin: 0;
-                    
-                    overflow: hidden;
-                  ">
-                        <img src="/images/image_24.jpeg" alt="Mocha Mousse" style="width: 100%; height: 250px" />
-                        <div style="padding: 15px">
-                            <div style="font-size: 19px; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;">
-                                Femmes
-                            </div>
-                            <div style="font-size: 24px; font-weight :400; margin: 0 0 10px">
-                                Mocha Mousse : la couleur Pantone 2025 nous envoûte cette saison
-                            </div>
-                            <div style="font-size: 14px; ">
-                                31.12.2024 by Pauline Borgogno
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div
-                        style="
-                    flex: 1 1 calc(33.33% - 20px);
-                    margin: 0;
-                    
-                    overflow: hidden;
-                  ">
-                        <img src="/images/image_25.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                        <div style="padding: 15px">
-                            <div
-                                style="
-                        border-bottom: 1px solid currentColor; display: inline-block;
-                        font-size: 19px;
-                        text-transform: uppercase;
-                        margin-bottom: 10px;
-                      ">
-                                Pop Culture
-                            </div>
-                            <div style="font-size: 24px; font-weight :400; margin: 0 0 10px">
-                                3 ouvrages mode à dévorer pour commencer l’année avec style
-                            </div>
-                            <div style="font-size: 14px; ">
-                                31.12.2024 by Pauline Borgogno
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div
-                        style="
-                    flex: 1 1 calc(33.33% - 20px);
-                    margin: 0;
-                    
-                    overflow: hidden;
-                  ">
-                        <img src="/images/image_28.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                        <div style="padding: 15px">
-                            <div
-                                style="
-                        border-bottom: 1px solid currentColor; display: inline-block;
-                        font-size: 19px;
-                        text-transform: uppercase;
-                        margin-bottom: 10px;
-                      ">
-                                Pop Culture
-                            </div>
-                            <div style="font-size: 24px; font-weight :400; margin: 0 0 10px">
-                                3 ouvrages mode à dévorer pour commencer l’année avec style
-                            </div>
-                            <div style="font-size: 14px; ">
-                                31.12.2024 by Pauline Borgogno
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div
-                        style="
-                    flex: 1 1 calc(33.33% - 20px);
-                    margin: 0;
-                    
-                    overflow: hidden;
-                  ">
-                        <img src="/images/image_29.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                        <div style="padding: 15px">
-                            <div
-                                style="
-                        border-bottom: 1px solid currentColor; display: inline-block;
-                        font-size: 19px;
-                        text-transform: uppercase;
-                        margin-bottom: 10px;
-                      ">
-                                Pop Culture
-                            </div>
-                            <div style="font-size: 24px; font-weight :400; margin: 0 0 10px">
-                                3 ouvrages mode à dévorer pour commencer l’année avec style
-                            </div>
-                            <div style="font-size: 14px; ">
-                                31.12.2024 by Pauline Borgogno
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div
-                        style="
-                    flex: 1 1 calc(33.33% - 20px);
-                    margin: 0;
-                    
-                    overflow: hidden;
-                  ">
-                        <img src="/images/image_26.jpeg" alt="Books" style="width: 100%; height: 250px" />
-                        <div style="padding: 15px">
-                            <div
-                                style="
-                        border-bottom: 1px solid currentColor; display: inline-block;
-                        font-size: 19px;
-                        text-transform: uppercase;
-                        margin-bottom: 10px;
-                      ">
-                                Pop Culture
-                            </div>
-                            <div style="font-size: 24px; font-weight :400; margin: 0 0 10px">
-                                3 ouvrages mode à dévorer pour commencer l’année avec style
-                            </div>
-                            <div style="font-size: 14px; ">
-                                31.12.2024 by Pauline Borgogno
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </section>
         </div>
