@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Document</title>
+  @include('pages.layouts.seo')
+
 </head>
 
 <style>
@@ -231,8 +233,8 @@ style="
   width: 200px;
 "
 >
-<form action="search">
-  <input type="text" placeholder="RECHERCHER"
+<form  action="{{ route('search') }}">
+  <input type="text" placeholder="RECHERCHER" name="search"
       style="
 width: 100%;
 padding: 15px 50px 15px 20px;

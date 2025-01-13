@@ -10,6 +10,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet" />
     <title>L'OFFICIEL</title>
+    @include('pages.layouts.seo')
+
     <style>
         * {
             margin: 0;
@@ -355,8 +357,8 @@
             margin-left: 10px;
             width: 250px;
           ">
-                <form action="search">
-                    <input type="text" placeholder="RECHERCHER"
+                <form action="{{ route('search') }}">
+                    <input type="text" name="search" placeholder="RECHERCHER"
                         style="
                   width: 100%;
                   padding: 15px 50px 15px 20px;
@@ -366,7 +368,7 @@
                   outline: none;
                   box-shadow: none;
                 " />
-              </form>
+                </form>
                 <i class="fa-solid fa-magnifying-glass" style="margin-top: 15px"></i>
             </div>
 
@@ -450,62 +452,60 @@
 
         <div class="content-grid" style="text-align: left">
 
-            @foreach ( $recentPosts->slice(0,3) as $post )
+            @foreach ($posts->slice(0, 3) as $post)
+                @php
+                    $url = route('blog', ['slug' => $post->slug]);
+                    $title = Str::title($post->title);
+                    $image = $post->thumbnail;
+                    $date = $post->created_at->format('d.m.y');
+                    $author = $post->author?->name;
+                    $cat = $post->category->category;
+                    $catUrl = route('category', ['category' => $cat]);
+                    $authDate = "$date by $author";
+                @endphp
 
-            @php
-                $url = route('blog', ['slug' => $post->slug]);
-                $title = Str::title($post->title) ;
-                $image = $post->thumbnail ;
-                $date = $post->created_at->format('d.m.y') ;
-                $author = $post->author?->name ;
-                $cat = $post->category->category ;
-                $catUrl = route('category', ['category' => $cat]);
-                $authDate = "$date by $author" ;
-            @endphp
-
-            <article
-                style="
+                <article
+                    style="
                     display: flex;
                     align-items: flex-start;
                     padding: 20px;
                     margin-left: -30px;
                     margin-bottom: 20px;
                 ">
-                
-                <img src="{{ $image }}" alt="BE WELL"
-                    style="
+
+                    <img src="{{ $image }}" alt="BE WELL"
+                        style="
               width: 160px;
               height: 120px;
               object-fit: cover;
               margin-right: 20px;
                 " />
-                <div>
-                    <a href="{{ $catUrl }}"
-                        style="
+                    <div>
+                        <a href="{{ $catUrl }}"
+                            style="
                 display: block;
                 font-size: 12px;
                 color: #555;
                 text-transform: uppercase;
                 margin-bottom: 5px;
-              ">{{$cat}}</a>
-                    <a href="{{ $url }}"
-                        style="
+              ">{{ $cat }}</a>
+                        <a href="{{ $url }}"
+                            style="
                 display: block;
                 font-size: 18px;
                 font-weight: bold;
                 color: #000;
                 text-decoration: none;
                 margin-bottom: 10px;
-              ">{{$title}}</a>
-                    <div style="font-size: 14px; color: #888">
-                        {{ $authDate }}
+              ">{{ $title }}</a>
+                        <div style="font-size: 14px; color: #888">
+                            {{ $authDate }}
+                        </div>
                     </div>
-                </div>
-            </article>
-
+                </article>
             @endforeach
 
-          
+
 
         </div>
     </section>
@@ -529,34 +529,33 @@
           max-width: 1200px;
           margin: auto;
         ">
-         @foreach ( $trendingPosts->slice(0,2) as $post )
+            @foreach ($posts->slice(3, 2) as $post)
+                @php
+                    $url = route('blog', ['slug' => $post->slug]);
+                    $title = Str::title($post->title);
+                    $image = $post->thumbnail;
+                    $date = $post->created_at->format('d.m.y');
+                    $author = $post->author?->name;
+                    $cat = $post->category->category;
+                    $catUrl = route('category', ['category' => $cat]);
+                    $authDate = "$date by $author";
+                @endphp
 
-         @php
-             $url = route('blog', ['slug' => $post->slug]);
-             $title = Str::title($post->title) ;
-             $image = $post->thumbnail ;
-             $date = $post->created_at->format('d.m.y') ;
-             $author = $post->author?->name ;
-             $cat = $post->category->category ;
-             $catUrl = route('category', ['category' => $cat]);
-             $authDate = "$date by $author" ;
-         @endphp
-
-            <article style="width: 100%; text-align: left">
-                <a href="{{ $url }}">
-                <img src="{{ $image }}"
-                    alt="BE WELL" style="object-fit: cover;  width: 100%; height: 600px; margin-bottom: 15px" />
-                </a>
-                <a href="{{ $catUrl }}"
-                    style="
+                <article style="width: 100%; text-align: left">
+                    <a href="{{ $url }}">
+                        <img src="{{ $image }}" alt="BE WELL"
+                            style="object-fit: cover;  width: 100%; height: 600px; margin-bottom: 15px" />
+                    </a>
+                    <a href="{{ $catUrl }}"
+                        style="
                 display: block;
                 font-size: 12px;
                 color: #555;
                 text-transform: uppercase;
                 margin-bottom: 5px;
-                ">{{$cat}}</a>
-                <a href="#"
-                    style="
+                ">{{ $cat }}</a>
+                    <a href="#"
+                        style="
               display: block;
               font-size: 28px;
               font-weight: bold;
@@ -564,15 +563,14 @@
               text-decoration: none;
               margin-bottom: 10px;
              ">
-                   {{ $title }}
-                </a>
-                <div style="font-size: 14px; color: #888">
-                    {{ $authDate }}
-                </div>
-            </article>
-
+                        {{ $title }}
+                    </a>
+                    <div style="font-size: 14px; color: #888">
+                        {{ $authDate }}
+                    </div>
+                </article>
             @endforeach
-            
+
         </div>
     </section>
 
@@ -589,22 +587,21 @@
             Last minute
         </h2>
 
-        @foreach ( $LPosts as $post )
+        @foreach ($posts->slice(5, 1) as $post)
+            @php
+                $url = route('blog', ['slug' => $post->slug]);
+                $title = Str::title($post->title);
+                $image = $post->thumbnail;
+                $date = $post->created_at->format('d.m.y');
+                $author = $post->author?->name;
+                $cat = $post->category->category;
+                $catUrl = route('category', ['category' => $cat]);
+                $authDate = "$date by $author";
+            @endphp
 
-        @php
-            $url = route('blog', ['slug' => $post->slug]);
-            $title = Str::title($post->title) ;
-            $image = $post->thumbnail ;
-            $date = $post->created_at->format('d.m.y') ;
-            $author = $post->author?->name ;
-            $cat = $post->category->category ;
-            $catUrl = route('category', ['category' => $cat]);
-            $authDate = "$date by $author" ;
-        @endphp
-
-<a href="{{ $url }}">
-        <div
-            style="
+            <a href="{{ $url }}">
+                <div
+                    style="
                 position: relative;
                 width: 100%;
                 /* min-width: 410px; */
@@ -616,40 +613,39 @@
                 justify-content: center;
                 align-items: center;
                 ">
-            <div
-                style="
+                    <div
+                        style="
             text-align: center;
             padding: 20px;
             width: 100%;
             max-width: 800px;
           ">
-                <p
-                    style="
+                        <p
+                            style="
               font-size: clamp(0.8rem, 2vw, 0.9rem);
               margin: 0;
               text-transform: uppercase;
               letter-spacing: 1px;
             ">
-                {{ $cat }}
-                </p>
-                <h1
-                    style="
+                            {{ $cat }}
+                        </p>
+                        <h1
+                            style="
               font-size: clamp(1.5rem, 4vw, 2rem);
               margin: 10px 0;
             ">
-                {{ $title }}
-                </h1>
-                <p
-                    style="
+                            {{ $title }}
+                        </h1>
+                        <p
+                            style="
               font-size: clamp(0.7rem, 1.5vw, 0.8rem);
               margin: 0;
             ">
-            {{ $authDate }}
-            </p>
-            </div>
-        </div>
-</a>
-
+                            {{ $authDate }}
+                        </p>
+                    </div>
+                </div>
+            </a>
         @endforeach
     </section>
 
@@ -665,53 +661,51 @@
             margin: 0 auto;
             ">
 
-        @foreach ( $recentPosts->slice(2,6) as $post )
+            @foreach ($posts->slice(6, 6) as $post)
+                @php
+                    $url = route('blog', ['slug' => $post->slug]);
+                    $title = Str::title($post->title);
+                    $image = $post->thumbnail;
+                    $date = $post->created_at->format('d.m.y');
+                    $author = $post->author?->name;
+                    $cat = $post->category->category;
+                    $catUrl = route('category', ['category' => $cat]);
+                    $authDate = "$date by $author";
+                @endphp
 
-        @php
-            $url = route('blog', ['slug' => $post->slug]);
-            $title = Str::title($post->title) ;
-            $image = $post->thumbnail ;
-            $date = $post->created_at->format('d.m.y') ;
-            $author = $post->author?->name ;
-            $cat = $post->category->category ;
-            $catUrl = route('category', ['category' => $cat]);
-            $authDate = "$date by $author" ;
-        @endphp
-
-            <div
+                <div
                     style="
                 flex: 1 1 calc(33.33% - 20px);
                 margin: 0;
                 background-color: #fff;
                 overflow: hidden;
                 ">
-                <a href="{{ $url }}">
-                <img src="{{ $image }}" alt="Winter getaway"
-                    style="object-fit:cover; width: 100%; height: 250px" />
-                </a>
-                <div style="padding: 15px">
-                    <div
-                        style="
+                    <a href="{{ $url }}">
+                        <img src="{{ $image }}" alt="Winter getaway"
+                            style="object-fit:cover; width: 100%; height: 250px" />
+                    </a>
+                    <div style="padding: 15px">
+                        <div
+                            style="
                 color: black;
                 font-size: 19px;
                 text-transform: uppercase;
                 margin-bottom: 10px;
                 border-bottom: 1px solid currentColor; display: inline-block;
               ">
-                    {{ $cat }}
-                    </div>
-                    <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                        {{ $title }}
-                    </div>
-                    <div style="font-size: 14px; ">
-                        {{ $authDate }}
+                            {{ $cat }}
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            {{ $title }}
+                        </div>
+                        <div style="font-size: 14px; ">
+                            {{ $authDate }}
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
 
-        @endforeach
 
-           
         </div>
     </section>
 
@@ -724,34 +718,32 @@
           max-width: 1200px;
           margin: auto;
         ">
-         @foreach ( $trendingPosts->slice(2,2) as $post )
+            @foreach ($posts->slice(12, 2) as $post)
+                @php
+                    $url = route('blog', ['slug' => $post->slug]);
+                    $title = Str::title($post->title);
+                    $image = $post->thumbnail;
+                    $date = $post->created_at->format('d.m.y');
+                    $author = $post->author?->name;
+                    $cat = $post->category->category;
+                    $catUrl = route('category', ['category' => $cat]);
+                    $authDate = "$date by $author";
+                @endphp
 
-         @php
-             $url = route('blog', ['slug' => $post->slug]);
-             $title = Str::title($post->title) ;
-             $image = $post->thumbnail ;
-             $date = $post->created_at->format('d.m.y') ;
-             $author = $post->author?->name ;
-             $cat = $post->category->category ;
-             $catUrl = route('category', ['category' => $cat]);
-             $authDate = "$date by $author" ;
-         @endphp
-
-            <article class="dens" style="width: 48%; text-align: left">
-                <img src="{{ $image }}" alt="BE WELL"
-                    style="object-fit:cover; width: 100%; height: 600px; margin-bottom: 15px"
-                    class="responsive-img" />
-                        <a href="{{ $catUrl }}"
-                            style="
+                <article class="dens" style="width: 48%; text-align: left">
+                    <img src="{{ $image }}" alt="BE WELL"
+                        style="object-fit:cover; width: 100%; height: 600px; margin-bottom: 15px"
+                        class="responsive-img" />
+                    <a href="{{ $catUrl }}"
+                        style="
                     display: block;
                     font-size: 12px;
                     color: #555;
                     text-transform: uppercase;
                     margin-bottom: 5px;
-                    ">BE
-                            WELL</a>
-                        <a href="{{ $url }}"
-                            style="
+                    ">{{ $cat }}</a>
+                    <a href="{{ $url }}"
+                        style="
                     display: block;
                     font-size: 28px;
                     font-weight: bold;
@@ -759,21 +751,20 @@
                     text-decoration: none;
                     margin-bottom: 10px;
                     ">
-                    {{ $title }}
-                </a>
-                <div style="font-size: 14px; color: #888">
-                    {{ $authDate }}
-                </div>
-            </article>
+                        {{ $title }}
+                    </a>
+                    <div style="font-size: 14px; color: #888">
+                        {{ $authDate }}
+                    </div>
+                </article>
+            @endforeach
 
-        @endforeach
-            
         </div>
     </section>
 
     <section class="bottle" style="margin-top: 50px;">
         <div class="section"
-                    style="
+            style="
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
@@ -783,82 +774,80 @@
                 margin: 0 auto;
                 ">
 
-        @foreach ( $recentPosts->slice(8,6) as $post )
+            @foreach ($posts->slice(14, 6) as $post)
+                @php
+                    $url = route('blog', ['slug' => $post->slug]);
+                    $title = Str::title($post->title);
+                    $image = $post->thumbnail;
+                    $date = $post->created_at->format('d.m.y');
+                    $author = $post->author?->name;
+                    $cat = $post->category->category;
+                    $catUrl = route('category', ['category' => $cat]);
+                    $authDate = "$date by $author";
+                @endphp
 
-        @php
-            $url = route('blog', ['slug' => $post->slug]);
-            $title = Str::title($post->title) ;
-            $image = $post->thumbnail ;
-            $date = $post->created_at->format('d.m.y') ;
-            $author = $post->author?->name ;
-            $cat = $post->category->category ;
-            $catUrl = route('category', ['category' => $cat]);
-            $authDate = "$date by $author" ;
-        @endphp
-
-            <div
-                        style="
+                <div
+                    style="
                     flex: 1 1 calc(33.33% - 20px);
                     margin: 0;
                     background-color: #fff;
                     overflow: hidden;
                 ">
-                <a href="{{ $url }}">
-                <img src="{{ $image }}" alt="Winter getaway" style="object-fit: cover; width: 100%; height: 250px" />
-                </a>
-                <div style="padding: 15px">
-                    <div
-                        style="
+                    <a href="{{ $url }}">
+                        <img src="{{ $image }}" alt="Winter getaway"
+                            style="object-fit: cover; width: 100%; height: 250px" />
+                    </a>
+                    <div style="padding: 15px">
+                        <div
+                            style="
                 color: black;
                 font-size: 19px;
                 text-transform: uppercase;
                 margin-bottom: 10px;
                 border-bottom: 1px solid currentColor; display: inline-block;
               ">
-        {{ $cat }}
-</div>
-                    <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                        {{ $title }}
-                    </div>
-                    <div style="font-size: 14px; ">
-                        {{ $authDate }}
+                            {{ $cat }}
+                        </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            {{ $title }}
+                        </div>
+                        <div style="font-size: 14px; ">
+                            {{ $authDate }}
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
 
-        @endforeach
 
-       
         </div>
     </section>
 
     <section style="margin-top: 50px; display: flex; flex-wrap: wrap">
-        
 
-        @foreach ( $lifestylePosts as $post )
 
-        @php
-            $url = route('blog', ['slug' => $post->slug]);
-            $title = Str::title($post->title) ;
-            $image = $post->thumbnail ;
-            $date = $post->created_at->format('d.m.y') ;
-            $author = $post->author?->name ;
-            $cat = $post->category->category ;
-            $catUrl = route('category', ['category' => $cat]);
-            $authDate = "$date by $author" ;
-        @endphp
+        @foreach ($posts->slice(29,2) as $post)
+            @php
+                $url = route('blog', ['slug' => $post->slug]);
+                $title = Str::title($post->title);
+                $image = $post->thumbnail;
+                $date = $post->created_at->format('d.m.y');
+                $author = $post->author?->name;
+                $cat = $post->category->category;
+                $catUrl = route('category', ['category' => $cat]);
+                $authDate = "$date by $author";
+            @endphp
 
-        <div style="flex: 1; min-width: 300px; position: relative">
-            <a href="{{ $url }}">
-            <img src="{{ $image }}" alt="Image 1"
-                style="position: relative;
+            <div style="flex: 1; min-width: 300px; position: relative">
+                <a href="{{ $url }}">
+                    <img src="{{ $image }}" alt="Image 1"
+                        style="position: relative;
           width: 100%;
           height : 60vh;
           min-width: 410px;
            object-fit: cover" />
-            </a>
-            <div
-                style="
+                </a>
+                <div
+                    style="
             position: absolute;
             margin-top: -200px;
             left: 0;
@@ -866,18 +855,17 @@
             padding: 20px;
             width: 100%;
           ">
-                <p style="margin: 0; font-size: 28px; text-transform: uppercase">
-                    {{ $cat }}
-                </p>
-                <h2 style="margin: 10px 0; margin-right: 300px; font-size: 39px">
-                    {{ $title }}
-                </h2>
-                <p style="margin: 0; font-size: 18px">
-                    {{ $authDate }}
-                </p>
+                    <p style="margin: 0; font-size: 28px; text-transform: uppercase">
+                        {{ $cat }}
+                    </p>
+                    <h2 style="margin: 10px 0; margin-right: 300px; font-size: 39px">
+                        {{ $title }}
+                    </h2>
+                    <p style="margin: 0; font-size: 18px">
+                        {{ $authDate }}
+                    </p>
+                </div>
             </div>
-        </div>
-
         @endforeach
 
     </section>
@@ -894,81 +882,70 @@
           margin: 0 auto;
         ">
 
-                
-        @foreach ( $entertainmentPosts as $post )
 
-        @php
-            $url = route('blog', ['slug' => $post->slug]);
-            $title = Str::title($post->title) ;
-            $image = $post->thumbnail ;
-            $date = $post->created_at->format('d.m.y') ;
-            $author = $post->author?->name ;
-            $cat = $post->category->category ;
-            $catUrl = route('category', ['category' => $cat]);
-            $authDate = "$date by $author" ;
-        @endphp
-                    <div
-                                style="
+            @foreach ($posts->slice(20, 3) as $post)
+                @php
+                    $url = route('blog', ['slug' => $post->slug]);
+                    $title = Str::title($post->title);
+                    $image = $post->thumbnail;
+                    $date = $post->created_at->format('d.m.y');
+                    $author = $post->author?->name;
+                    $cat = $post->category->category;
+                    $catUrl = route('category', ['category' => $cat]);
+                    $authDate = "$date by $author";
+                @endphp
+                <div
+                    style="
                             flex: 1 1 calc(33.33% - 20px);
                             margin: 0;
                             background-color: #fff;
                             overflow: hidden;
                         ">
-                        <a href="{{ $url }}">
-                        <img src="{{ $image }}" alt="Winter getaway" style="object-fit: cover; width: 100%; height: 250px" />
-                        </a>
-                        <div style="padding: 15px">
-                            <div
-                                style="
+                    <a href="{{ $url }}">
+                        <img src="{{ $image }}" alt="Winter getaway"
+                            style="object-fit: cover; width: 100%; height: 250px" />
+                    </a>
+                    <div style="padding: 15px">
+                        <div
+                            style="
                         color: black;
                         font-size: 19px;
                         text-transform: uppercase;
                         margin-bottom: 10px;
                         border-bottom: 1px solid currentColor; display: inline-block;
                     ">
-                        {{ $cat }}    
+                            {{ $cat }}
                         </div>
-                            <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                                {{ $title }}
-                            </div>
-                            <div style="font-size: 14px; ">
-                                {{ $authDate }}
-                            </div>
+                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                            {{ $title }}
+                        </div>
+                        <div style="font-size: 14px; ">
+                            {{ $authDate }}
                         </div>
                     </div>
+                </div>
+            @endforeach
 
-        @endforeach
 
-            
         </div>
     </section>
 
     <section style="font-family: 'Sen', sans-serif">
-        <h2
-            style="
-          margin-top: 200px;
-          font-weight: lighter;
-          font-size: 20px;
-          margin-left: 50px;
-          margin-bottom: 50px;
-        ">
-        Beauty
-        </h2>
-        @foreach ( $beautyPosts as $post )
+      
+        @foreach ($posts->slice(31,1) as $post)
+            @php
+                $url = route('blog', ['slug' => $post->slug]);
+                $title = Str::title($post->title);
+                $image = $post->thumbnail;
+                $date = $post->created_at->format('d.m.y');
+                $author = $post->author?->name;
+                $cat = $post->category->category;
+                $catUrl = route('category', ['category' => $cat]);
+                $authDate = "$date by $author";
+            @endphp
 
-        @php
-            $url = route('blog', ['slug' => $post->slug]);
-            $title = Str::title($post->title) ;
-            $image = $post->thumbnail ;
-            $date = $post->created_at->format('d.m.y') ;
-            $author = $post->author?->name ;
-            $cat = $post->category->category ;
-            $catUrl = route('category', ['category' => $cat]);
-            $authDate = "$date by $author" ;
-        @endphp
-
-        <div
-            style="
+            <div
+                style="
                 position: relative;
             width: 100%;
             min-width: 410px;
@@ -978,24 +955,24 @@
                 justify-content: center;
                 align-items: center;
                 ">
-            <div style="text-align: center; margin-top: 200px; padding: 20px">
-                <p
-                    style="
+                <div style="text-align: center; margin-top: 200px; padding: 20px">
+                    <p
+                        style="
               font-size: 1.2rem;
               margin: 0;
               text-transform: uppercase;
               letter-spacing: 1px;
             ">
-        {{ $cat }}
-        </p>
-                        <h1 style="font-size: 4rem; margin: 10px 0">
-                            {{ $title }}
-                        </h1>
-                        <p style="font-size: 1rem; margin: 0">
-                            {{ $authDate }}
-                        </p>
-                    </div>
+                        {{ $cat }}
+                    </p>
+                    <h1 style="font-size: 4rem; margin: 10px 0">
+                        {{ $title }}
+                    </h1>
+                    <p style="font-size: 1rem; margin: 0">
+                        {{ $authDate }}
+                    </p>
                 </div>
+            </div>
         @endforeach
     </section>
 
@@ -1006,32 +983,23 @@
         text-align: left;
         margin-top: 50px;
       ">
-        <h2
-            style="
-          margin-top: 200px;
-          font-weight: lighter;
-          font-size: 20px;
-          margin-left: 50px;
-          margin-bottom: 50px;
-        ">
-            Fashion
-        </h2>
-        @isset($fashionPosts[0])
+        
+        @isset($posts[32])
 
-        @php
-                    $post = $fashionPosts[0] ;
-                    $url = route('blog', ['slug' => $post->slug]);
-                    $title = Str::title($post->title) ;
-                    $image = $post->thumbnail ;
-                    $date = $post->created_at->format('d.m.y') ;
-                    $author = $post->author?->name ;
-                    $cat = $post->category->category ;
-                    $catUrl = route('category', ['category' => $cat]);
-                    $authDate = "$date by $author" ;
-        @endphp
-            
-        <div
-            style="
+            @php
+                $post = $posts[32];
+                $url = route('blog', ['slug' => $post->slug]);
+                $title = Str::title($post->title);
+                $image = $post->thumbnail;
+                $date = $post->created_at->format('d.m.y');
+                $author = $post->author?->name;
+                $cat = $post->category->category;
+                $catUrl = route('category', ['category' => $cat]);
+                $authDate = "$date by $author";
+            @endphp
+
+            <div
+                style="
                 position: relative;
             width: 100%;
             min-width: 410px;
@@ -1049,21 +1017,21 @@
                 background-position: center;
                 position: relative;
             ">
-                <div style="position: absolute; bottom: 70px; left: 20px; color: white">
-                    <p style="font-size: 12px; margin: 0">
-                        {{ $cat }}
-                    </p>
-                    <h1 style="font-size: 38px; margin-right: 60px; margin: 5px 0">
-                        {{ $title }}
-                    </h1>
-                    <p style="font-size: 14px; margin: 0">
-                        {{ $authDate }}
-                    </p>
+                    <div style="position: absolute; bottom: 70px; left: 20px; color: white">
+                        <p style="font-size: 12px; margin: 0">
+                            {{ $cat }}
+                        </p>
+                        <h1 style="font-size: 38px; margin-right: 60px; margin: 5px 0">
+                            {{ $title }}
+                        </h1>
+                        <p style="font-size: 14px; margin: 0">
+                            {{ $authDate }}
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div
-                style="
+                <div
+                    style="
                     display: flex;
                     justify-content: center;
                     margin: 50px;
@@ -1071,36 +1039,35 @@
                     padding: 20px;
                 ">
 
-                @foreach ( $fashionPosts->slice(1,2) as $post )
+                    @foreach ($posts->slice(33, 2) as $post)
+                        @php
+                            $url = route('blog', ['slug' => $post->slug]);
+                            $title = Str::title($post->title);
+                            $image = $post->thumbnail;
+                            $date = $post->created_at->format('d.m.y');
+                            $author = $post->author?->name;
+                            $cat = $post->category->category;
+                            $catUrl = route('category', ['category' => $cat]);
+                            $authDate = "$date by $author";
+                        @endphp
 
-                @php
-                    $url = route('blog', ['slug' => $post->slug]);
-                    $title = Str::title($post->title) ;
-                    $image = $post->thumbnail ;
-                    $date = $post->created_at->format('d.m.y') ;
-                    $author = $post->author?->name ;
-                    $cat = $post->category->category ;
-                    $catUrl = route('category', ['category' => $cat]);
-                    $authDate = "$date by $author" ;
-                @endphp
-
-                <div class="hide"
+                        <div class="hide"
                             style="
                     background-color: white;
                     padding: 20px;
                     width: 200px;
                     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
                     ">
-                    <img src="{{ $image }}" alt="Sneakers" style="width: 100%; object-fit: cover; margin-bottom: 10px" />
-                    <p style="margin: 0; font-size: 18px; text-align: center">
-                        {{$title}}
-                    </p>
-                </div>
+                            <img src="{{ $image }}" alt="Sneakers"
+                                style="width: 100%; object-fit: cover; margin-bottom: 10px" />
+                            <p style="margin: 0; font-size: 18px; text-align: center">
+                                {{ $title }}
+                            </p>
+                        </div>
+                    @endforeach
 
-                @endforeach
-                
+                </div>
             </div>
-        </div>
 
         @endisset
 
@@ -1109,20 +1076,19 @@
 
     <section class="disapp" style="margin-top: 100px">
 
-        @foreach ( $musicPosts->slice(0,1) as $post )
-
-        @php
-            $url = route('blog', ['slug' => $post->slug]);
-            $title = Str::title($post->title) ;
-            $image = $post->thumbnail ;
-            $date = $post->created_at->format('d.m.y') ;
-            $author = $post->author?->name ;
-            $cat = $post->category->category ;
-            $catUrl = route('category', ['category' => $cat]);
-            $authDate = "$date by $author" ;
-        @endphp
-        <div
-                    style="
+        @foreach ($posts->slice(35, 1) as $post)
+            @php
+                $url = route('blog', ['slug' => $post->slug]);
+                $title = Str::title($post->title);
+                $image = $post->thumbnail;
+                $date = $post->created_at->format('d.m.y');
+                $author = $post->author?->name;
+                $cat = $post->category->category;
+                $catUrl = route('category', ['category' => $cat]);
+                $authDate = "$date by $author";
+            @endphp
+            <div
+                style="
                 position: relative;
                 text-align: center;
                 color: white;
@@ -1130,63 +1096,64 @@
                 overflow: hidden;
                 ">
                 <a href="{{ $url }}">
-            <img src="{{ $image }}" alt="Background"
-                style="width: 100%; height: 400px; object-fit: cover; opacity: 0.85" />
+                    <img src="{{ $image }}" alt="Background"
+                        style="width: 100%; height: 400px; object-fit: cover; opacity: 0.85" />
                 </a>
 
-            <div
-                style="
+                <div
+                    style="
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
           ">
-                <p
-                    style="
+                    <p
+                        style="
               font-size: 20px;
               letter-spacing: 2px;
               text-transform: uppercase;
             ">
-                    {{ $cat }}
-                </p>
-                <h1 style="font-size: 42px; font-weight: bold; margin: 10px 0">
-                    {{ $title }}
-                </h1>
-                
-                <p
-                    style="
+                        {{ $cat }}
+                    </p>
+                    <h1 style="font-size: 42px; font-weight: bold; margin: 10px 0">
+                        {{ $title }}
+                    </h1>
+
+                    <p
+                        style="
               font-size: 14px;
               margin-top: 20px;
               color: rgba(255, 255, 255, 0.8);
             ">
-            {{ $authDate }}
-            </p>
+                        {{ $authDate }}
+                    </p>
+                </div>
             </div>
-        </div>
-
         @endforeach
     </section>
 
-    <section class="bottle" style="margin-top: 50px;">         
+    <section class="bottle" style="margin-top: 50px;">
         <div class="section"
             style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 23px; padding: 20px; max-width: 1700px; margin: 0 auto;">
-            @foreach ( $musicPosts->slice(1,6) as $post )
+            @foreach ($posts->slice(23, 6) as $post)
                 @php
                     $url = route('blog', ['slug' => $post->slug]);
-                    $title = Str::title($post->title) ;
-                    $image = $post->thumbnail ;
-                    $date = $post->created_at->format('d.m.y') ;
-                    $author = $post->author?->name ;
-                    $cat = $post->category->category ;
+                    $title = Str::title($post->title);
+                    $image = $post->thumbnail;
+                    $date = $post->created_at->format('d.m.y');
+                    $author = $post->author?->name;
+                    $cat = $post->category->category;
                     $catUrl = route('category', ['category' => $cat]);
-                    $authDate = "$date by $author" ;
+                    $authDate = "$date by $author";
                 @endphp
                 <div style="flex: 1 1 calc(33.33% - 20px); margin: 0; background-color: #fff; overflow: hidden;">
                     <a href="{{ $url }}">
-                        <img src="{{ $image }}" alt="Winter getaway" style="object-fit: cover; width: 100%; height: 250px" />
+                        <img src="{{ $image }}" alt="Winter getaway"
+                            style="object-fit: cover; width: 100%; height: 250px" />
                     </a>
                     <div style="padding: 15px">
-                        <div style="color: black; font-size: 19px; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;">
+                        <div
+                            style="color: black; font-size: 19px; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;">
                             {{ $cat }}
                         </div>
                         <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
@@ -1198,10 +1165,39 @@
                     </div>
                 </div>
             @endforeach
-            
-            <div style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px 0; padding-top: 20px;">
-                <div style="cursor: pointer; font-size: 25px; color: #333; padding: 10px 15px; border: 1px solid black; border-radius: 4px;"><i class="fa-solid fa-arrow-left"></i></div>
-                <div style="cursor: pointer; font-size: 25px; color: #333; padding: 10px 15px; border: 1px solid black; border-radius: 4px;"><i class="fa-solid fa-arrow-right"></i></div>
+
+
+            <div
+                style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px 0; padding-top: 20px;">
+
+                {{-- Previous Page Link --}}
+                @if (!$posts->onFirstPage())
+                    <div
+                        style="cursor: pointer; font-size: 25px; color: #333; padding: 10px 15px; border: 1px solid black; border-radius: 4px;">
+                        <a href="{{ $posts->previousPageUrl() }}">
+                            <i class="fa-solid fa-arrow-left"></i>
+
+                        </a>
+
+
+                    </div>
+                @endif
+
+
+
+                {{-- Next Page Link --}}
+                @if ($posts->hasMorePages())
+                    <div
+                        style="cursor: pointer; font-size: 25px; color: #333; padding: 10px 15px; border: 1px solid black; border-radius: 4px;">
+
+                        <a href="{{ $posts->nextPageUrl() }}">
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+                @endif
+
             </div>
         </div>
     </section>

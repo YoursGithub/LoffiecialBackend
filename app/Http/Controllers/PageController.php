@@ -58,7 +58,12 @@ class PageController extends Controller
 
         $catExist = Category::where('category', $category)->firstOrFail();
 
-        $posts = Posts::where('category_id', $catExist->id)->latest()->paginate(11);
+        $posts = Posts::where('category_id', $catExist->id)->latest()->paginate(36);
+
+        // $posts = Posts::where('category_id', $catExist->id)->latest()->get();
+
+        // dd($posts->count());
+
 
         return view('pages.category', compact('category', 'posts'));
     }

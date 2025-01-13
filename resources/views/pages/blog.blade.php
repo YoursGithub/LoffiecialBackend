@@ -9,6 +9,9 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Blog page</title>
+
+    @include('pages.layouts.seo')
+
 </head>
 
 <style>
@@ -381,8 +384,8 @@
             margin-left: 10px;
             width: 250px;
           ">
-                <form action="search">
-                    <input type="text" placeholder="RECHERCHER"
+                <form action="{{ route('search') }}">
+                    <input type="text" placeholder="RECHERCHER" name="search"
                         style="
                   width: 100%;
                   padding: 15px 50px 15px 20px;

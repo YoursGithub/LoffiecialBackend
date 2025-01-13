@@ -10,6 +10,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet" />
     <title>L'OFFICIEL</title>
+
+    @include('pages.layouts.seo')
+
     <style>
         * {
             margin: 0;
@@ -355,8 +358,8 @@
             margin-left: 10px;
             width: 250px;
           ">
-          <form action="search">
-                <input type="text" placeholder="RECHERCHER"
+          <form  action="{{ route('search') }}">
+                <input type="text" placeholder="RECHERCHER" name="search"
                     style="
               width: 100%;
               padding: 15px 50px 15px 20px;
@@ -750,8 +753,7 @@
                     color: #555;
                     text-transform: uppercase;
                     margin-bottom: 5px;
-                    ">BE
-                            WELL</a>
+                    ">{{$cat}}</a>
                         <a href="{{ $url }}"
                             style="
                     display: block;
