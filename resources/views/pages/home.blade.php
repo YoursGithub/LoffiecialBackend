@@ -355,6 +355,7 @@
             margin-left: 10px;
             width: 250px;
           ">
+          <form action="search">
                 <input type="text" placeholder="RECHERCHER"
                     style="
               width: 100%;
@@ -365,6 +366,7 @@
               outline: none;
               box-shadow: none;
             " />
+          </form>
                 <i class="fa-solid fa-magnifying-glass" style="margin-top: 15px"></i>
             </div>
 
@@ -394,9 +396,11 @@
             width: 350px;
             box-sizing: border-box;
           ">
+          <a href="/">
                 <img src="/images/Lofficiel Peru.png" alt="L'OFFICIEL" style="width: 150px" />
+          </a>
                 <div style="margin-bottom: 15px">
-                    <a href="#"
+                    <a href=""
                         style="
                 color: white;
                 text-decoration: none;
@@ -425,7 +429,7 @@
           box-sizing: border-box;
           width: 100%;
         ">
-            <a href="#" class="logo" style="flex: 1; text-align: center">
+            <a href="/" class="logo" style="flex: 1; text-align: center">
                 <img src="/images/Lofficiel Peru.png" alt="Logo"
                     style="background-position: center; display: inline-block" />
             </a>
@@ -469,6 +473,7 @@
                     margin-left: -30px;
                     margin-bottom: 20px;
                 ">
+                
                 <img src="{{ $image }}" alt="BE WELL"
                     style="
               width: 160px;
@@ -540,8 +545,10 @@
          @endphp
 
             <article style="width: 100%; text-align: left">
+                <a href="{{ $url }}">
                 <img src="{{ $image }}"
                     alt="BE WELL" style="object-fit: cover;  width: 100%; height: 600px; margin-bottom: 15px" />
+                </a>
                 <a href="{{ $catUrl }}"
                     style="
                 display: block;
@@ -597,6 +604,7 @@
             $authDate = "$date by $author" ;
         @endphp
 
+<a href="{{ $url }}">
         <div
             style="
                 position: relative;
@@ -642,6 +650,7 @@
             </p>
             </div>
         </div>
+</a>
 
         @endforeach
     </section>
@@ -678,8 +687,10 @@
                 background-color: #fff;
                 overflow: hidden;
                 ">
+                <a href="{{ $url }}">
                 <img src="{{ $image }}" alt="Winter getaway"
                     style="object-fit:cover; width: 100%; height: 250px" />
+                </a>
                 <div style="padding: 15px">
                     <div
                         style="
@@ -794,7 +805,9 @@
                     background-color: #fff;
                     overflow: hidden;
                 ">
-                <img src="{{ $image }}" alt="Winter getaway" style="width: 100%; height: 250px" />
+                <a href="{{ $url }}">
+                <img src="{{ $image }}" alt="Winter getaway" style="object-fit: cover; width: 100%; height: 250px" />
+                </a>
                 <div style="padding: 15px">
                     <div
                         style="
@@ -838,12 +851,14 @@
         @endphp
 
         <div style="flex: 1; min-width: 300px; position: relative">
+            <a href="{{ $url }}">
             <img src="{{ $image }}" alt="Image 1"
                 style="position: relative;
           width: 100%;
           height : 60vh;
           min-width: 410px;
            object-fit: cover" />
+            </a>
             <div
                 style="
             position: absolute;
@@ -901,7 +916,9 @@
                             background-color: #fff;
                             overflow: hidden;
                         ">
-                        <img src="{{ $image }}" alt="Winter getaway" style="width: 100%; height: 250px" />
+                        <a href="{{ $url }}">
+                        <img src="{{ $image }}" alt="Winter getaway" style="object-fit: cover; width: 100%; height: 250px" />
+                        </a>
                         <div style="padding: 15px">
                             <div
                                 style="
@@ -951,6 +968,7 @@
             $catUrl = route('category', ['category' => $cat]);
             $authDate = "$date by $author" ;
         @endphp
+
         <div
             style="
                 position: relative;
@@ -1075,7 +1093,7 @@
                     width: 200px;
                     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
                     ">
-                    <img src="{{ $image }}" alt="Sneakers" style="width: 100%; margin-bottom: 10px" />
+                    <img src="{{ $image }}" alt="Sneakers" style="width: 100%; object-fit: cover; margin-bottom: 10px" />
                     <p style="margin: 0; font-size: 18px; text-align: center">
                         {{$title}}
                     </p>
@@ -1112,8 +1130,10 @@
                 width: 100%;
                 overflow: hidden;
                 ">
+                <a href="{{ $url }}">
             <img src="{{ $image }}" alt="Background"
                 style="width: 100%; height: 400px; object-fit: cover; opacity: 0.85" />
+                </a>
 
             <div
                 style="
@@ -1178,7 +1198,9 @@
                     background-color: #fff;
                     overflow: hidden;
                 ">
-                <img src="{{ $image }}" alt="Winter getaway" style="width: 100%; height: 250px" />
+                <a href="{{ $url }}">
+                <img src="{{ $image }}" alt="Winter getaway" style="object-fit: cover; width: 100%; height: 250px" />
+                </a>
                 <div style="padding: 15px">
                     <div
                         style="
@@ -1219,6 +1241,8 @@
                 sidebar.style.display = 'none';
             }
         }
+
+        
 
         window.addEventListener("scroll", () => {
             const navbar = document.querySelector(".navbar");

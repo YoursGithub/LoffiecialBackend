@@ -381,16 +381,18 @@
             margin-left: 10px;
             width: 250px;
           ">
-                <input type="text" placeholder="RECHERCHER"
-                    style="
-              width: 100%;
-              padding: 15px 50px 15px 20px;
-              font-size: 16px;
-              border: none;
-              border-radius: 25px;
-              outline: none;
-              box-shadow: none;
-            " />
+                <form action="search">
+                    <input type="text" placeholder="RECHERCHER"
+                        style="
+                  width: 100%;
+                  padding: 15px 50px 15px 20px;
+                  font-size: 16px;
+                  border: none;
+                  border-radius: 25px;
+                  outline: none;
+                  box-shadow: none;
+                " />
+              </form>
                 <i class="fa-solid fa-magnifying-glass" style="margin-top: 15px"></i>
             </div>
 
@@ -492,13 +494,23 @@
             </div>
         
             <div id="main-description" class="bottle" style="margin: 0 auto; max-width: 800px; padding: 20px;">
+                <style>
+                    #main-description img {
+                        max-width: 100%;
+                        height: auto;
+                        width: 700px;
+                        display: block;
+                        margin: 15px auto;
+                    }
+                </style>
                 {!! $post->blog !!}
             </div>
+            
 
             <div id="social-bar" class="social-bar" style="
                 position: fixed;
                 top: 50%;
-                left: 20%;
+                left: 10%;
                 transform: translateY(-50%);
                 z-index: 100;">
                 <a href="#" style="display: block; margin-bottom: 10px; text-decoration: none; color: black; font-size: 20px;">
@@ -555,7 +567,9 @@
                     
                     overflow: hidden;
                     ">
-                        <img src="{{ $image }}" alt="Winter getaway" style="width: 100%; height: 250px" />
+                    <a href="{{ $url }}">
+                        <img src="{{ $image }}" alt="Winter getaway" style="object-fit: cover; width: 100%; height: 250px" />
+                    </a>
                         <div style="padding: 15px">
                             <div
                                 style="
@@ -631,7 +645,10 @@
                         
                         overflow: hidden;
                         ">
-                            <img src="{{ $image }}" alt="Winter getaway" style="width: 100%; height: 250px" />
+
+                            <a href="{{ $url }}">
+                            <img src="{{ $image }}" alt="Winter getaway" style="object-fit: cover; width: 100%; height: 250px" />
+                            </a>
                             <div style="padding: 15px">
                                 <div
                                     style="
@@ -665,9 +682,12 @@
 
     <script>
         function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.style.display =
-                sidebar.style.display === "block" ? "none" : "block";
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+                sidebar.style.display = 'flex';
+            } else {
+                sidebar.style.display = 'none';
+            }
         }
 
         window.addEventListener('scroll', function() {

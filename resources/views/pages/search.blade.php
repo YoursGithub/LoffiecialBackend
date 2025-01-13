@@ -231,19 +231,18 @@ style="
   width: 200px;
 "
 >
-<input
-  type="text"
-  placeholder="RECHERCHER"
-  style="
-    width: 100%;
-    padding: 15px 50px 15px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 25px;
-    outline: none;
-    box-shadow: none;
-  "
-/>
+<form action="search">
+  <input type="text" placeholder="RECHERCHER"
+      style="
+width: 100%;
+padding: 15px 50px 15px 20px;
+font-size: 16px;
+border: none;
+border-radius: 25px;
+outline: none;
+box-shadow: none;
+" />
+</form>
 <i class="fa-solid fa-magnifying-glass" style="margin-top: 15px"></i>
 </div>
         
@@ -571,9 +570,12 @@ style="
 
     <script>
         function toggleSidebar() {
-          const sidebar = document.getElementById("sidebar");
-          sidebar.style.display =
-            sidebar.style.display === "block" ? "none" : "block";
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+                sidebar.style.display = 'flex';
+            } else {
+                sidebar.style.display = 'none';
+            }
         }
   
         window.addEventListener("scroll", () => {
