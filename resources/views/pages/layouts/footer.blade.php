@@ -1,3 +1,83 @@
+<style>
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    width: 80%;
+  max-width: 600px;
+  }
+
+  .modal.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .modal h2 {
+    margin: 0;
+    color: #2d3748;
+    font-size: 24px;
+  }
+
+  .modal p {
+    margin: 1rem 0;
+    color: #4a5568;
+    font-size: 16px;
+  }
+
+  .close-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .close-btn:hover {
+    background-color: #3182ce;
+  }
+
+  .show-modal-btn {
+    padding: 1rem 2rem;
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+</style>
+
+  <div class="modal-overlay">
+    <div class="modal">
+      <h2>🎉 Success!</h2>
+      <p>Thanks for subscribing!</p>
+      <button class="close-btn">Close</button>
+    </div>
+  </div>
+
+
 <div style="display: flex; width: 100%; height: 100%;" class="main-container">
     
 
@@ -60,18 +140,18 @@
     
     <div style="max-width: 500px; margin: 0 auto; padding: 0 20px;">
       <div style="margin-bottom: 20px;">
-        <input type="text" placeholder="Nom" style="width: 100%; padding: 10px; background: transparent; border: none; border-bottom: 1px solid white; color: white; margin-bottom: 15px; outline: none;">
-        <input type="text" placeholder="Prénom" style="width: 100%; padding: 10px; background: transparent; border: none; border-bottom: 1px solid white; color: white; margin-bottom: 15px; outline: none;">
-        <input type="email" placeholder="Email" style="width: 100%; padding: 10px; background: transparent; border: none; border-bottom: 1px solid white; color: white; margin-bottom: 15px; outline: none;">
+        <input type="text" placeholder="Name" style="width: 100%; padding: 10px; background: transparent; border: none; border-bottom: 1px solid white; color: white; margin-bottom: 15px; outline: none;">
+        <input type="text" placeholder="First Name" style="width: 100%; padding: 10px; background: transparent; border: none; border-bottom: 1px solid white; color: white; margin-bottom: 15px; outline: none;">
+        <input type="email" placeholder="E-Mail" style="width: 100%; padding: 10px; background: transparent; border: none; border-bottom: 1px solid white; color: white; margin-bottom: 15px; outline: none;">
       </div>
       
       <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
         <input type="checkbox" id="privacy" style="margin-right: 10px; margin-top: 3px;">
-        <label for="privacy" style="text-align:center; font-size: 16px; color: #aaa;">J'autorise par la présente le traitement de mes données personnelles aux fins de la Privacy Policy</label>
+        <label for="privacy" style="text-align:center; font-size: 16px; color: #aaa;">I hereby authorize the processing of my personal data for the purposes of the <a style="color:white;" href="">Privacy Policy</a></label>
       </div>
       
       <div style="display: flex; justify-content: center; align-items: center;">
-        <button style="padding: 12px; background-color: white; cursor: pointer; text-transform: uppercase; font-size: 14px; border: 1px solid black;">S'abonner</button>
+        <button class="show-modal-btn" style="padding: 12px; background-color: white; cursor: pointer; text-transform: uppercase; font-size: 14px; color: black; border: 1px solid black;">SUBSCRIBE</button>
       </div>
       
     </div>
@@ -104,11 +184,12 @@
           "
         >
           <div style="margin-top: -230px; display: flex; gap: 10px">
+            <a target="_blank" href="https://www.instagram.com/thelofficielmag/">
             <i
               class="fa-brands fa-instagram fa-lg"
               style="color: #ffffff; margin-right: 10px"
             ></i>
-            
+            </a>
           </div>
         </div>
 
@@ -139,3 +220,31 @@
         </div>
       </div>
     </section>
+
+
+    <script>
+      const modalOverlay = document.querySelector('.modal-overlay');
+      const modal = document.querySelector('.modal');
+      const showModalBtn = document.querySelector('.show-modal-btn');
+      const closeBtn = document.querySelector('.close-btn');
+  
+      function showModal() {
+        modalOverlay.style.display = 'block';
+        setTimeout(() => {
+          modal.classList.add('show');
+        }, 10);
+      }
+  
+      function hideModal() {
+        modal.classList.remove('show');
+        setTimeout(() => {
+          modalOverlay.style.display = 'none';
+        }, 300);
+      }
+  
+      showModalBtn.addEventListener('click', showModal);
+      closeBtn.addEventListener('click', hideModal);
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) hideModal();
+      });
+    </script>

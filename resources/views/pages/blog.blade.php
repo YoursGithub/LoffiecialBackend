@@ -24,6 +24,10 @@
         padding: 0;
     }
 
+    html {
+    scroll-behavior: smooth;
+}
+
     * {
             margin: 0;
             padding: 0;
@@ -233,6 +237,14 @@
       width: 100% !important;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    .images {
+        margin-top: 20px;
+        width: 150px !important;
+        margin-left: -50px !important;
+    }
+}
   
         @media (max-width: 768px) {
             .nav-links a {
@@ -425,7 +437,9 @@
             width: 350px;
             box-sizing: border-box;
           ">
+                <a href="/">
                 <img src="/images/Lofficiel Peru.png" alt="L'OFFICIEL" style="width: 150px" />
+                </a>
                 <div style="margin-bottom: 15px">
                     <a href="#"
                         style="
@@ -440,9 +454,10 @@
                 <div style="margin-top: 20px">
                     <p style="margin-bottom: 20px">SUIVEZ-NOUS</p>
                     <div style="display: flex; margin-bottom: 30px; gap: 15px">
-                       
+                        <a target="_blank" href="https://www.instagram.com/thelofficielmag/">
                         <i class="fa-brands fa-instagram fa-lg"
                             style="color: #ffffff; margin-right: 10px"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -452,13 +467,14 @@
 
 
             <div>
+                <a href="/">
                 <img src="/images/logo-lofficiel-amtd.svg" alt="" class="images"
-                    style="width: 200px; max-width: 100%;">
+                    style="width: 400px; max-width: 100%; margin-left: -5px;">
+                </a>
             </div>
             <div class="france" style="display: flex; align-items: center;">
-                <a href="#" style="margin-right: 20px; font-size: 14px; text-decoration: none; color: black;">BUY
-                    THE ISSUE</a>
-                <a href="#" style="font-size: 14px; text-decoration: none; color: black;">FRANCE</a>
+                <a href="#subscribe" style="margin-right: 20px; font-size: 18px; text-decoration: none; color: black;">Subscribe</a>
+                {{-- <a href="#" style="font-size: 14px; text-decoration: none; color: black;">FRANCE</a> --}}
             </div>
         </div>
         
@@ -493,10 +509,10 @@
             <p style="margin-top: 20px; font-size: 14px; color: #888;">{{ $authDate }}</p>
 
             <div style="display: flex; justify-content: center; align-items: center; padding: 20px;">
-                <img src="{{ $image }}" alt="" style="width: 100%; max-width: 900px; height: 630px;">
+                <img src="{{ $image }}" alt="" style="object-fit:cover; width: 100%; max-width: 900px; height: 630px;">
             </div>
         
-            <div id="main-description" class="bottle" style="margin: 0 auto; max-width: 800px; padding: 20px;">
+            <div id="main-description" class="bottle" style="text-align: left; margin-bottom: 20px; margin: 0 auto; max-width: 800px; padding: 20px;">
                 <style>
                     #main-description img {
                         max-width: 100%;
@@ -643,14 +659,14 @@
 
                     <div
                         style="
-                        flex: 1 1 calc(33.33% - 20px);
+                        flex: 1 1 calc(25% - 20px);
                         margin: 0;
                         
                         overflow: hidden;
                         ">
 
                             <a href="{{ $url }}">
-                            <img src="{{ $image }}" alt="Winter getaway" style="object-fit: cover; width: 100%; height: 250px" />
+                            <img src="{{ $image }}" alt="Winter getaway" style="object-fit: cover; width: 100%; height: 200px" />
                             </a>
                             <div style="padding: 15px">
                                 <div
@@ -679,7 +695,10 @@
             </section>
         </div>
     </section>
+
+    <section id="subscribe">
     @include('pages.layouts.footer')
+    </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
 
@@ -696,12 +715,12 @@
         window.addEventListener('scroll', function() {
     const socialBar = document.getElementById('social-bar');
     const mainDesc = document.getElementById('main-description');
-    const mainDescEnd = mainDesc.getBoundingClientRect().bottom;
+    const mainDescEnd = mainDesc.offsetTop + mainDesc.offsetHeight;
+    const viewportMiddle = window.scrollY + (window.innerHeight / 2);
     
-    if (window.scrollY > mainDescEnd) {
+    if (viewportMiddle >= mainDescEnd) {
         socialBar.style.position = 'absolute';
-        socialBar.style.top = mainDescEnd + 'px';
-        socialBar.style.transform = 'none';
+        socialBar.style.top = (mainDescEnd - socialBar.offsetHeight) + 'px';
     } else {
         socialBar.style.position = 'fixed';
         socialBar.style.top = '50%';

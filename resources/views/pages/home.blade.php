@@ -14,6 +14,10 @@
     @include('pages.layouts.seo')
 
     <style>
+        html {
+    scroll-behavior: smooth;
+}
+
         * {
             margin: 0;
             padding: 0;
@@ -55,7 +59,7 @@
         .logo img {
             margin-top: -100px;
             width: 300px;
-            margin-left: 130px;
+            margin-left: 20px;
         }
 
         .navbar.scrolled .logo {
@@ -159,7 +163,13 @@
             z-index: 2;
         }
 
-        @media (min-width: 1400px) and (max-width: 1800px) {
+        @media (min-width: 1400px) and (max-width: 1700px) {
+            .content-grid {
+                max-width: 1400px;
+            }
+        }
+
+        @media (min-width: 1700px) and (max-width: 2200px) {
             .content-grid {
                 max-width: 1600px;
             }
@@ -301,6 +311,13 @@
         }
 
         @media (max-width: 768px) {
+    .logo img {
+        margin-left: -150px;
+    }
+}
+
+
+        @media (max-width: 768px) {
             .hide {
                 display: none;
             }
@@ -312,6 +329,12 @@
             width: 350px;
         }
       } */
+
+      @media (min-width: 768px) {
+    .logo-img {
+        margin-left: 0px !important; /* Force margin to 0px for desktop */
+    }
+}
     </style>
 </head>
 
@@ -400,7 +423,7 @@
             box-sizing: border-box;
           ">
           <a href="/">
-                <img src="/images/Lofficiel Peru.png" alt="L'OFFICIEL" style="width: 150px" />
+                <img src="/images/Lofficiel Peru.png" alt="L'OFFICIEL" style="width: 150px;" />
           </a>
                 <div style="margin-bottom: 15px">
                     <a href=""
@@ -416,8 +439,9 @@
                 <div style="margin-top: 20px">
                     <p style="margin-bottom: 20px">SUIVEZ-NOUS</p>
                     <div style="display: flex; margin-bottom: 30px; gap: 15px">
-
+                        <a target="_blank" href="https://www.instagram.com/thelofficielmag/">
                         <i class="fa-brands fa-instagram fa-lg" style="color: #ffffff; margin-right: 10px"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -433,17 +457,19 @@
           width: 100%;
         ">
             <a href="/" class="logo" style="flex: 1; text-align: center">
-                <img src="/images/Lofficiel Peru.png" alt="Logo"
-                    style="background-position: center; display: inline-block" />
+                <img src="/images/Lofficiel Peru.png" class="logo-img" alt="Logo"
+                    style="background-position: center; margin-left: -100px;  display: inline-block" />
             </a>
 
-            <div class="nav-links" style="display: flex; justify-content: flex-end; margin-top: -150px; gap: 10px">
-                <a href="#" style="color: white; text-decoration: none; font-size: 16px">Buy The Issue</a>
-                <a href="#" style="color: white; text-decoration: none; font-size: 16px">France</a>
+            <div class="nav-links" style="display: flex; justify-content: flex-end; margin-top: -170px; gap: 10px">
+                <a href="#subscribe" style="color: white; text-decoration: none; font-size: 16px">Subscribe</a>
+                {{-- <a href="#" style="color: white; text-decoration: none; font-size: 16px">France</a> --}}
             </div>
         </div>
     </nav>
 
+
+    
     <section class="hero section" style="font-family: 'Sen', sans-serif">
         <div class="hero-content">
             <div class="category">{{ $firstPost?->category?->category }}</div>
@@ -520,7 +546,7 @@
             style="
           font-weight: lighter;
           font-size: 20px;
-          margin-left: 50px;
+          margin-left: 32px;
           margin-bottom: 50px;
         ">
             Trending
@@ -585,10 +611,10 @@
     <section>
         <h2
             style="
-          margin-top: 150px;
+          margin-top: 30px;
           font-weight: lighter;
           font-size: 20px;
-          margin-left: 50px;
+          margin-left: 32px;
           margin-bottom: 50px;
         ">
             Last minute
@@ -613,7 +639,7 @@
                 position: relative;
                 width: 100%;
                 /* min-width: 410px; */
-                height: 70vh;
+                height: 60vh;
                 background: url('{{ $image }}') no-repeat center center;
                 background-size: cover;
                 color: white;
@@ -622,11 +648,12 @@
                 align-items: center;
                 ">
             <div
-                style="
+            style="
             text-align: center;
             padding: 20px;
             width: 100%;
             max-width: 800px;
+            text-decoration: none;
           ">
                 <p
                     style="
@@ -776,6 +803,16 @@
     </section>
 
     <section class="bottle" style="margin-top: 50px;">
+        <h2
+            style="
+          margin-top: 30px;
+          font-weight: lighter;
+          font-size: 20px;
+          margin-left: 32px;
+          /* margin-bottom: 50px; */
+        ">
+            À ne pas manquer
+        </h2>
         <div class="section"
                     style="
                 display: flex;
@@ -787,7 +824,7 @@
                 margin: 0 auto;
                 ">
 
-        @foreach ( $recentPosts->slice(8,6) as $post )
+        @foreach ( $recentPosts->slice(8,3) as $post )
 
         @php
             $url = route('blog', ['slug' => $post->slug]);
@@ -835,9 +872,18 @@
        
         </div>
     </section>
-
+    
+    <h2
+        style="
+      margin-top: 30px;
+      font-weight: lighter;
+      font-size: 20px;
+      margin-left: 32px;
+      /* margin-bottom: 50px; */
+    ">
+        Food
+    </h2>
     <section style="margin-top: 50px; display: flex; flex-wrap: wrap">
-        
 
         @foreach ( $lifestylePosts as $post )
 
@@ -857,7 +903,7 @@
             <img src="{{ $image }}" alt="Image 1"
                 style="position: relative;
           width: 100%;
-          height : 60vh;
+          height : 75vh;
           min-width: 410px;
            object-fit: cover" />
             </a>
@@ -887,6 +933,16 @@
     </section>
 
     <section class="bottle" style="margin-top: 50px;">
+        <h2
+        style="
+      margin-top: 30px;
+      font-weight: lighter;
+      font-size: 20px;
+      margin-left: 32px;
+      /* margin-bottom: 50px; */
+    ">
+        Pop Culture
+    </h2>
         <div class="section"
             style="
           display: flex;
@@ -950,10 +1006,10 @@
     <section style="font-family: 'Sen', sans-serif">
         <h2
             style="
-          margin-top: 200px;
+          margin-top: 30px;
           font-weight: lighter;
           font-size: 20px;
-          margin-left: 50px;
+          margin-left: 32px;
           margin-bottom: 50px;
         ">
         Beauty
@@ -1012,10 +1068,10 @@
       ">
         <h2
             style="
-          margin-top: 200px;
+          margin-top: 30px;
           font-weight: lighter;
           font-size: 20px;
-          margin-left: 50px;
+          margin-left: 32px;
           margin-bottom: 50px;
         ">
             Fashion
@@ -1181,7 +1237,7 @@
           max-width: 1700px;
           margin: 0 auto;
         ">
-        @foreach ( $musicPosts->slice(1,6) as $post )
+        @foreach ( $musicPosts->slice(1,3) as $post )
 
          @php
              $url = route('blog', ['slug' => $post->slug]);
@@ -1229,8 +1285,9 @@
         </div>
     </section>
 
-
+    <section id="subscribe">
     @include('pages.layouts.footer')
+    </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
 
