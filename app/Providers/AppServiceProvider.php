@@ -34,17 +34,12 @@ class AppServiceProvider extends ServiceProvider
         // view()->share('secondPost',FirstPost::with('post')->find(2)?->post ) ;
 
 
-        view()->share('recentPosts', Posts::with('category')->latest()->limit(30)->get());
+        view()->share('recentPosts', Posts::with('category')->whereNot('category_id' , 2)->latest()->limit(30)->get());
 
         view()->share('trendingPosts',  Posts::where('trending', 1)->get());
 
 
-        view()->share('LPosts', Posts::with('category')->whereHas('category', function ($query) {
-            $query->where('category', "l'essentials");
-        })
-            ->latest()
-            ->limit(1)
-            ->get());
+        view()->share('ranPosts', Posts::with(['category'])->whereNot('category_id' , 2)->inRandomOrder()->limit(1)->get() );
 
         // view()->share('luxuryPosts', Posts::with('category')->whereHas('category', function ($query) {
         //                                                     $query->where('category', 'luxury');

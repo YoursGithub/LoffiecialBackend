@@ -620,7 +620,7 @@
             Last minute
         </h2>
 
-        @foreach ( $LPosts as $post )
+        @foreach ( $ranPosts as $post )
 
         @php
             $url = route('blog', ['slug' => $post->slug]);

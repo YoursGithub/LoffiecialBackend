@@ -492,7 +492,8 @@
              $authDate = "$date by $author" ;
          @endphp
             <div style="margin: 0 auto; max-width: 800px;">
-                <div style="
+                <a href="{{ $catUrl }}">
+                    <div style="
                     color: black;
                     font-size: 19px;
                     text-transform: uppercase;
@@ -500,7 +501,7 @@
                     border-bottom: 1px solid currentColor; 
                     display: inline-block;">
                     {{ $cat }}
-                </div>
+                </div></a>
                 <h2 style="font-size: 37px; font-weight: 600; line-height: 1.4;">{{ $title }}</h2>
             </div>
             <p  style="margin: 0 auto; max-width: 600px; font-size: 22px; line-height: 1.6; color: #555;">
