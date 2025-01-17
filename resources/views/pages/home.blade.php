@@ -474,10 +474,10 @@
         <div class="hero section" style="">
         <div class="hero-content">
             <div class="category">{{ $firstPost?->category?->category }}</div>
-            <a href="" class="title" style="text-decoration: none; color: white;">
+            <a href="{{  route('blog', ['slug' => $firstPost?->slug]) }}" class="title" style="text-decoration: none; color: white;">
                 {{ $firstPost?->title }}
             </a>
-            <a href="" style="text-decoration: none; color: white;">
+            <a href="{{  route('blog', ['slug' => $firstPost?->slug]) }}" style="text-decoration: none; color: white;">
             <div class="meta">{{ $firstPost?->created_at->format('d.m.y') }} by {{ $firstPost?->author?->name }}</div>
             </a>
         </div>
