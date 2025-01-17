@@ -470,13 +470,16 @@
 
 
     
-    <section class="hero section" style="font-family: 'Sen', sans-serif">
+    <section style="font-family: 'Sen', sans-serif">
+        <div class="hero section" style="">
         <div class="hero-content">
             <div class="category">{{ $firstPost?->category?->category }}</div>
-            <h1 class="title">
+            <a href="" class="title" style="text-decoration: none; color: white;">
                 {{ $firstPost?->title }}
-            </h1>
+            </a>
+            <a href="" style="text-decoration: none; color: white;">
             <div class="meta">{{ $firstPost?->created_at->format('d.m.y') }} by {{ $firstPost?->author?->name }}</div>
+            </a>
         </div>
 
         <div class="content-grid" style="text-align: left">
@@ -539,6 +542,7 @@
           
 
         </div>
+    </div>
     </section>
 
     <section class="bottle hexx" style="font-family: 'Sen', sans-serif">
