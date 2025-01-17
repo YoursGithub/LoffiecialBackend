@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->share('allCategory', Category::with('subcategories')->get());
+        view()->share('allCategory',  Category::with('subcategories')->get());
 
         view()->share('allAuthor', Author::all());
 
