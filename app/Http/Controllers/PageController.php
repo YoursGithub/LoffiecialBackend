@@ -46,7 +46,7 @@ class PageController extends Controller
 
         $relatedPosts = Posts::where('category_id', $post->category_id)->where('id', '!=', $post->id)->limit(6)->latest()->get();
 
-        $randomPosts = Posts::with(['category'])->inRandomOrder()->limit(6)->get();
+        $randomPosts = Posts::with(['category'])->inRandomOrder()->limit(8)->get();
 
         return view('pages.blog', compact('post',  'categoryName', 'relatedPosts', 'randomPosts'));
     }

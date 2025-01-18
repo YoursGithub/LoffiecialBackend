@@ -590,24 +590,27 @@
                     <a href="{{ $url }}">
                         <img src="{{ $image }}" alt="Winter getaway" style="object-fit: cover; width: 100%; height: 250px" />
                     </a>
+                    <a href="{{ $url }}" style=" color: black; text-decoration: none;">
+
                         <div style="padding: 15px">
                             <div
                                 style="
-                        color: black;
-                        font-size: 19px;
-                        text-transform: uppercase;
-                        margin-bottom: 10px;
-                        border-bottom: 1px solid currentColor; display: inline-block;
-                    ">
-                            {{ $categoryName }}
+                                color: black;
+                                font-size: 19px;
+                                text-transform: uppercase;
+                                margin-bottom: 10px;
+                                border-bottom: 1px solid currentColor; display: inline-block;
+                                ">
+                                    {{ $categoryName }}
+                            </div>
+                            <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                                {{ $title }}
+                            </div>
+                            <div style="font-size: 14px; ">
+                                {{ $authDate }}
+                            </div>
                         </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                            {{ $title }}
-                        </div>
-                        <div style="font-size: 14px; ">
-                            {{ $authDate }}
-                        </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
          
@@ -669,24 +672,28 @@
                             <a href="{{ $url }}">
                             <img src="{{ $image }}" alt="Winter getaway" style="object-fit: cover; width: 100%; height: 200px" />
                             </a>
-                            <div style="padding: 15px">
-                                <div
-                                    style="
-                            color: white;
-                            font-size: 19px;
-                            text-transform: uppercase;
-                            margin-bottom: 10px;
-                            border-bottom: 1px solid currentColor; display: inline-block;
-                        ">
-                                {{ $cat }}
-                            </div>
-                            <div style="font-size: 24px; font-weight :400; margin: 0 0 10px">
-                                {{ $title }}
-                            </div>
-                            <div style="font-size: 14px; ">
-                                {{ $authDate }}
-                            </div>
-                        </div>
+                            <a href="{{ $url }}" style=" color: white; text-decoration: none;">
+
+                                <div style="padding: 15px">
+                                    <div
+                                        style="
+                                        color: white;
+                                        font-size: 19px;
+                                        text-transform: uppercase;
+                                        margin-bottom: 10px;
+                                        border-bottom: 1px solid currentColor; display: inline-block;
+                                    ">
+                                        {{ $cat }}
+                                    </div>
+                                    <div style="font-size: 24px; font-weight :400; margin: 0 0 10px">
+                                        {{ $title }}
+                                    </div>
+                                    <div style="font-size: 14px; ">
+                                        {{ $authDate }}
+                                    </div>
+                                </div>
+
+                            </a>
                     </div>
 
                 @endforeach
