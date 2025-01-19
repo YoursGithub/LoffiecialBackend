@@ -559,6 +559,8 @@
                             /* margin-left: -30px; */
                             margin-bottom: 20px;
                         ">
+                        <a href="{{ $url }}">
+
                             <img src="{{ $image }}" alt="BE WELL" style="
                             width: 160px; 
                             height: 120px; 
@@ -569,6 +571,8 @@
                             max-width: 100%;
                             max-height: 100%;
                         ">
+                        </a>
+
                         
                         
                         <div style="gap: -20px;">
@@ -779,7 +783,7 @@
                                 <img src="{{ $image }}" alt="Winter getaway" style="object-fit:cover; width: 100%; height: 250px" />
                             </a>
                             <div style="padding: 15px">
-                                <a href="">
+                                <a href="{{ $catUrl }}">
                                 <div style="
                             color: black;
                             font-size: 19px;
@@ -896,15 +900,18 @@
                                     style="object-fit: cover; width: 100%; height: 250px" />
                             </a>
                             <div style="padding: 15px">
+                                <a href="{{ $catUrl }}">
+
                                 <div style="
-                            color: black;
-                            font-size: 19px;
-                            text-transform: uppercase;
-                            margin-bottom: 10px;
-                            border-bottom: 1px solid currentColor; display: inline-block;
-                          ">
+                                    color: black;
+                                    font-size: 19px;
+                                    text-transform: uppercase;
+                                    margin-bottom: 10px;
+                                    border-bottom: 1px solid currentColor; display: inline-block;
+                                ">
                                     {{ $cat }}
                                 </div>
+                                </a>
                                 <a href="{{ $url }}" style="text-decoration: none; color: black;">
                                     <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
                                         {{ $title }}
@@ -1006,7 +1013,7 @@
       margin-left: 32px;
       /* margin-bottom: 50px; */
     ">
-            Pop Culture
+            Entertainment
         </h2>
         <div class="section" style="
           display: flex;
@@ -1042,6 +1049,8 @@
                                     style="object-fit: cover; width: 100%; height: 250px" />
                             </a>
                             <div style="padding: 15px">
+                                <a href="{{ $catUrl }}">
+
                                 <div style="
                                     color: black;
                                     font-size: 19px;
@@ -1051,6 +1060,8 @@
                                 ">
                                     {{ $cat }}
                                 </div>
+
+                                </a>
                                 <a href="{{ $url }}" style="text-decoration: none; color: black;">
                                 <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
                                     {{ $title }}
@@ -1090,6 +1101,7 @@
                     $authDate = "$date by $author";
                 @endphp
 
+        
                 <div style="
                         position: relative;
                     width: 100%;
@@ -1099,7 +1111,10 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        ">
+                        cursor: pointer;
+                        "
+                        onclick="location.href'{{ $url }}'"
+                        >
                     <div style="text-align: center; margin-top: 200px; padding: 20px;">
                         <p style="
                       font-size: 1.2rem;
@@ -1151,6 +1166,9 @@
                     $catUrl = route('category', ['category' => $cat]);
                     $authDate = "$date by $author";
                 @endphp
+
+<a href="{{ $url }}" style="color: white ; text-decoration:none">
+
 
                 <div style="
                         position: relative;
@@ -1204,6 +1222,9 @@
                                         $catUrl = route('category', ['category' => $cat]);
                                         $authDate = "$date by $author";
                                     @endphp
+                                    
+                                    <a href="{{ $url }}" style="color: black ; text-decoration:none">
+
 
                                     <div class="hide" style="
                                         background-color: white;
@@ -1217,12 +1238,13 @@
                                             {{$title}}
                                         </p>
                                     </div>
+                                    </a>
 
                         @endforeach
 
                     </div>
                 </div>
-
+</a>
         @endisset
 
     </section>
@@ -1261,6 +1283,7 @@
                             style="width: 100%; height: 400px; object-fit: cover; opacity: 0.85" />
                     </a>
 
+                    
                     <div style="
                     position: absolute;
                     top: 70%;
@@ -1324,6 +1347,8 @@
                                 <img src="{{ $image }}" alt="Winter getaway"
                                     style="object-fit: cover; width: 100%; height: 250px" />
                             </a>
+                            <a href="{{ $url }}" style="color: black ; text-decoration:none">
+
                             <div style="padding: 15px">
                                 <div style="
                                     color: black;
@@ -1341,6 +1366,7 @@
                                     {{ $authDate }}
                                 </div>
                             </div>
+                            </a>
                         </div>
 
             @endforeach

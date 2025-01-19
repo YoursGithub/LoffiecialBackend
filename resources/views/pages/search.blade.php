@@ -341,6 +341,7 @@ flex-direction: column;
                   $catUrl = route('category', ['category' => $cat]);
                   $authDate = "$date by $author" ;
       @endphp
+<a href="{{ $url }}" style="color: white ; text-decoration:none">
 
       <div
             style="
@@ -373,6 +374,7 @@ flex-direction: column;
           </p>
         </div>
       </div>
+</a>
 
       @endisset
     </section>
@@ -392,6 +394,7 @@ flex-direction: column;
           $catUrl = route('category', ['category' => $cat]);
           $authDate = "$date by $author" ;
       @endphp
+      
 
       <div style="flex: 1; min-width: 300px; position: relative">
           <img src="{{ $image }}" alt="Image 1"
@@ -448,7 +451,7 @@ flex-direction: column;
          $catUrl = route('category', ['category' => $cat]);
          $authDate = "$date by $author" ;
      @endphp
-        <div
+            <div
                     style="
                 flex: 1 1 calc(33.33% - 20px);
                 margin: 0;
@@ -502,6 +505,7 @@ flex-direction: column;
           @endphp
 
           <article class="article-card">
+            
             <img src="{{ $image }}" alt="Article Image" class="article-image">
             <div class="article-content">
               <div class="article-category">{{ $cat }}</div>
