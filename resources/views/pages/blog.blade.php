@@ -179,6 +179,16 @@
                 }
         }
 
+        .top {
+            margin-top: -140px !important;
+        }
+
+@media (max-width: 768px) {
+    .top {
+        margin-top: 0px !important;
+    }
+}
+
         .article-card {
             background: white;
             display: flex;
@@ -298,6 +308,17 @@
             }
         }
 
+        .responsive-margin {
+    margin-top: -130px;
+}
+
+@media (max-width: 768px) {
+    .responsive-margin {
+        margin-top: -30px;
+    }
+}
+
+
     .swiper-slide {
             display: flex;
             justify-content: center;
@@ -355,7 +376,7 @@
 <body>
     <div>
         <div
-            style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #ddd;">
+            style="display: flex; justify-content: space-between; ">
             <div class="bars" style="display: flex; padding: 15px; color: black">
                 <a href="javascript:void(0)" onclick="toggleSidebar()" style="color: black; text-decoration: none">
                     <i class="fa fa-bars fa-xl" style="margin-right: 5px"></i>
@@ -463,14 +484,13 @@
 
 
 
-
-            <div>
+            <div class="responsive-margin">
                 <a href="/">
-                <img src="/images/logo-lofficiel-amtd.svg" alt="" class="images"
+                <img src="/images/Lofficiel_Peru_Black-removebg-preview.png" alt="" class="images"
                     style="width: 400px; max-width: 100%; margin-left: -5px;">
                 </a>
             </div>
-            <div class="france" style="display: flex; align-items: center;">
+            <div class="france" style="margin-top: 30px;">
                 <a href="#subscribe" style="margin-right: 20px; font-size: 18px; text-decoration: none; color: black;">Subscribe</a>
                 {{-- <a href="#" style="font-size: 14px; text-decoration: none; color: black;">FRANCE</a> --}}
             </div>
@@ -489,7 +509,7 @@
              $catUrl = route('category', ['category' => $cat]);
              $authDate = "$date by $author" ;
          @endphp
-            <div style="margin: 0 auto; max-width: 800px;">
+            <div class="top" style="margin: 0 auto; max-width: 800px;">
                 <a href="{{ $catUrl }}">
                     <div style="
                     color: black;

@@ -49,7 +49,6 @@
         }
 
         .logo {
-            font-size: 2rem;
             color: white;
             text-align: center;
             text-decoration: none;
@@ -137,7 +136,7 @@
         }
 
         .hexx {
-            margin-top: 50px;
+            margin-top: 170px;
         }
 
         @media only screen and (max-width: 768px) {
@@ -267,6 +266,7 @@
 
 
             .logo img {
+                margin-top: -20px;
                 width: 100px;
             }
 
@@ -280,7 +280,6 @@
             }
 
             .logo img {
-                margin-top: -30px;
                 margin-left: -80px;
             }
 
@@ -323,11 +322,11 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .logo img {
-                margin-left: -150px;
-            }
-        }
+        @media screen and (max-width: 768px) {
+    .product-card {
+        display: none !important;
+    }
+}
 
 
         @media (max-width: 768px) {
@@ -346,26 +345,6 @@
             width: 350px;
         }
       } */
-
-      .logo-img {
-  background-position: center;
-  display: inline-block;
-  max-width: 200%;
-}
-
-/* Desktop styles */
-@media screen and (min-width: 768px) {
-  .logo-img {
-    margin-left: 120px;
-  }
-}
-
-/* Mobile styles */
-@media screen and (max-width: 767px) {
-  .logo-img {
-    margin-left: 190px;
-  }
-}
     </style>
 </head>
 
@@ -473,13 +452,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
       box-sizing: border-box;
       width: 100%;
     ">
     <a href="/" class="logo" style="flex: 1; text-align: center">
-        <img src="/images/Lofficiel Peru.png" class="logo-img" alt="Logo"
-            style="background-position: center; display: inline-block; max-width: 200%;" />
+        <img src="/images/Lofficiel Peru.png" alt="Logo"
+            style="background-position: center; display: inline-block;" />
     </a>
 
     <div class="nav-links" style="display: flex; justify-content: flex-end; margin-top: -170px; gap: 10px">
@@ -545,61 +523,74 @@
                             $authDate = "$date by $author";
                         @endphp
 
-                        <article style="
-                            display: flex;
-                            align-items: flex-start;
-                            /* margin-left: -30px; */
-                            margin-bottom: 20px;
-                            gap: 20px;
-                        ">
-                        <a href="{{ $url }}">
-
-                        <a href="{{$url}}">
-                            <img src="{{ $image }}" alt="BE WELL" style="
-                            width: 100%;
-                            height: 100px;
-                            object-fit: cover;
-                            object-position: center; 
-                            margin-right: 20px;
-                            aspect-ratio: 4 / 3;
-                        ">
-                        </a>
-                        
-                        <div style="gap: 20px;">
-                            <a href="{{ $catUrl }}" style="
-                                display: block;
-                                font-size: 12px;
-                                color: #555;
-                                text-transform: uppercase;
-                                margin-bottom: 5px;
-                                overflow-wrap: break-word; /* Ensure long text wraps */
-                            ">
-                                {{$cat}}
-                            </a>
-                        
-                            <a href="{{ $url }}" style="
-                                display: block;
-                                font-size: 18px;
-                                font-weight: bold;
-                                color: #000;
-                                text-decoration: none;
-                                margin: 0 0 10px 0; /* Remove any right margin */
-                                padding: 0; /* Ensure no extra padding */
-                            ">
-                            {{$title}}
-                            </a>
-
-                        
-                            <div style="
-                                font-size: 14px;
-                                color: #888;
-                                overflow-wrap: break-word; /* Prevent date text from overflowing */
-                            ">
-                                {{ $authDate }}
-                            </div>
-                        </div>
-                        
-                        </article>
+<div style="
+max-width: 800px;
+margin: 0 auto;
+font-family: system-ui, -apple-system, sans-serif;
+">
+<article style="
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+">
+    <!-- Image Container with smaller dimensions -->
+    <div style="
+        flex: 0 0 auto;
+        width: 160px;
+        height: 120px;
+        min-width: 160px;
+    ">
+        <a href="{{ $url }}" style="
+            display: block;
+            width: 100%;
+            height: 100%;
+        ">
+            <img src="{{ $image }}" alt="BE WELL" style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            ">
+        </a>
+    </div>
+    
+    <!-- Content Container -->
+    <div style="
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    ">
+        <a href="{{ $catUrl }}" style="
+            font-size: 12px;
+            color: #555;
+            text-transform: uppercase;
+            text-decoration: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        ">{{$cat}}</a>
+        
+        <a href="{{ $url }}" style="
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        ">{{$title}}</a>
+        
+        <div style="
+            font-size: 14px;
+            color: #888;
+        ">{{ $authDate }}</div>
+    </div>
+</article>
+</div>
             @endforeach
         </div>
     </section>
@@ -796,14 +787,19 @@
                         </div>
 
             @endforeach
-
-
         </div>
     </section>
 
-    <section class="bottle">
-        
-            @foreach ($trendingPosts->slice(2, 2) as $post)
+    <section class="bottle hexx" style="font-family: 'Sen', sans-serif">
+        <div class="section" style="
+          display: flex;
+          justify-content: space-between;
+          gap: 10px;
+          padding: 20px;
+          max-width: 1200px;
+          margin: auto;
+        ">
+            @foreach ($trendingPosts->slice(0, 2) as $post)
 
                         @php
                             $url = route('blog', ['slug' => $post->slug]);
@@ -816,24 +812,26 @@
                             $authDate = "$date by $author";
                          @endphp
 
-                        <article class="dens" style="width: 48%; text-align: left">
-                            <img src="{{ $image }}" alt="BE WELL"
-                                style="object-fit:cover; width: 100%; height: 600px; margin-bottom: 15px" class="responsive-img" />
+                        <article style="width: 100%; text-align: left">
+                            <a href="{{ $url }}">
+                                <img src="{{ $image }}" alt="BE WELL"
+                                    style="object-fit: cover;  width: 100%; height: 600px; margin-bottom: 15px" />
+                            </a>
                             <a href="{{ $catUrl }}" style="
-                                display: block;
-                                font-size: 12px;
-                                color: #555;
-                                text-transform: uppercase;
-                                margin-bottom: 5px;
-                                ">{{$cat}}</a>
-                            <a href="{{ $url }}" style="
-                                display: block;
-                                font-size: 28px;
-                                font-weight: bold;
-                                color: #000;
-                                text-decoration: none;
-                                margin-bottom: 10px;
-                                ">
+                            display: block;
+                            font-size: 12px;
+                            color: #555;
+                            text-transform: uppercase;
+                            margin-bottom: 5px;
+                            ">{{$cat}}</a>
+                            <a href="{{$url}}" style="
+                          display: block;
+                          font-size: 28px;
+                          font-weight: bold;
+                          color: #000;
+                          text-decoration: none;
+                          margin-bottom: 10px;
+                         ">
                                 {{ $title }}
                             </a>
                             <div style="font-size: 14px; color: #888">
@@ -1213,21 +1211,15 @@
                                         $authDate = "$date by $author";
                                     @endphp
                                     
-                                    <a href="{{ $url }}" style="color: black ; text-decoration:none">
+                                    <a class="product-card" href="{{ $url }}" style="color: black ; text-decoration:none">
 
 
-                                    <div class="hide" style="
-                                        background-color: white;
-                                        padding: 20px;
-                                        width: 200px;
-                                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                                        ">
-                                        <img src="{{ $image }}" alt="Sneakers"
-                                            style="width: 100%; object-fit: cover; margin-bottom: 10px" />
-                                        <p style="margin: 0; font-size: 18px; text-align: center">
-                                            {{$title}}
-                                        </p>
-                                    </div>
+                                        <div  style="background-color: white; padding: 20px; width: 200px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); height: 300px; display: flex; flex-direction: column;">
+                                            <img src="{{ $image }}" alt="Product Image" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 10px;" />
+                                            <p style="margin: 0; font-size: 0.8rem; text-align: center; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                                                {{$title}}
+                                            </p>
+                                        </div>
                                     </a>
 
                         @endforeach

@@ -33,6 +33,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+Route::view('/contacts', 'pages.contact');
 
 Route::get('/',[PageController::class, 'home'])->name('home'); 
 
