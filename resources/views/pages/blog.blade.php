@@ -397,7 +397,7 @@
             width: 250px;
           ">
                 <form action="{{ route('search') }}">
-                    <input type="text" placeholder="RECHERCHER" name="search"
+                    <input type="text" placeholder="Research" name="search"
                         style="
                   width: 100%;
                   padding: 15px 50px 15px 20px;
@@ -441,18 +441,16 @@
                 <img src="/images/Lofficiel Peru.png" alt="L'OFFICIEL" style="width: 150px" />
                 </a>
                 <div style="margin-bottom: 15px">
-                    <a href="#"
+                    <a href="#subscribe"
                         style="
                 color: white;
                 text-decoration: none;
                 display: block;
                 margin-bottom: 10px;
-              ">BUY
-                        THE ISSUE</a>
+              ">Subscribe</a>
                     <a href="#" style="color: white; text-decoration: none; display: block">CONTACT</a>
                 </div>
                 <div style="margin-top: 20px">
-                    <p style="margin-bottom: 20px">SUIVEZ-NOUS</p>
                     <div style="display: flex; margin-bottom: 30px; gap: 15px">
                         <a target="_blank" href="https://www.instagram.com/thelofficielmag/">
                         <i class="fa-brands fa-instagram fa-lg"
@@ -502,7 +500,7 @@
                     display: inline-block;">
                     {{ $cat }}
                 </div></a>
-                <h2 style="font-size: 37px; font-weight: 600; line-height: 1.4;">{{ $title }}</h2>
+                <h2 style="font-size: 47px; font-weight: 600; line-height: 1.4;">{{ $title }}</h2>
             </div>
             <p  style="margin: 0 auto; max-width: 600px; font-size: 22px; line-height: 1.6; color: #555;">
                 {{ $post->description }}
@@ -558,6 +556,15 @@
         </div>
 
         <section class="bottle" style="margin-top: 50px;">
+            <h2 style="
+          margin-top: 10px;
+          font-weight: lighter;
+          font-size: 20px;
+          margin-left: 32px;
+          margin-bottom: 20px;
+        ">
+            Related articles
+        </h2>
             <div class="section"
                 style="
               display: flex;

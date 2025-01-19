@@ -13,6 +13,10 @@
     @include('pages.layouts.seo')
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -54,7 +58,7 @@
         .logo img {
             margin-top: -100px;
             width: 300px;
-            margin-left: 130px;
+            margin-left: 20px;
         }
 
         .navbar.scrolled .logo {
@@ -99,7 +103,6 @@
         .hero {
             position: relative;
             width: 100%;
-            /* min-width: 410px; */
             height: 95vh;
             background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
                 url('{{ $firstPost?->thumbnail }}') center/cover no-repeat;
@@ -110,10 +113,20 @@
             text-align: center;
         }
 
-
         .hero-content {
-            max-width: 800px;
-            padding: 2rem;
+            position: absolute;
+            margin-top: 400px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+
+        @media screen and (min-width: 768px) {
+            .hero-content {
+                margin-top: 150px;
+            }
         }
 
         .category {
@@ -123,12 +136,23 @@
         }
 
         .hexx {
-            margin-top: 150px;
+            margin-top: 50px;
         }
 
         @media only screen and (max-width: 768px) {
+            .category {
+                font-size: 20px;
+                margin-top: 200px;
+            }
+
+            .title {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+                line-height: 1.2;
+            }
+
             .hexx {
-                margin-top: 550px;
+                margin-top: 200px;
             }
         }
 
@@ -148,19 +172,25 @@
             margin: 0 auto;
             padding: 2rem;
             display: grid;
+            margin-top: -150px;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
             background: white;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            bottom: -100px;
+            /* bottom: -100px; */
             z-index: 2;
         }
 
-        @media (min-width: 1400px) and (max-width: 1800px) {
+        @media (min-width: 1400px) and (max-width: 1700px) {
             .content-grid {
-                max-width: 1600px;
+                max-width: 1450px;
+            }
+        }
+
+        @media (min-width: 1700px) and (max-width: 2200px) {
+            .content-grid {
+                max-width: 1630px;
             }
         }
 
@@ -230,9 +260,10 @@
                 display: none;
             }
 
-            .hero-content {
-                margin-top: 500px;
+            .meta {
+                font-size: 1rem;
             }
+
 
             .logo img {
                 width: 100px;
@@ -265,6 +296,7 @@
             .section {
                 flex-direction: column;
                 align-items: center;
+                hero
             }
 
             .section article {
@@ -273,7 +305,7 @@
             }
 
             .title {
-                font-size: 2rem;
+                font-size: 3rem;
             }
         }
 
@@ -287,7 +319,6 @@
             .swiper-slide {
                 display: flex;
                 justify-content: center;
-                /* Center the slide content */
             }
         }
 
@@ -300,8 +331,19 @@
         }
 
         @media (max-width: 768px) {
+            .logo img {
+                margin-left: -150px;
+            }
+        }
+
+
+        @media (max-width: 768px) {
             .hide {
                 display: none;
+            }
+
+            .high {
+                margin-top: -370px;
             }
         }
 
@@ -311,6 +353,13 @@
             width: 350px;
         }
       } */
+
+      @media (min-width: 1024px) {
+    .logo-img {
+      width: 300px; /* Adjust size as needed */
+      height: auto;
+    }
+  }
     </style>
 </head>
 
@@ -324,8 +373,7 @@
             </a>
         </div>
 
-        <div id="sidebar"
-            style="
+        <div id="sidebar" style="
     overflow-x: hidden;
     display: none;
     width: 300px;
@@ -340,8 +388,7 @@
     z-index: 1000;
     flex-direction: column;
   ">
-            <a href="javascript:void(0)" onclick="toggleSidebar()"
-                style="
+            <a href="javascript:void(0)" onclick="toggleSidebar()" style="
             margin-left: 20px;
             color: black;
             text-decoration: none;
@@ -350,24 +397,22 @@
             margin-bottom: 20px;
           ">&times;</a>
 
-            <div
-                style="
+            <div style="
             position: relative;
             display: flex;
             margin-left: 10px;
             width: 250px;
           ">
                 <form action="{{ route('search') }}">
-                    <input type="text" name="search" placeholder="RECHERCHER"
-                        style="
-                  width: 100%;
-                  padding: 15px 50px 15px 20px;
-                  font-size: 16px;
-                  border: none;
-                  border-radius: 25px;
-                  outline: none;
-                  box-shadow: none;
-                " />
+                    <input type="text" placeholder="RECHERCHER" name="search" style="
+              width: 100%;
+              padding: 15px 50px 15px 20px;
+              font-size: 16px;
+              border: none;
+              border-radius: 25px;
+              outline: none;
+              box-shadow: none;
+            " />
                 </form>
                 <i class="fa-solid fa-magnifying-glass" style="margin-top: 15px"></i>
             </div>
@@ -375,8 +420,7 @@
             <h2 style="margin-top: 20px; margin-left: 27px; font-size: 14px">
                 CATEGORIES
             </h2>
-            <ul
-                style="
+            <ul style="
             margin-top: 30px;
             margin-left: 30px;
             list-style-type: none;
@@ -387,8 +431,7 @@
             </ul>
 
             <!-- Black Footer Section -->
-            <div
-                style="
+            <div style="
             background-color: black;
             color: white;
             padding: 20px;
@@ -398,10 +441,11 @@
             width: 350px;
             box-sizing: border-box;
           ">
-                <img src="/images/Lofficiel Peru.png" alt="L'OFFICIEL" style="width: 150px" />
+                <a href="/">
+                    <img src="/images/Lofficiel Peru.png" alt="L'OFFICIEL" style="width: 150px;" />
+                </a>
                 <div style="margin-bottom: 15px">
-                    <a href="#"
-                        style="
+                    <a href="" style="
                 color: white;
                 text-decoration: none;
                 display: block;
@@ -413,100 +457,142 @@
                 <div style="margin-top: 20px">
                     <p style="margin-bottom: 20px">SUIVEZ-NOUS</p>
                     <div style="display: flex; margin-bottom: 30px; gap: 15px">
-
-                        <i class="fa-brands fa-instagram fa-lg" style="color: #ffffff; margin-right: 10px"></i>
+                        <a target="_blank" href="https://www.instagram.com/thelofficielmag/">
+                            <i class="fa-brands fa-instagram fa-lg" style="color: #ffffff; margin-right: 10px"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div
-            style="
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px 20px;
-          box-sizing: border-box;
-          width: 100%;
-        ">
-            <a href="#" class="logo" style="flex: 1; text-align: center">
-                <img src="/images/Lofficiel Peru.png" alt="Logo"
-                    style="background-position: center; display: inline-block" />
-            </a>
+        <div style="
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-sizing: border-box;
+      width: 100%;
+    ">
+    <a href="/" class="logo" style="flex: 1; text-align: center">
+        <img src="/images/Lofficiel Peru.png" class="logo-img" alt="Logo"
+            style="background-position: center; margin-left: -100px; display: inline-block; max-width: 200%;" />
+    </a>
 
-            <div class="nav-links" style="display: flex; justify-content: flex-end; margin-top: -150px; gap: 10px">
-                <a href="#" style="color: white; text-decoration: none; font-size: 16px">Buy The Issue</a>
-                <a href="#" style="color: white; text-decoration: none; font-size: 16px">France</a>
-            </div>
-        </div>
+    <div class="nav-links" style="display: flex; justify-content: flex-end; margin-top: -170px; gap: 10px">
+        <a href="#subscribe" style="color: white; text-decoration: none; font-size: 16px">Subscribe</a>
+        {{-- <a href="#" style="color: white; text-decoration: none; font-size: 16px">France</a> --}}
+    </div>
+</div>
     </nav>
 
-    <section class="hero section" style="font-family: 'Sen', sans-serif">
-        <div class="hero-content">
-            <div class="category">{{ $firstPost?->category?->category }}</div>
-            <h1 class="title">
-                {{ $firstPost?->title }}
-            </h1>
-            <div class="meta">{{ $firstPost?->created_at->format('d.m.y') }} by {{ $firstPost?->author?->name }}</div>
+    <section style="font-family: 'Sen', sans-serif">
+        <div class="hero section" style="position: relative; width: 100%; height: 95vh;">
+            <a href="{{  route('blog', ['slug' => $firstPost?->slug]) }}"
+                style="display: block; width: 100%; height: 100%;">
+                <img src="{{ $firstPost?->thumbnail }}" alt="{{ $firstPost?->title }}" style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                ">
+                <div style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.3);
+                "></div>
+            </a>
+
+            <div class="hero-content">
+                <a href="{{  route('blog', ['slug' => $firstPost?->slug]) }}"
+                    style="text-decoration: none; color: white;">
+                    <div class="category">{{ $firstPost?->category?->category }}</div>
+                </a>
+                <a href="{{  route('blog', ['slug' => $firstPost?->slug]) }}"
+                    style="text-decoration: none; color: white;">
+                    <div class="title">
+                        {{ $firstPost?->title }}
+                    </div>
+                </a>
+                <a href="{{  route('blog', ['slug' => $firstPost?->slug]) }}"
+                    style="text-decoration: none; color: white;">
+                    <div class="meta">{{ $firstPost?->created_at->format('d.m.y') }} by {{ $firstPost?->author?->name }}
+                    </div>
+                </a>
+            </div>
         </div>
 
         <div class="content-grid" style="text-align: left">
+            @foreach ($recentPosts->slice(0, 3) as $post)
+                        @php
+                            $url = route('blog', ['slug' => $post->slug]);
+                            $title = Str::title($post->title);
+                            $image = $post->thumbnail;
+                            $date = $post->created_at->format('d.m.y');
+                            $author = $post->author?->name;
+                            $cat = $post->category->category;
+                            $catUrl = route('category', ['category' => $cat]);
+                            $authDate = "$date by $author";
+                        @endphp
 
-            @foreach ($posts->slice(0, 3) as $post)
-                @php
-                    $url = route('blog', ['slug' => $post->slug]);
-                    $title = Str::title($post->title);
-                    $image = $post->thumbnail;
-                    $date = $post->created_at->format('d.m.y');
-                    $author = $post->author?->name;
-                    $cat = $post->category->category;
-                    $catUrl = route('category', ['category' => $cat]);
-                    $authDate = "$date by $author";
-                @endphp
+                        <article style="
+                            display: flex;
+                            align-items: flex-start;
+                            /* margin-left: -30px; */
+                            margin-bottom: 20px;
+                        ">
+                            <img src="{{ $image }}" alt="BE WELL" style="
+                            width: 160px; 
+                            height: 120px; 
+                            object-fit: cover; 
+                            object-position: center; 
+                            margin-right: 20px;
+                            aspect-ratio: 4 / 3;
+                            max-width: 100%;
+                            max-height: 100%;
+                        ">
+                        
+                        
+                        <div style="gap: -20px;">
+                            <a href="{{ $catUrl }}" style="
+                                display: block;
+                                font-size: 12px;
+                                color: #555;
+                                text-transform: uppercase;
+                                margin-bottom: 5px;
+                                overflow-wrap: break-word; /* Ensure long text wraps */
+                            ">
+                                {{$cat}}
+                            </a>
+                        
+                            <a href="{{ $url }}" style="
+                                display: block;
+                                font-size: 18px;
+                                font-weight: bold;
+                                color: #000;
+                                text-decoration: none;
+                                margin: 0 0 10px 0; /* Remove any right margin */
+                                padding: 0; /* Ensure no extra padding */
+                            ">
+                            {{$title}}
+                            </a>
 
-                <article
-                    style="
-                    display: flex;
-                    align-items: flex-start;
-                    padding: 20px;
-                    margin-left: -30px;
-                    margin-bottom: 20px;
-                ">
-
-                    <img src="{{ $image }}" alt="BE WELL"
-                        style="
-              width: 160px;
-              height: 120px;
-              object-fit: cover;
-              margin-right: 20px;
-                " />
-                    <div>
-                        <a href="{{ $catUrl }}"
-                            style="
-                display: block;
-                font-size: 12px;
-                color: #555;
-                text-transform: uppercase;
-                margin-bottom: 5px;
-              ">{{ $cat }}</a>
-                        <a href="{{ $url }}"
-                            style="
-                display: block;
-                font-size: 18px;
-                font-weight: bold;
-                color: #000;
-                text-decoration: none;
-                margin-bottom: 10px;
-              ">{{ $title }}</a>
-                        <div style="font-size: 14px; color: #888">
-                            {{ $authDate }}
+                        
+                            <div style="
+                                font-size: 14px;
+                                color: #888;
+                                overflow-wrap: break-word; /* Prevent date text from overflowing */
+                            ">
+                                {{ $authDate }}
+                            </div>
                         </div>
-                    </div>
-                </article>
+                        
+                        </article>
             @endforeach
-
-
-
         </div>
     </section>
 
@@ -516,7 +602,7 @@
           font-weight: lighter;
           font-size: 20px;
           margin-left: 50px;
-          margin-bottom: 50px;
+          /* margin-bottom: 50px; */
         ">
             Trending
         </h2>
@@ -554,7 +640,7 @@
                 text-transform: uppercase;
                 margin-bottom: 5px;
                 ">{{ $cat }}</a>
-                    <a href="#"
+                    <a href="{{$url}}"
                         style="
               display: block;
               font-size: 28px;

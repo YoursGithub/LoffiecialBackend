@@ -181,111 +181,125 @@
 
 <body>
   <div>
-    <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #ddd;">
+    <div
+        style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #ddd;">
         <div class="bars" style="display: flex; padding: 15px; color: black">
-            <a
-              href="javascript:void(0)"
-              onclick="toggleSidebar()"
-              style="color: black; text-decoration: none"
-            >
-              <i class="fa fa-bars fa-xl" style="margin-right: 5px"></i>
+            <a href="javascript:void(0)" onclick="toggleSidebar()" style="color: black; text-decoration: none">
+                <i class="fa fa-bars fa-xl" style="margin-right: 5px"></i>
             </a>
             <span>MENU</span>
         </div>
-    
-        <div
-  id="sidebar"
-  style="
-    overflow-x: hidden;
-    display: none;
-    width: 250px;
-    min-height: 100vh;
-    height: 100%;
-    background-color: white;
-    color: black;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-y: auto;
-    z-index: 1000;
-    flex-direction: column;
-  "
->
-<a
-href="javascript:void(0)"
-onclick="toggleSidebar()"
-style="
-  margin-left: 20px;
-  color: black;
-  text-decoration: none;
-  font-size: 48px;
-  display: block;
-  margin-bottom: 20px;
-"
->&times;</a
->
 
-<div
-style="
-  position: relative;
-  display: flex;
-  margin-left: 10px;
-  width: 200px;
-"
->
-<form  action="{{ route('search') }}">
-  <input type="text" placeholder="RECHERCHER" name="search"
-      style="
-width: 100%;
-padding: 15px 50px 15px 20px;
-font-size: 16px;
-border: none;
-border-radius: 25px;
-outline: none;
-box-shadow: none;
-" />
-</form>
-<i class="fa-solid fa-magnifying-glass" style="margin-top: 15px"></i>
-</div>
-        
-            <h2 style="margin-top: 20px; margin-left: 20px; font-size: 15px;">CATEGORIES</h2>
-            <ul style="margin-top:30px; margin-left: 30px; list-style-type: none; padding: 0;">
-              @include('pages.layouts.header')
-                
-            </ul>
-        
-            <!-- Black Footer Section -->
-            <div style="
-                background-color: black;
-                color: white;
-                padding: 20px;
-                bottom: 0;
-                left: 0;
-                width: 250px;
-                box-sizing: border-box;
-            ">
-                <img src="/images/Loffecial_Peru-removebg-preview.png" alt="L'OFFICIEL" style="width: 120px;">
-                <div style="margin-bottom: 15px;">
-                    <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 10px;">BUY THE ISSUE</a>
-                    <a href="#" style="color: white; text-decoration: none; display: block;">CONTACT</a>
-                </div>
-                <div style="margin-top: 20px;">
-                    <p style="margin-bottom: 20px;">SUIVEZ-NOUS</p>
-                    <div style="display: flex; margin-bottom: 30px; gap: 15px;">
-                        <i class="fa-brands fa-facebook-f fa-lg" style="color: #ffffff; margin-right: 10px;"></i>
-                        <i class="fa-brands fa-twitter fa-lg" style="color: #ffffff; margin-right: 10px;"></i>
-                        <i class="fa-brands fa-instagram fa-lg" style="color: #ffffff; margin-right: 10px;"></i>
-                    </div>
+        <div id="sidebar"
+        style="
+overflow-x: hidden;
+display: none;
+width: 300px;
+min-height: 100vh;
+height: 100%;
+background-color: white;
+color: black;
+position: fixed;
+top: 0;
+left: 0;
+overflow-y: auto;
+z-index: 1000;
+flex-direction: column;
+">
+        <a href="javascript:void(0)" onclick="toggleSidebar()"
+            style="
+        margin-left: 20px;
+        color: black;
+        text-decoration: none;
+        font-size: 48px;
+        display: block;
+        margin-bottom: 20px;
+      ">&times;</a>
+
+        <div
+            style="
+        position: relative;
+        display: flex;
+        margin-left: 10px;
+        width: 250px;
+      ">
+            <form action="{{ route('search') }}">
+                <input type="text" placeholder="Research" name="search"
+                    style="
+              width: 100%;
+              padding: 15px 50px 15px 20px;
+              font-size: 16px;
+              border: none;
+              border-radius: 25px;
+              outline: none;
+              box-shadow: none;
+            " />
+          </form>
+            <i class="fa-solid fa-magnifying-glass" style="margin-top: 15px"></i>
+        </div>
+
+        <h2 style="margin-top: 20px; margin-left: 27px; font-size: 14px">
+            CATEGORIES
+        </h2>
+        <ul
+            style="
+        margin-top: 30px;
+        margin-left: 30px;
+        list-style-type: none;
+        padding: 0;
+      ">
+            @include('pages.layouts.header')
+
+        </ul>
+
+        <!-- Black Footer Section -->
+        <div
+            style="
+        background-color: black;
+        color: white;
+        padding: 20px;
+        margin-top: auto;
+        bottom: 0;
+        left: 0;
+        width: 350px;
+        box-sizing: border-box;
+      ">
+            <a href="/">
+            <img src="/images/Lofficiel Peru.png" alt="L'OFFICIEL" style="width: 150px" />
+            </a>
+            <div style="margin-bottom: 15px">
+                <a href="#subscribe"
+                    style="
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+          ">Subscribe</a>
+                <a href="#" style="color: white; text-decoration: none; display: block">CONTACT</a>
+            </div>
+            <div style="margin-top: 20px">
+                <div style="display: flex; margin-bottom: 30px; gap: 15px">
+                    <a target="_blank" href="https://www.instagram.com/thelofficielmag/">
+                    <i class="fa-brands fa-instagram fa-lg"
+                        style="color: #ffffff; margin-right: 10px"></i>
+                    </a>
                 </div>
             </div>
         </div>
+    </div>
+
+
+
 
         <div>
-            <img src="/images/logo-lofficiel-amtd.svg" alt="" class="images" style="width: 200px; max-width: 100%;">
+            <a href="/">
+            <img src="/images/logo-lofficiel-amtd.svg" alt="" class="images"
+                style="width: 400px; max-width: 100%; margin-left: -5px;">
+            </a>
         </div>
         <div class="france" style="display: flex; align-items: center;">
-            <a href="#" style="margin-right: 20px; font-size: 14px; text-decoration: none; color: black;">BUY THE ISSUE</a>
-            <a href="#" style="font-size: 14px; text-decoration: none; color: black;">FRANCE</a>
+            <a href="#subscribe" style="margin-right: 20px; font-size: 18px; text-decoration: none; color: black;">Subscribe</a>
+            {{-- <a href="#" style="font-size: 14px; text-decoration: none; color: black;">FRANCE</a> --}}
         </div>
     </div>
 

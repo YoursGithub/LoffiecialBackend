@@ -163,6 +163,7 @@
     /* min-width: 410px; */
  background-color: #131312">
       <div>
+        <a href="/">
         <div
           style="display: flex; justify-content: center; align-items: center"
         >
@@ -174,6 +175,7 @@
             style="margin-top: -100px"
           />
         </div>
+        </a>
 
         <div
           style="
