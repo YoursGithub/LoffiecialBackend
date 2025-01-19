@@ -142,14 +142,8 @@
 
         @media only screen and (max-width: 768px) {
             .category {
-                font-size: 20px;
-                margin-top: 200px;
-            }
-
-            .title {
-                font-size: 3rem;
-                margin-bottom: 1rem;
-                line-height: 1.2;
+                font-size: 1rem;
+                /* margin-top: 200px; */
             }
 
             .hexx {
@@ -261,6 +255,10 @@
                 display: none;
             }
 
+            .title {
+            font-size: 1.5rem;
+        }
+
             .meta {
                 font-size: 1rem;
             }
@@ -268,10 +266,6 @@
 
             .logo img {
                 width: 100px;
-            }
-
-            .title {
-                font-size: 2rem;
             }
 
             .content-grid {
@@ -303,10 +297,6 @@
             .section article {
                 width: 100%;
                 margin-bottom: 20px;
-            }
-
-            .title {
-                font-size: 3rem;
             }
         }
 
@@ -558,24 +548,24 @@
                             align-items: flex-start;
                             /* margin-left: -30px; */
                             margin-bottom: 20px;
+                            gap: 20px;
                         ">
                         <a href="{{ $url }}">
 
+                        <a href="{{$url}}">
                             <img src="{{ $image }}" alt="BE WELL" style="
-                            width: 160px; 
-                            height: 120px; 
-                            object-fit: cover; 
+                            width: 100%;
+                            height: 100px;
+                            object-fit: cover;
                             object-position: center; 
                             margin-right: 20px;
                             aspect-ratio: 4 / 3;
-                            max-width: 100%;
-                            max-height: 100%;
                         ">
                         </a>
 
+                        </a>
                         
-                        
-                        <div style="gap: -20px;">
+                        <div style="gap: 20px;">
                             <a href="{{ $catUrl }}" style="
                                 display: block;
                                 font-size: 12px;
@@ -1192,7 +1182,7 @@
                                 {{ $cat }}
                             </p>
                             <a href="{{ $url }}" style="text-decoration: none; color: white;">
-                            <h1 style="font-size: 38px; margin-right: 160px; margin: 5px 0">
+                            <h1 style="font-size: 2rem; margin-right: 160px; margin: 5px 0">
                                 {{ $title }}
                             </h1>
                             </a>
