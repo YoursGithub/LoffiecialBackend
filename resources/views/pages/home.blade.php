@@ -144,6 +144,8 @@
             .category {
                 font-size: 1rem;
                 /* margin-top: 200px; */
+                font-size: 1rem;
+                /* margin-top: 200px; */
             }
 
             .hexx {
@@ -561,8 +563,6 @@
                             margin-right: 20px;
                             aspect-ratio: 4 / 3;
                         ">
-                        </a>
-
                         </a>
                         
                         <div style="gap: 20px;">
