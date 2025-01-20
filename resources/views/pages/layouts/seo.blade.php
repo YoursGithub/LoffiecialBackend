@@ -7,7 +7,7 @@
     $desc =
         'Lofficiel is a stylish destination for original Fashion, Beauty, Culture and Entertainment news. Check us out';
 
-    $titleImg = url('/images/Lofficiel%20Peru.png');
+    $titleImg = url('/images/logo/logo-sq.png');
 
 @endphp
 

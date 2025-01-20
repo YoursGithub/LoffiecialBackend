@@ -442,7 +442,7 @@ width: 250px;
                 </div>
                 <div style="margin-top: 20px">
                     <div style="display: flex; margin-bottom: 30px; gap: 15px">
-                        <a target="_blank" href="https://www.instagram.com/thelofficielmag/">
+                        <a target="_blank" href="https://www.instagram.com/lofficielperu/">
                             <i class="fa-brands fa-instagram fa-lg" style="color: #ffffff; margin-right: 10px"></i>
                         </a>
                     </div>
