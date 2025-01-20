@@ -34,6 +34,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::view('/contacts', 'pages.contact');
+Route::view('/privacy', 'pages.privacy');
 
 Route::get('/',[PageController::class, 'home'])->name('home'); 
 

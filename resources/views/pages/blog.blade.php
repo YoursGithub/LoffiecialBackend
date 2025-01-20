@@ -52,7 +52,7 @@
         }
 
         .navbar.scrolled {
-            background: url("/images/logo-lofficiel-amtd.svg") no-repeat center;
+            background: url("/images/Lofficiel_Peru_Black-removebg-preview.png") no-repeat center;
             background-size: 150px;
             background-color: white;
             box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
@@ -69,7 +69,7 @@
         .logo img {
             margin-top: -100px;
             width: 300px;
-            margin-left: 130px;
+            /* margin-left: 130px; */
         }
 
         .navbar.scrolled .logo {
@@ -180,12 +180,12 @@
         }
 
         .top {
-            margin-top: -140px !important;
+            margin-top: 140px !important;
         }
 
 @media (max-width: 768px) {
     .top {
-        margin-top: 0px !important;
+        margin-top: 100px !important;
     }
 }
 
@@ -283,8 +283,8 @@
             }
 
             .logo img {
-                margin-top: -30px;
-                margin-left: -80px;
+                margin-top: -18px;
+                margin-left: -100px;
             }
 
             .disapp {
@@ -374,18 +374,16 @@
 
 
 <body>
-    <div>
-        <div
-            style="display: flex; justify-content: space-between; ">
-            <div class="bars" style="display: flex; padding: 15px; color: black">
-                <a href="javascript:void(0)" onclick="toggleSidebar()" style="color: black; text-decoration: none">
-                    <i class="fa fa-bars fa-xl" style="margin-right: 5px"></i>
-                </a>
-                <span>MENU</span>
-            </div>
+    <nav class="navbar">
+        <div class="bars" style="display: flex; padding: 15px; color: black">
+            <a href="javascript:void(0)" onclick="toggleSidebar()"
+                style="display:flex; color: black; text-decoration: none">
+                <i class="fa fa-bars fa-xl" style="margin-right: 5px"></i>
+                <span style="margin-top: -8px;">MENU</span>
+            </a>
+        </div>
 
-            <div id="sidebar"
-            style="
+        <div id="sidebar" style="
     overflow-x: hidden;
     display: none;
     width: 300px;
@@ -400,8 +398,7 @@
     z-index: 1000;
     flex-direction: column;
   ">
-            <a href="javascript:void(0)" onclick="toggleSidebar()"
-                style="
+            <a href="javascript:void(0)" onclick="toggleSidebar()" style="
             margin-left: 20px;
             color: black;
             text-decoration: none;
@@ -410,33 +407,30 @@
             margin-bottom: 20px;
           ">&times;</a>
 
-            <div
-                style="
+            <div style="
             position: relative;
             display: flex;
             margin-left: 10px;
             width: 250px;
           ">
                 <form action="{{ route('search') }}">
-                    <input type="text" placeholder="Research" name="search"
-                        style="
-                  width: 100%;
-                  padding: 15px 50px 15px 20px;
-                  font-size: 16px;
-                  border: none;
-                  border-radius: 25px;
-                  outline: none;
-                  box-shadow: none;
-                " />
-              </form>
+                    <input type="text" placeholder="Research" name="search" style="
+              width: 100%;
+              padding: 15px 50px 15px 20px;
+              font-size: 16px;
+              border: none;
+              border-radius: 25px;
+              outline: none;
+              box-shadow: none;
+            " />
+                </form>
                 <i class="fa-solid fa-magnifying-glass" style="margin-top: 15px"></i>
             </div>
 
             <h2 style="margin-top: 20px; margin-left: 27px; font-size: 14px">
                 CATEGORIES
             </h2>
-            <ul
-                style="
+            <ul style="
             margin-top: 30px;
             margin-left: 30px;
             list-style-type: none;
@@ -447,8 +441,7 @@
             </ul>
 
             <!-- Black Footer Section -->
-            <div
-                style="
+            <div style="
             background-color: black;
             color: white;
             padding: 20px;
@@ -459,43 +452,44 @@
             box-sizing: border-box;
           ">
                 <a href="/">
-                <img src="/images/Lofficiel Peru.png" alt="L'OFFICIEL" style="width: 150px" />
+                    <img src="/images/Lofficiel Peru.png" alt="L'OFFICIEL" style="width: 150px;" />
                 </a>
                 <div style="margin-bottom: 15px">
-                    <a href="#subscribe"
-                        style="
+                    <a href="#subscribe" style="
                 color: white;
                 text-decoration: none;
                 display: block;
                 margin-bottom: 10px;
               ">Subscribe</a>
-                    <a href="#" style="color: white; text-decoration: none; display: block">CONTACT</a>
-                </div>
+<a href="mailto:contact@lofficiel.pe" style="color: white; text-decoration: none; display: block">CONTACT</a>                </div>
                 <div style="margin-top: 20px">
                     <div style="display: flex; margin-bottom: 30px; gap: 15px">
                         <a target="_blank" href="https://www.instagram.com/thelofficielmag/">
-                        <i class="fa-brands fa-instagram fa-lg"
-                            style="color: #ffffff; margin-right: 10px"></i>
+                            <i class="fa-brands fa-instagram fa-lg" style="color: #ffffff; margin-right: 10px"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
 
+        <div style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            width: 100%;
+        ">
+            <a href="/" class="logo" style="flex: 1; text-align: center">
+                <img src="/images/Lofficiel_Peru_Black-removebg-preview.png" alt="Logo"
+                    style="background-position: center; display: inline-block;" />
+            </a>
 
-
-            <div class="responsive-margin">
-                <a href="/">
-                <img src="/images/Lofficiel_Peru_Black-removebg-preview.png" alt="" class="images"
-                    style="width: 400px; max-width: 100%; margin-left: -5px;">
-                </a>
-            </div>
-            <div class="france" style="margin-top: 30px;">
-                <a href="#subscribe" style="margin-right: 20px; font-size: 18px; text-decoration: none; color: black;">Subscribe</a>
-                {{-- <a href="#" style="font-size: 14px; text-decoration: none; color: black;">FRANCE</a> --}}
-            </div>
-        </div>
-        
+    <div class="nav-links" style="display: flex; justify-content: flex-end; margin-top: -170px; gap: 10px">
+        <a href="#subscribe" style="color: black; text-decoration: none; font-size: 16px">Subscribe</a>
+        {{-- <a href="#" style="color: white; text-decoration: none; font-size: 16px">France</a> --}}
+    </div>
+</div>
+    </nav>
 
         
         <div class="bottle" style="text-align: center; padding: 20px; position: relative;">
@@ -528,8 +522,15 @@
             <p style="margin-top: 20px; font-size: 14px; color: #888;">{{ $authDate }}</p>
 
             <div style="display: flex; justify-content: center; align-items: center; padding: 20px;">
-                <img src="{{ $image }}" alt="" style="object-fit:cover; width: 100%; max-width: 900px; height: 630px;">
+                <img src="{{ $image }}" alt="" 
+                    style="
+                        object-fit: cover; 
+                        width: 100%; 
+                        max-width: 900px; 
+                        max-height: 100%; 
+                    ">
             </div>
+            
         
             <div id="main-description" class="bottle" style="text-align: left; margin-bottom: 20px; margin: 0 auto; max-width: 800px; padding: 20px;">
                 <style>
@@ -763,15 +764,19 @@
     }
 });
 
-        window.addEventListener("scroll", () => {
-            const navbar = document.querySelector(".navbar");
-            if (window.scrollY > 50) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
-        });
-
+window.addEventListener("scroll", () => {
+    const navbar = document.querySelector(".navbar");
+    navbar.onclick = () => {
+        if (navbar.classList.contains("scrolled")) {
+            window.location.href = '/';
+        }
+    };
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
         const swiper = new Swiper('.swiper', {
     slidesPerView: 1,
     spaceBetween: 20,

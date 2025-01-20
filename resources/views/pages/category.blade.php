@@ -436,8 +436,7 @@
                 display: block;
                 margin-bottom: 10px;
               ">Subscribe</a>
-                    <a href="#" style="color: white; text-decoration: none; display: block">CONTACT</a>
-                </div>
+<a href="mailto:contact@lofficiel.pe" style="color: white; text-decoration: none; display: block">CONTACT</a>                </div>
                 <div style="margin-top: 20px">
                     <div style="display: flex; margin-bottom: 30px; gap: 15px">
                         <a target="_blank" href="https://www.instagram.com/thelofficielmag/">

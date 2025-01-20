@@ -205,17 +205,17 @@
         >
           <a
             class="text-red-600"
-            href=""
+            href="mailto:contact@lofficiel.pe"
             style="color: white; text-decoration: none; margin-top: -60px; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;"
             >Contact</a
           >
           <a
-            href=""
+            href="https://www.iubenda.com/privacy-policy/8009358"
             style="color: white; text-decoration: none; margin-top: -60px; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;"
             >Privacy Policy</a
           >
           <a
-            href=""
+            href="https://www.iubenda.com/privacy-policy/8009358/cookie-policy"
             style="color: white; text-decoration: none; margin-top: -60px; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;"
             >Cookie Policy</a
           >

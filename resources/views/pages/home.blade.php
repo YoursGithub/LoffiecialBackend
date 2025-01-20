@@ -42,7 +42,7 @@
         }
 
         .navbar.scrolled {
-            background: url("/images/logo-lofficiel-amtd.svg") no-repeat center;
+            background: url("/images/Lofficiel_Peru_Black-removebg-preview.png") no-repeat center;
             background-size: 150px;
             background-color: white;
             box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
@@ -292,7 +292,6 @@
             .section {
                 flex-direction: column;
                 align-items: center;
-                hero
             }
 
             .section article {
@@ -339,12 +338,15 @@
             }
         }
 
-        /* @media (min-width: 350px) and (max-width: 410px) {
-        .bottle{
-            margin-left: 30px;
-            width: 350px;
-        }
-      } */
+      .qwerty{
+        margin-top: -100px !important;
+      }
+
+      @media (max-width: 768px) {
+        .qwerty{
+        margin-top: -500px !important;
+      }
+      }  
     </style>
 </head>
 
@@ -354,7 +356,7 @@
             <a href="javascript:void(0)" onclick="toggleSidebar()"
                 style="display:flex; color: white; text-decoration: none">
                 <i class="fa fa-bars fa-xl" style="margin-right: 5px"></i>
-                <span style="margin-top: -10px;">MENU</span>
+                <span style="margin-top: -8px;">MENU</span>
             </a>
         </div>
 
@@ -382,25 +384,25 @@
             margin-bottom: 20px;
           ">&times;</a>
 
-            <div style="
-            position: relative;
-            display: flex;
-            margin-left: 10px;
-            width: 250px;
-          ">
-                <form action="{{ route('search') }}">
-                    <input type="text" placeholder="Research" name="search" style="
-              width: 100%;
-              padding: 15px 50px 15px 20px;
-              font-size: 16px;
-              border: none;
-              border-radius: 25px;
-              outline: none;
-              box-shadow: none;
-            " />
-                </form>
-                <i class="fa-solid fa-magnifying-glass" style="margin-top: 15px"></i>
-            </div>
+<div style="
+position: relative;
+display: flex;
+margin-left: 10px;
+width: 250px;
+">
+    <form action="{{ route('search') }}">
+        <input type="text" placeholder="Research" name="search" style="
+  width: 100%;
+  padding: 15px 50px 15px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  box-shadow: none;
+" />
+    </form>
+    <i class="fa-solid fa-magnifying-glass" style="margin-top: 15px"></i>
+</div>
 
             <h2 style="margin-top: 20px; margin-left: 27px; font-size: 14px">
                 CATEGORIES
@@ -436,7 +438,7 @@
                 display: block;
                 margin-bottom: 10px;
               ">Subscribe</a>
-                    <a href="#" style="color: white; text-decoration: none; display: block">CONTACT</a>
+                    <a href="mailto:contact@lofficiel.pe" style="color: white; text-decoration: none; display: block">CONTACT</a>
                 </div>
                 <div style="margin-top: 20px">
                     <div style="display: flex; margin-bottom: 30px; gap: 15px">
@@ -449,19 +451,19 @@
         </div>
 
         <div style="
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-sizing: border-box;
-      width: 100%;
-    ">
-    <a href="/" class="logo" style="flex: 1; text-align: center">
-        <img src="/images/Lofficiel Peru.png" alt="Logo"
-            style="background-position: center; display: inline-block;" />
-    </a>
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            width: 100%;
+        ">
+            <a href="/" class="logo" style="flex: 1; text-align: center">
+                <img src="/images/Lofficiel Peru.png" alt="Logo"
+                    style="background-position: center; display: inline-block;" />
+            </a>
 
     <div class="nav-links" style="display: flex; justify-content: flex-end; margin-top: -170px; gap: 10px">
-        <a href="#subscribe" style="color: white; text-decoration: none; font-size: 16px">Subscribe</a>
+        <a href="#subscribe" style="color: white; text-decoration: none; font-size: 16px margin-right:30px;">Subscribe</a>
         {{-- <a href="#" style="color: white; text-decoration: none; font-size: 16px">France</a> --}}
     </div>
 </div>
@@ -607,9 +609,9 @@ font-family: system-ui, -apple-system, sans-serif;
         <div class="section" style="
           display: flex;
           justify-content: space-between;
-          gap: 10px;
+          gap: 60px;
           padding: 20px;
-          max-width: 1200px;
+          max-width: 850px;
           margin: auto;
         ">
             @foreach ($trendingPosts->slice(0, 2) as $post)
@@ -628,7 +630,7 @@ font-family: system-ui, -apple-system, sans-serif;
                         <article style="width: 100%; text-align: left">
                             <a href="{{ $url }}">
                                 <img src="{{ $image }}" alt="BE WELL"
-                                    style="object-fit: cover;  width: 100%; height: 600px; margin-bottom: 15px" />
+                                    style="object-fit: cover;  width: 100%; height: 500px; margin-bottom: 15px" />
                             </a>
                             <a href="{{ $catUrl }}" style="
                             display: block;
@@ -791,13 +793,14 @@ font-family: system-ui, -apple-system, sans-serif;
     </section>
 
     <section class="bottle hexx" style="font-family: 'Sen', sans-serif">
-        <div class="section" style="
+        <div class="section qwerty" style="
           display: flex;
           justify-content: space-between;
-          gap: 10px;
+          gap: 60px;
           padding: 20px;
-          max-width: 1200px;
+          max-width: 850px;
           margin: auto;
+          margin-top: -500px;
         ">
             @foreach ($trendingPosts->slice(0, 2) as $post)
 
@@ -810,12 +813,12 @@ font-family: system-ui, -apple-system, sans-serif;
                             $cat = $post->category->category;
                             $catUrl = route('category', ['category' => $cat]);
                             $authDate = "$date by $author";
-                         @endphp
+                        @endphp
 
-                        <article style="width: 100%; text-align: left">
+                        <article style="width: 100%; text-align: left;">
                             <a href="{{ $url }}">
                                 <img src="{{ $image }}" alt="BE WELL"
-                                    style="object-fit: cover;  width: 100%; height: 600px; margin-bottom: 15px" />
+                                    style="object-fit: cover;  width: 100%; height: 500px; margin-bottom: 15px" />
                             </a>
                             <a href="{{ $catUrl }}" style="
                             display: block;
@@ -838,7 +841,6 @@ font-family: system-ui, -apple-system, sans-serif;
                                 {{ $authDate }}
                             </div>
                         </article>
-
             @endforeach
 
         </div>
@@ -1215,16 +1217,16 @@ font-family: system-ui, -apple-system, sans-serif;
                     $authDate = "$date by $author";
                 @endphp
 
-        <a href="{{ $url }}" style="color: white ; text-decoration:none">
+    <a href="{{ $url }}" style="color: white ; text-decoration:none">
 
-
-                <div style="
+        <div onclick="window.location.href='{{$url}}'" style="
                         position: relative;
                     width: 100%;
                     min-width: 410px;
                         display: flex;
                         background-image: url('{{ $image }}');
                         background-size: cover;
+                        cursor: pointer;
                         background-position: center;
                         ">
                     <div style="
@@ -1437,17 +1439,42 @@ font-family: system-ui, -apple-system, sans-serif;
             }
         }
 
-
-
         window.addEventListener("scroll", () => {
-            const navbar = document.querySelector(".navbar");
-            if (window.scrollY > 50) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
-        });
+    const navbar = document.querySelector(".navbar");
+    navbar.onclick = () => {
+        if (navbar.classList.contains("scrolled")) {
+            window.location.href = '/';
+        }
+    };
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
 
+function handleRedirect(element, url) {
+    if (!element || !url) {
+        console.error('Element or URL is missing');
+        return;
+    }
+
+    element.addEventListener('click', function() {
+        try {
+            // Check if URL is valid
+            new URL(url);
+            
+            // Perform the redirect
+            window.location.href = url;
+        } catch (error) {
+            console.error('Invalid URL provided:', error);
+        }
+    });
+}
+
+// Usage example:
+// const redirectDiv = document.querySelector('div[style*="position: relative"]');
+// handleRedirect(redirectDiv, '{{$url}}');
         const swiper = new Swiper('.swiper', {
             slidesPerView: 1,
             spaceBetween: 20,
