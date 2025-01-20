@@ -514,7 +514,7 @@
             @foreach ($recentPosts->slice(0, 3) as $post)
                         @php
                             $url = route('blog', ['slug' => $post->slug]);
-                            $title = Str::title($post->title);
+                            $title = Str::words(Str::title($post->title),6,"");
                             $image = $post->thumbnail;
                             $date = $post->created_at->format('d.m.y');
                             $author = $post->author?->name;
@@ -1076,7 +1076,7 @@ font-family: system-ui, -apple-system, sans-serif;
         ">
             Beauty
         </h2>
-        @foreach ($beautyPosts as $post)
+        @foreach ($beautyPosts->slice(0,1) as $post)
 
                 @php
                     $url = route('blog', ['slug' => $post->slug]);
@@ -1126,6 +1126,66 @@ font-family: system-ui, -apple-system, sans-serif;
         @endforeach
     </section>
 
+    <section class="bottle" style="margin-top: 50px;">
+        <div class="section" style="
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 23px;
+          padding: 20px;
+          max-width: 1700px;
+          margin: 0 auto;
+        ">
+            @foreach ($beautyPosts->slice(1, 3) as $post)
+
+                        @php
+                            $url = route('blog', ['slug' => $post->slug]);
+                            $title = Str::title($post->title);
+                            $image = $post->thumbnail;
+                            $date = $post->created_at->format('d.m.y');
+                            $author = $post->author?->name;
+                            $cat = $post->category->category;
+                            $catUrl = route('category', ['category' => $cat]);
+                            $authDate = "$date by $author";
+                         @endphp
+                        <div style="
+                                flex: 1 1 calc(33.33% - 20px);
+                                margin: 0;
+                                background-color: #fff;
+                                overflow: hidden;
+                            ">
+                            <a href="{{ $url }}">
+                                <img src="{{ $image }}" alt="Winter getaway"
+                                    style="object-fit: cover; width: 100%; height: 250px" />
+                            </a>
+                            <a href="{{ $url }}" style="color: black ; text-decoration:none">
+
+                            <div style="padding: 15px">
+                                <div style="
+                                    color: black;
+                                    font-size: 19px;
+                                    text-transform: uppercase;
+                                    margin-bottom: 10px;
+                                    border-bottom: 1px solid currentColor; display: inline-block;
+                                ">
+                                    {{ $cat }}
+                                </div>
+                                <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
+                                    {{ $title }}
+                                </div>
+                                <div style="font-size: 14px; ">
+                                    {{ $authDate }}
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+
+            @endforeach
+
+
+        </div>
+    </section>
+
     <section style="
         font-family: 'Sen', sans-serif;
         position: relative;
@@ -1155,7 +1215,7 @@ font-family: system-ui, -apple-system, sans-serif;
                     $authDate = "$date by $author";
                 @endphp
 
-<a href="{{ $url }}" style="color: white ; text-decoration:none">
+        <a href="{{ $url }}" style="color: white ; text-decoration:none">
 
 
                 <div style="
@@ -1226,7 +1286,7 @@ font-family: system-ui, -apple-system, sans-serif;
 
                     </div>
                 </div>
-</a>
+        </a>
         @endisset
 
     </section>
@@ -1280,9 +1340,13 @@ font-family: system-ui, -apple-system, sans-serif;
                     ">
                             {{ $cat }}
                         </p>
+                        <a href="{{ $url }}" style="color: white ; text-decoration:none;">
+
                         <h1 style="font-size: 42px; font-weight: bold; margin: 10px 0">
                             {{ $title }}
                         </h1>
+
+                        </a>
 
                         <p style="
                       font-size: 14px;

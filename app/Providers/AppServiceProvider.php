@@ -83,7 +83,7 @@ class AppServiceProvider extends ServiceProvider
             $query->where('category', 'beauty');
         })
             ->latest()
-            ->limit(1)
+            ->limit(4)
             ->get());
     }
 }

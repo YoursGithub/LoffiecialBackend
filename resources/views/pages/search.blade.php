@@ -396,7 +396,7 @@ flex-direction: column;
       @endphp
       
 
-      <div style="flex: 1; min-width: 300px; position: relative">
+      <div style="flex: 1; min-width: 300px; position: relative ; cursor: pointer;" onclick="location.href='{{ $url }}'">
           <img src="{{ $image }}" alt="Image 1"
               style="position: relative;
         width: 100%;
@@ -439,7 +439,7 @@ flex-direction: column;
       max-width: 1700px;
       margin: 0 auto;
     ">
-    @foreach ( $posts->slice(3,6) as $post )
+    @foreach ( $posts->slice(3) as $post )
 
      @php
          $url = route('blog', ['slug' => $post->slug]);
@@ -457,8 +457,9 @@ flex-direction: column;
                 margin: 0;
                 background-color: #fff;
                 overflow: hidden;
-            ">
-            <img src="{{ $image }}" alt="Winter getaway" style="width: 100%; height: 250px" />
+                cursor: pointer;" onclick="location.href='{{ $url }}'"
+            >
+            <img src="{{ $image }}" alt="Winter getaway" style="width: 100%; height: 250px ; object-fit:cover;" />
             <div style="padding: 15px">
                 <div
                     style="
@@ -487,101 +488,8 @@ flex-direction: column;
 
 
 
-    <section style="margin-top: 40px;">
-      <div class="container">
-        <div class="article-grid">
-
-          @foreach ( $posts->slice(9,9) as $post )
-
-          @php
-              $url = route('blog', ['slug' => $post->slug]);
-              $title = Str::title($post->title) ;
-              $image = $post->thumbnail ;
-              $date = $post->created_at->format('d.m.y') ;
-              $author = $post->author?->name ;
-              $cat = $post->category->category ;
-              $catUrl = route('category', ['category' => $cat]);
-              $authDate = "$date by $author" ;
-          @endphp
-
-          <article class="article-card">
-            
-            <img src="{{ $image }}" alt="Article Image" class="article-image">
-            <div class="article-content">
-              <div class="article-category">{{ $cat }}</div>
-              <h2 class="article-title">{{ $title }}</h2>
-              <div class="article-meta">{{ $authDate }}</div>
-            </div>
-          </article>
-
-          @endforeach
-  
-         
-        </div>
-      </div>
-    </section>
 
 
-
-
-    <section class="bottle" style="margin-top: 100px;">
-      <div class="section"
-                style="
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: space-between;
-              gap: 23px;
-              padding: 20px;
-              max-width: 1700px;
-              margin: 0 auto;
-            ">
-
-        @foreach ( $posts->slice(18) as $post )
-
-        @php
-            $url = route('blog', ['slug' => $post->slug]);
-            $title = Str::title($post->title) ;
-            $image = $post->thumbnail ;
-            $date = $post->created_at->format('d.m.y') ;
-            $author = $post->author?->name ;
-            $cat = $post->category->category ;
-            $catUrl = route('category', ['category' => $cat]);
-            $authDate = "$date by $author" ;
-        @endphp
-
-                <div
-                        style="
-                    flex: 1 1 calc(33.33% - 20px);
-                    margin: 0;
-                    
-                    overflow: hidden;
-                  ">
-                    <img src="{{ $image }}" alt="Winter getaway" style="width: 100%; height: 250px" />
-                    <div style="padding: 15px">
-                        <div
-                            style="
-                    color: black;
-                    font-size: 19px;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                    border-bottom: 1px solid currentColor; display: inline-block;
-                  ">
-                            {{ $cat }}
-                        </div>
-                        <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
-                          {{ $title }}
-                        </div>
-                        <div style="font-size: 14px; ">
-                          {{ $authDate }}
-                        </div>
-                    </div>
-                </div>
-
-        @endforeach
-    
-               
-            </div>
-    </section>
 
     @include('pages.layouts.footer')
 

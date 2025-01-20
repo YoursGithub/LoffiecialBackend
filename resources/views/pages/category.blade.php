@@ -511,10 +511,10 @@
         </div>
 
         <div class="content-grid" style="text-align: left">
-            @foreach ($recentPosts->slice(0, 3) as $post)
+            @foreach ($posts->slice(0, 3) as $post)
                         @php
                             $url = route('blog', ['slug' => $post->slug]);
-                            $title = Str::title($post->title);
+                            $title = Str::words(Str::title($post->title),6,"");
                             $image = $post->thumbnail;
                             $date = $post->created_at->format('d.m.y');
                             $author = $post->author?->name;
@@ -523,72 +523,72 @@
                             $authDate = "$date by $author";
                         @endphp
 
-<div style="
-max-width: 800px;
-margin: 0 auto;
-font-family: system-ui, -apple-system, sans-serif;
-">
-<article style="
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-    padding: 10px;
-">
-    <div style="
-        flex: 0 0 auto;
-        width: 160px;
-        height: 120px;
-        min-width: 160px;
-    ">
-        <a href="{{ $url }}" style="
-            display: block;
-            width: 100%;
-            height: 100%;
-        ">
-            <img src="{{ $image }}" alt="BE WELL" style="
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
-            ">
-        </a>
-    </div>
-    
-    <div style="
-        flex: 1;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    ">
-        <a href="{{ $catUrl }}" style="
-            font-size: 12px;
-            color: #555;
-            text-transform: uppercase;
-            text-decoration: none;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        ">{{$cat}}</a>
-        
-        <a href="{{ $url }}" style="
-            font-size: 18px;
-            font-weight: bold;
-            color: #000;
-            text-decoration: none;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        ">{{$title}}</a>
-        
-        <div style="
-            font-size: 14px;
-            color: #888;
-        ">{{ $authDate }}</div>
-    </div>
-</article>
-</div>
+                        <div style="
+                        max-width: 800px;
+                        margin: 0 auto;
+                        font-family: system-ui, -apple-system, sans-serif;
+                        ">
+                        <article style="
+                            display: flex;
+                            gap: 20px;
+                            margin-bottom: 20px;
+                            padding: 10px;
+                        ">
+                            <div style="
+                                flex: 0 0 auto;
+                                width: 160px;
+                                height: 120px;
+                                min-width: 160px;
+                            ">
+                                <a href="{{ $url }}" style="
+                                    display: block;
+                                    width: 100%;
+                                    height: 100%;
+                                ">
+                                    <img src="{{ $image }}" alt="BE WELL" style="
+                                        width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
+                                        object-position: center;
+                                    ">
+                                </a>
+                            </div>
+                            
+                            <div style="
+                                flex: 1;
+                                min-width: 0;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 8px;
+                            ">
+                                <a href="{{ $catUrl }}" style="
+                                    font-size: 12px;
+                                    color: #555;
+                                    text-transform: uppercase;
+                                    text-decoration: none;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                ">{{$cat}}</a>
+                                
+                                <a href="{{ $url }}" style="
+                                    font-size: 18px;
+                                    font-weight: bold;
+                                    color: #000;
+                                    text-decoration: none;
+                                    display: -webkit-box;
+                                    -webkit-line-clamp: 2;
+                                    -webkit-box-orient: vertical;
+                                    overflow: hidden;
+                                ">{{$title}}</a>
+                                
+                                <div style="
+                                    font-size: 14px;
+                                    color: #888;
+                                ">{{ $authDate }}</div>
+                            </div>
+                        </article>
+                        </div>
             @endforeach
         </div>
     </section>
@@ -613,7 +613,7 @@ font-family: system-ui, -apple-system, sans-serif;
             margin: 0 auto;
             ">
 
-            @foreach ($recentPosts->slice(2, 6) as $post)
+            @foreach ($posts->slice(3, 6) as $post)
 
                         @php
                             $url = route('blog', ['slug' => $post->slug]);
@@ -671,7 +671,7 @@ font-family: system-ui, -apple-system, sans-serif;
           max-width: 1200px;
           margin: auto;
         ">
-            @foreach ($trendingPosts->slice(0, 2) as $post)
+            @foreach ($posts->slice(9, 2) as $post)
 
                         @php
                             $url = route('blog', ['slug' => $post->slug]);
@@ -727,7 +727,7 @@ font-family: system-ui, -apple-system, sans-serif;
                 margin: 0 auto;
                 ">
 
-            @foreach ($recentPosts->slice(8, 3) as $post)
+            @foreach ($posts->slice(11, 3) as $post)
 
                         @php
                             $url = route('blog', ['slug' => $post->slug]);
@@ -794,7 +794,7 @@ font-family: system-ui, -apple-system, sans-serif;
     </h2>
     <section style="margin-top: 10px; display: flex; flex-wrap: wrap">
 
-        @foreach ($lifestylePosts as $post)
+        @foreach ($posts->slice(14, 2) as $post)
 
                 @php
                     $url = route('blog', ['slug' => $post->slug]);
@@ -876,7 +876,7 @@ font-family: system-ui, -apple-system, sans-serif;
           max-width: 1200px;
           margin: auto;
         ">
-            @foreach ($trendingPosts->slice(0, 2) as $post)
+            @foreach ($trendingPosts->slice(16, 2) as $post)
 
                         @php
                             $url = route('blog', ['slug' => $post->slug]);
@@ -933,7 +933,7 @@ font-family: system-ui, -apple-system, sans-serif;
           max-width: 1700px;
           margin: 0 auto;
         ">
-            @foreach ($musicPosts->slice(1, 6) as $post)
+            @foreach ($posts->slice(18, 6) as $post)
 
                         @php
                             $url = route('blog', ['slug' => $post->slug]);
@@ -978,6 +978,41 @@ font-family: system-ui, -apple-system, sans-serif;
                         </div>
 
             @endforeach
+
+
+            
+            <div
+                style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px 0; padding-top: 20px;">
+
+                {{-- Previous Page Link --}}
+                @if (!$posts->onFirstPage())
+                    <div
+                        style="cursor: pointer; font-size: 25px; color: #333; padding: 10px 15px; border: 1px solid black; border-radius: 4px;">
+                        <a href="{{ $posts->previousPageUrl() }}">
+                            <i class="fa-solid fa-arrow-left"></i>
+
+                        </a>
+
+
+                    </div>
+                @endif
+
+
+
+                {{-- Next Page Link --}}
+                @if ($posts->hasMorePages())
+                    <div
+                        style="cursor: pointer; font-size: 25px; color: #333; padding: 10px 15px; border: 1px solid black; border-radius: 4px;">
+
+                        <a href="{{ $posts->nextPageUrl() }}">
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+                @endif
+
+            </div>
 
 
         </div>
