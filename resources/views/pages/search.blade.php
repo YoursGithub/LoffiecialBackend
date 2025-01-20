@@ -609,6 +609,10 @@ flex-direction: column;
   
         window.addEventListener("scroll", () => {
     const navbar = document.querySelector(".navbar");
+
+    navbar.style.cursor = "pointer";
+
+    
     navbar.onclick = () => {
         if (navbar.classList.contains("scrolled")) {
             window.location.href = '/';

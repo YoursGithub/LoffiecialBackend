@@ -59,18 +59,29 @@
         }
 
         .logo {
-            font-size: 2rem;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            font-weight: bold;
-        }
+  display: inline-block;
+  width: fit-content;
+  /* max-width: 200px; */
+  margin-top: -60px;
+}
 
-        .logo img {
-            margin-top: -100px;
-            width: 300px;
-            /* margin-left: 130px; */
-        }
+.logo img {
+  width: 280px;
+  height: 200px; /* Added fixed height */
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    margin-top: -10px; /* Reduced negative margin for mobile */
+  }
+  
+  .logo img {
+    width: 150px; /* Smaller width for mobile */
+    height: 120px; /* Smaller height for mobile */
+  }
+}
 
         .navbar.scrolled .logo {
             display: none;
@@ -180,7 +191,7 @@
         }
 
         .top {
-            margin-top: 140px !important;
+            margin-top: 150px !important;
         }
 
 @media (max-width: 768px) {
@@ -473,16 +484,19 @@
         </div>
 
         <div style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-sizing: border-box;
-            width: 100%;
-        ">
-            <a href="/" class="logo" style="flex: 1; text-align: center">
-                <img src="/images/Lofficiel_Peru_Black-removebg-preview.png" alt="Logo"
-                    style="background-position: center; display: inline-block;" />
-            </a>
+  display: flex;
+  justify-content: center; /* Changed from space-between since there's only one item */
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+">
+  <a href="/" class="logo">
+    <img 
+      src="/images/Lofficiel_Peru_Black-removebg-preview.png" 
+      alt="Logo"
+    />
+  </a>
+        </div>
 
     <div class="nav-links" style="display: flex; justify-content: flex-end; margin-top: -170px; gap: 10px">
         <a href="#subscribe" style="color: black; text-decoration: none; font-size: 16px">Subscribe</a>
@@ -769,6 +783,10 @@
 
 window.addEventListener("scroll", () => {
     const navbar = document.querySelector(".navbar");
+
+    navbar.style.cursor = "pointer";
+
+    
     navbar.onclick = () => {
         if (navbar.classList.contains("scrolled")) {
             window.location.href = '/';

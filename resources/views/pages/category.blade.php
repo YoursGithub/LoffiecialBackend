@@ -345,6 +345,28 @@
             width: 350px;
         }
       } */
+
+      .ghy{
+        margin-top: 150px;
+      }
+
+      @media (max-width: 768px) {
+            .ghy{
+                margin-top: 550px !important;
+            }
+        }
+        
+        
+        .bus{
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .ghy{
+                margin-top: -350px !important;
+            }
+        }
+
     </style>
 </head>
 
@@ -593,7 +615,7 @@
     </section>
 
 
-    <section class="bottle" style="margin-top: 150px;">
+    <section class="bottle ghy">
         <h2 class="high" style="
           font-weight: lighter;
           font-size: 20px;
@@ -645,7 +667,7 @@
                           ">
                                     {{ $cat }}
                                 </div>
-                                </a>
+                                </a ghy>
                                 <a href="{{ $url }}" style="text-decoration: none; color: black;">
                                 <div style="font-size: 28px; font-weight :400; margin: 0 0 10px">
                                     {{ $title }}
@@ -661,7 +683,7 @@
         </div>
     </section>
 
-    <section class="bottle hexx" style="font-family: 'Sen', sans-serif">
+    <section class="bottle hexx bus" style="font-family: 'Sen', sans-serif">
         <div class="section" style="
           display: flex;
           justify-content: space-between;
@@ -931,6 +953,7 @@
           padding: 20px;
           max-width: 1700px;
           margin: 0 auto;
+          margin-bottom: -240px;
         ">
             @foreach ($posts->slice(18, 6) as $post)
 
@@ -983,7 +1006,6 @@
             <div
                 style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px 0; padding-top: 20px;">
 
-                {{-- Previous Page Link --}}
                 @if (!$posts->onFirstPage())
                     <div
                         style="cursor: pointer; font-size: 25px; color: #333; padding: 10px 15px; border: 1px solid black; border-radius: 4px;">
@@ -998,7 +1020,6 @@
 
 
 
-                {{-- Next Page Link --}}
                 @if ($posts->hasMorePages())
                     <div
                         style="cursor: pointer; font-size: 25px; color: #333; padding: 10px 15px; border: 1px solid black; border-radius: 4px;">
@@ -1036,13 +1057,22 @@
 
 
         window.addEventListener("scroll", () => {
-            const navbar = document.querySelector(".navbar");
-            if (window.scrollY > 50) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
-        });
+    const navbar = document.querySelector(".navbar");
+
+    navbar.style.cursor = "pointer";
+
+    
+    navbar.onclick = () => {
+        if (navbar.classList.contains("scrolled")) {
+            window.location.href = '/';
+        }
+    };
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
 
         const swiper = new Swiper('.swiper', {
             slidesPerView: 1,
