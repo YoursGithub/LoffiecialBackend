@@ -529,7 +529,10 @@
                         max-width: 900px; 
                         max-height: 100%; 
                     ">
+
             </div>
+            <h4 style="padding: 10px;">{{ $post->image_caption }}</h4>
+
             
         
             <div id="main-description" class="bottle" style="text-align: left; margin-bottom: 20px; margin: 0 auto; max-width: 800px; padding: 20px;">
