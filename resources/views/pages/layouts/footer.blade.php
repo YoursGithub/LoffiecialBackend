@@ -201,7 +201,7 @@
             >Privacy Policy</a
           >
           <a
-            href="https://www.iubenda.com/privacy-policy/8009358/cookie-policy"
+            href="/cookie-policy"
             style="color: white; text-decoration: none; margin-top: -60px; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;"
             >Cookie Policy</a
           >

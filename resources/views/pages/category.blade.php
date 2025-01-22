@@ -42,7 +42,7 @@
         }
 
         .navbar.scrolled {
-            background: url("/images/logo-lofficiel-amtd.svg") no-repeat center;
+            background: url("/images/Lofficiel_Peru_Black-removebg-preview.png") no-repeat center;
             background-size: 150px;
             background-color: white;
             box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
@@ -364,6 +364,16 @@
         @media (max-width: 768px) {
             .ghy{
                 margin-top: -350px !important;
+            }
+        }
+
+        .mist{
+            margin-bottom : 200px !important;
+        }
+
+        @media (max-width: 768px) {
+            .mist{
+                margin-bottom : 10px !important;
             }
         }
 
@@ -967,11 +977,12 @@
                             $catUrl = route('category', ['category' => $cat]);
                             $authDate = "$date by $author";
                          @endphp
-                        <div style="
+                        <div class="mist" style="
                                 flex: 1 1 calc(33.33% - 20px);
                                 margin: 0;
                                 background-color: #fff;
                                 overflow: hidden;
+                                
                             ">
                             <a href="{{ $url }}">
                                 <img src="{{ $image }}" alt="Winter getaway"

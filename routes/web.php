@@ -45,8 +45,8 @@ Route::get('/blog/{slug}', [PageController::class, 'blog'])->name('blog');
 Route::get('/search', [PageController::class, 'search'])->name('search');
 
 
-
-
+Route::view('/cookie-policy', 'pages.cookie');
+Route::view('/privacy', 'pages.privacy');
 
 
 

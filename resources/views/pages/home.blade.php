@@ -101,17 +101,19 @@
         }
 
         .hero {
-            position: relative;
-            width: 100%;
-            height: 95vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-                url('{{ $firstPost?->thumbnail }}') center/cover no-repeat;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+    position: relative;
+    width: 100%;
+    height: 95vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('{{ $firstPost?->thumbnail }}') center/cover no-repeat;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-x: hidden; /* Prevents horizontal overflow */
+    box-sizing: border-box; /* Ensures padding/margins don't cause issues */
+}
 
         .hero-content {
             position: absolute;
@@ -347,6 +349,15 @@
         margin-top: -500px !important;
       }
       }  
+
+      @media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+    .hero {
+        height: calc(100vh - 20px); /* Adjust if needed */
+        width: 100vw; /* Prevent right-side space */
+        overflow-x: hidden; /* Ensure no overflow */
+    }
+    }
+
     </style>
 </head>
 
