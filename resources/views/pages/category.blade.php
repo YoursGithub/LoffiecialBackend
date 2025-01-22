@@ -897,7 +897,7 @@
           max-width: 1200px;
           margin: auto;
         ">
-            @foreach ($trendingPosts->slice(16, 2) as $post)
+            @foreach ($posts->slice(16, 2) as $post)
 
                         @php
                             $url = route('blog', ['slug' => $post->slug]);

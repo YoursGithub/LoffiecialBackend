@@ -43,8 +43,8 @@
 <link rel="canonical" href="{{ $abUrl }}">
 
 
-<link rel="icon" href="{{ $titleImg }}" sizes="32x32">
-<link rel="icon" href="{{ $titleImg }}" sizes="192x192">
+<link rel="icon" href="{{ $titleImg }}" >
+{{-- <link rel="icon" href="{{ $titleImg }}" sizes="192x192"> --}}
 <link rel="apple-touch-icon" href="{{ $titleImg }}">
 
 

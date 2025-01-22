@@ -802,7 +802,7 @@ font-family: system-ui, -apple-system, sans-serif;
           margin: auto;
           margin-top: -500px;
         ">
-            @foreach ($trendingPosts->slice(0, 2) as $post)
+            @foreach ($trendingPosts->slice(2, 2) as $post)
 
                         @php
                             $url = route('blog', ['slug' => $post->slug]);
