@@ -89,42 +89,28 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <div style="cursor: pointer;">
-            <img src="/images/1713967720-cover_jackson_wang_eshop.jpg" alt="Magazine Cover 1" style="width: 100%; height: 250px; display: block;">
+            <img src="/images/Raquel Chaves.jpg" alt="Magazine Cover 1" style="width: 100%; height: 250px; display: block;">
             <div style="text-align: center; margin-top: 15px; text-transform: uppercase; font-size: 12px; font-weight: 300;">The Precious Issue</div>
           </div>
         </div>
         
         <div class="swiper-slide">
           <div style="cursor: pointer;">
-            <img src="/images/1711544836-e-shop_fr.jpg" alt="Magazine Cover 2" style="width: 100%; height: 250px; display: block;">
+            <img src="/images/Sara Méndez.jpg" alt="Magazine Cover 2" style="width: 100%; height: 250px; display: block;">
             <div style="text-align: center; margin-top: 15px; text-transform: uppercase; font-size: 12px; font-weight: 300;">The Creative Issue</div>
           </div>
         </div>
         
         <div class="swiper-slide">
           <div style="cursor: pointer;">
-            <img src="/images/1713341482-img_4043.jpeg" alt="Magazine Cover 3" style="width: 100%; height: 250px; display: block;">
+            <img src="/images/YEIMI.jpg" alt="Magazine Cover 3" style="width: 100%; height: 250px; display: block;">
             <div style="text-align: center; margin-top: 15px; text-transform: uppercase; font-size: 12px; font-weight: 300;">The Creative Issue</div>
           </div>
         </div>
 
         <div class="swiper-slide">
           <div style="cursor: pointer;">
-            <img src="/images/1717057274-img_5535.jpeg" alt="Magazine Cover 2" style="width: 100%; height: 250px; display: block;">
-            <div style="text-align: center; margin-top: 15px; text-transform: uppercase; font-size: 12px; font-weight: 300;">The Creative Issue</div>
-          </div>
-        </div>
-
-        <div class="swiper-slide">
-          <div style="cursor: pointer;">
-            <img src="/images/1719301890-img_6568.webp" alt="Magazine Cover 2" style="width: 100%; height: 250px; display: block;">
-            <div style="text-align: center; margin-top: 15px; text-transform: uppercase; font-size: 12px; font-weight: 300;">The Creative Issue</div>
-          </div>
-        </div>
-
-        <div class="swiper-slide">
-          <div style="cursor: pointer;">
-            <img src="/images/1713967720-cover_jackson_wang_eshop.jpg" alt="Magazine Cover 2" style="width: 100%; height: 250px; display: block;">
+            <img src="/images/KIT BUTLER.jpg" alt="Magazine Cover 2" style="width: 100%; height: 250px; display: block;">
             <div style="text-align: center; margin-top: 15px; text-transform: uppercase; font-size: 12px; font-weight: 300;">The Creative Issue</div>
           </div>
         </div>
