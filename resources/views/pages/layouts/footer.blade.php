@@ -133,7 +133,7 @@
       
       <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
         <input type="checkbox" id="privacy" style="margin-right: 10px; margin-top: 3px;">
-        <label for="privacy" style="text-align:center; font-size: 16px; color: #aaa;">I hereby authorize the processing of my personal data for the purposes of the <a style="color:white;" href="">Privacy Policy</a></label>
+        <label for="privacy" style="text-align:center; font-size: 16px; color: #aaa;">I hereby authorize the processing of my personal data for the purposes of the <a style="color:white;" href="/privacy">Privacy Policy</a></label>
       </div>
       
       <div style="display: flex; justify-content: center; align-items: center;">
@@ -149,7 +149,7 @@
     /* min-width: 410px; */
  background-color: #131312">
       <div>
-        <a href="/">
+        <a href="">
         <div
           style="display: flex; justify-content: center; align-items: center"
         >
@@ -196,7 +196,7 @@
             >Contact</a
           >
           <a
-            href="https://www.iubenda.com/privacy-policy/8009358"
+            href="/privacy"
             style="color: white; text-decoration: none; margin-top: -60px; margin-bottom: 10px; border-bottom: 1px solid currentColor; display: inline-block;"
             >Privacy Policy</a
           >
