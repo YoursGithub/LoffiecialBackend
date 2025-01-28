@@ -15,21 +15,26 @@
 
     <style>
         html {
-            scroll-behavior: smooth;
-        }
+    scroll-behavior: smooth;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    position: relative; 
+}
+
 
         .navbar {
             position: fixed;
@@ -50,6 +55,9 @@
 
         .logo {
             color: white;
+            display: inline-block;
+    /* width: 80px; */
+    height: 40px; 
             text-align: center;
             text-decoration: none;
             font-weight: bold;
@@ -104,8 +112,8 @@
     position: relative;
     width: 100%;
     height: 95vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url('{{ $firstPost?->thumbnail }}') center/cover no-repeat;
+    /* background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('{{ $firstPost?->thumbnail }}') center/cover no-repeat; */
     color: white;
     display: flex;
     justify-content: center;
@@ -117,7 +125,7 @@
 
         .hero-content {
             position: absolute;
-            margin-top: 400px;
+            margin-top: 360px;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
@@ -127,7 +135,7 @@
 
         @media screen and (min-width: 768px) {
             .hero-content {
-                margin-top: 150px;
+                margin-top: 250px;
             }
         }
 
@@ -155,7 +163,7 @@
         }
 
         .title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             line-height: 1.2;
         }
@@ -468,12 +476,12 @@ width: 250px;
             box-sizing: border-box;
             width: 100%;
         ">
-            <a href="/" class="logo" style="flex: 1; text-align: center">
+            <a href="/" class="logo" style="flex: 1; text-align: center;">
                 <img src="/images/Lofficiel Peru.png" alt="Logo"
                     style="background-position: center; display: inline-block;" />
             </a>
 
-    <div class="nav-links" style="display: flex; justify-content: flex-end; margin-top: -170px; gap: 10px">
+    <div class="nav-links" style="display: flex; justify-content: flex-end;  gap: 10px">
         <a href="#subscribe" style="color: white; text-decoration: none; font-size: 16px margin-right:30px;">Subscribe</a>
         {{-- <a href="#" style="color: white; text-decoration: none; font-size: 16px">France</a> --}}
     </div>
@@ -483,7 +491,7 @@ width: 250px;
 
 
     <section style="font-family: 'Sen', sans-serif">
-        <div class="hero section" style="position: relative; width: 100%; height: 95vh;">
+        <div class="hero section" style="">
             <a href="{{  route('blog', ['slug' => $firstPost?->slug]) }}"
                 style="display: block; width: 100%; height: 100%;">
                 <img src="{{ $firstPost?->thumbnail }}" alt="{{ $firstPost?->title }}" style="
@@ -494,14 +502,13 @@ width: 250px;
                     top: 0;
                     left: 0;
                 ">
-                <div style="
+                {{-- <div style="
                     position: absolute;
                     top: 0;
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    background: rgba(0, 0, 0, 0.3);
-                "></div>
+                "></div> --}}
             </a>
 
             <div class="hero-content">
@@ -547,7 +554,6 @@ font-family: system-ui, -apple-system, sans-serif;
     margin-bottom: 20px;
     padding: 10px;
 ">
-    <!-- Image Container with smaller dimensions -->
     <div style="
         flex: 0 0 auto;
         width: 160px;
